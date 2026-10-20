@@ -1,0 +1,50 @@
+/* nanhwafs-site 设计 token 抽取档 —— 2026-09-22
+   来源：index.html / organization/index.html / board/index.html / faculty/index.html / assets/news.css
+   实测抽取，非新设计。两套配色是站内原有意图（见 index.html 行132-133 原注释），非冲突，别合并。
+   字体栈逐字保留，改一字会静默换字形（CJK fallback 坑，见 reference_cjk_font_stack_fallback）。 */
+
+/* ===== CI 区（入口/顶层）：index.html hero + topbar、news.css 頁首 ===== */
+:root {
+  --green:      #3EB370;  /* 南华CI绿，白底做块面 */
+  --green-dark: #2E9059;
+  --green-deep: #1E5C3A;
+  --green-ink:  #276B4E;  /* 文字专用加深版：南华绿在白底只有 2.5:1 对比度，做小字不行；此版 5.7:1（来自 assets/news.css 原注释，逐字保留） */
+  --cream-ci:   #F5F1E8;  /* 注意：与下方 paper 区 --cream 不同值，见下 */
+  --ink-ci:     #222;
+  --gold-ci:    #E8B84B;
+}
+
+/* ===== Paper 区（内容页）：organization / board / faculty，以及 index.html hero 以下内容区共用 ===== */
+:root {
+  --cream:      #F8F4EA;
+  --paper:      #FFFFFF;
+  --ink:        #2A2822;
+  --muted:      #7A6E56;
+  --muted-lt:   #9C9484;
+  --gold:       #C9974A;
+  --gold-deep:  #B5804A;
+  --terracotta: #B5643A;
+  --rule:       #E3D4B0;
+  --mount:      #EFE9DA;
+}
+
+/* ===== 两区共用：CJK 字体栈，禁改字序/字量 ===== */
+:root {
+  --serif: "Noto Serif SC","Source Han Serif SC","STZhongsong","SimSun",serif;
+  --sans:  "Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;
+}
+
+/* ===== kinetics 弹簧曲线（faculty/organization/board 共用） ===== */
+:root {
+  --spring-soft:   linear(0, .35 18%, .78 36%, 1.04 54%, 1.09 62%, 1.02 80%, 1);
+  --spring-bouncy: linear(0, .4 16%, .95 32%, 1.18 44%, .96 60%, 1.04 74%, .99 86%, 1);
+}
+
+/* =====================================================================
+   断点现状（实测，非建议值）—— 全站没有统一断点，见 ../breakpoint-audit.md
+   index: 1080 / 760          organization: 880 / 640
+   board: 900 / 560 / 420     faculty: 880
+   about/academic/facilities/cocurricular: 840(min-width) / 760
+   admission: 760 only        history: 640 / 760
+   news.css（唯一 mobile-first 写法）: 640(min) / 900(min) / 520(max)
+   ===================================================================== */

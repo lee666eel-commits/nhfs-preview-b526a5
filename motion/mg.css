@@ -1,0 +1,76 @@
+/* 南华 · 迎领之路 —— 动态图形舞台（所有动态由 mg.js 按时间 t 逐帧计算，CSS 只管静态外观） */
+.mg{position:absolute;inset:0;overflow:hidden;background:#0E1A14;color:#F4EFE4;contain:strict;
+  font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","STZhongsong","SimSun",serif;
+  --latin:"Cormorant Garamond","Noto Serif SC",serif;
+  --gold:#E3B24F;--zhu:#A8352A;--paper:#F4EFE4;--night:#0E1A14;--u:8px;
+  -webkit-user-select:none;user-select:none}
+.mg *{box-sizing:border-box;margin:0;padding:0}
+.mg .L{position:absolute;left:0;top:0;will-change:transform,opacity;transform-origin:0 0}
+.mg .full{position:absolute;inset:0}
+.mg canvas{position:absolute;inset:0;width:100%;height:100%}
+.mg .photo{position:absolute;inset:0;overflow:hidden;opacity:0}
+.mg .photo img{position:absolute;left:50%;top:50%;width:100%;height:100%;object-fit:cover;will-change:transform;transform-origin:50% 50%}
+.mg .flash{background:radial-gradient(circle at 50% 50%,#FFF8E6 0,#F6E7C4 40%,rgba(246,231,196,.0) 100%);opacity:0}
+.mg .night{position:absolute;inset:0;background:#0E1A14;opacity:0}
+.mg .scrim{position:absolute;inset:0;opacity:0;
+  background:linear-gradient(to top,rgba(10,18,13,.9) 0%,rgba(10,18,13,.25) 45%,rgba(10,18,13,.55) 100%)}
+.mg .planet{width:1000px;height:1000px;transform-origin:500px 500px}
+.mg .planet img{width:100%;height:100%;display:block}
+.mg .planet::after{content:"";position:absolute;inset:4%;border-radius:50%;
+  box-shadow:0 0 120px 30px rgba(227,178,79,.18)}
+
+/* 文字 */
+.mg .t{position:absolute;opacity:0;will-change:transform,opacity}
+.mg .ch{display:inline-block;will-change:transform,opacity}
+.mg .vcol{writing-mode:vertical-rl;font-family:var(--serif);line-height:1.15;white-space:nowrap}
+.mg .big{font-family:var(--serif);font-weight:900;letter-spacing:.04em;line-height:1.2;white-space:nowrap}
+.mg .sub{font-family:var(--serif);font-weight:600;line-height:1.8}
+.mg .latin{font-family:var(--latin);font-style:italic;font-weight:500;letter-spacing:.06em;white-space:nowrap}
+.mg .shadow{text-shadow:0 2px 18px rgba(0,0,0,.55)}
+
+/* 卡片 */
+.mg .card{position:absolute;left:0;top:0;padding:calc(var(--u)*.45) calc(var(--u)*.45) calc(var(--u)*2.6);background:#FBF8F1;
+  border-radius:3px;box-shadow:0 24px 60px rgba(0,0,0,.35);will-change:transform,opacity;opacity:0}
+.mg .card img{display:block;width:100%;height:100%;object-fit:cover;border-radius:2px}
+.mg .card b{position:absolute;left:0;right:0;bottom:calc(var(--u)*.55);text-align:center;color:#17201B;
+  font-family:var(--serif);font-weight:900;letter-spacing:.06em;font-size:calc(var(--u)*1.35)}
+
+/* 灯塔光束 */
+.mg .beam{width:4000px;height:4000px;border-radius:50%;opacity:0;transform-origin:2000px 2000px;
+  background:conic-gradient(from 0deg,rgba(255,226,150,.0) 0deg,rgba(255,226,150,.42) 9deg,rgba(255,226,150,0) 22deg,
+    transparent 180deg,rgba(255,226,150,0) 180deg,rgba(255,226,150,.18) 189deg,rgba(255,226,150,0) 202deg,transparent 360deg);
+  -webkit-mask:radial-gradient(circle,#000 0,#000 30%,transparent 62%);mask:radial-gradient(circle,#000 0,#000 30%,transparent 62%)}
+.mg .core{width:200px;height:200px;border-radius:50%;opacity:0;transform-origin:100px 100px;
+  background:radial-gradient(circle,rgba(255,240,200,.95) 0,rgba(255,214,120,.55) 18%,rgba(255,214,120,0) 62%)}
+.mg .lab{position:absolute;left:0;top:0;opacity:0;text-align:center;will-change:transform,opacity;white-space:nowrap}
+.mg .lab b{display:block;font-family:var(--serif);font-weight:900;font-size:calc(var(--u)*4.6);letter-spacing:.04em;line-height:1.1}
+.mg .lab i{display:block;font-style:normal;font-family:var(--serif);color:var(--gold);font-size:calc(var(--u)*1.7);letter-spacing:.08em;margin-top:calc(var(--u)*.6)}
+
+/* 年轮与根 */
+.mg svg.rings{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.mg svg.rings circle{fill:none;stroke:var(--gold);stroke-linecap:round}
+.mg svg.rings path{fill:none;stroke:var(--gold);stroke-linecap:round;stroke-linejoin:round}
+.mg .rlab{position:absolute;left:0;top:0;opacity:0;padding:.25em .9em;border-radius:999px;background:rgba(14,26,20,.86);
+  border:1px solid rgba(227,178,79,.55);font-family:var(--serif);font-weight:600;font-size:calc(var(--u)*1.55);letter-spacing:.06em;white-space:nowrap;color:#F4EFE4}
+
+/* 角色 */
+.mg .char{position:absolute;left:0;top:0;will-change:transform}
+.mg .char .body,.mg .char .head{position:absolute;left:0;top:0;width:100%;will-change:transform}
+.mg .char .head{display:block;transform-origin:var(--px) var(--py)}
+.mg .char .head img{display:block;width:100%}
+.mg .lid{position:absolute;transform-origin:50% 0;transform:scaleY(0);border-radius:46% 46% 50% 50%}
+.mg .lid::after{content:"";position:absolute;left:6%;right:6%;top:44%;height:34%;border-bottom:var(--lw,3px) solid #2A2420;border-radius:0 0 50% 50%}
+.mg .char .body{transform-origin:50% 100%}
+.mg .shade{position:absolute;left:0;top:0;width:100px;height:24px;border-radius:50%;background:radial-gradient(ellipse,rgba(0,0,0,.45),rgba(0,0,0,0) 70%);transform-origin:50px 12px}
+
+/* 终章（纸面） */
+.mg .crest{position:absolute;left:0;top:0;opacity:0;will-change:transform,opacity}
+.mg .cta{position:absolute;left:0;top:0;opacity:0;display:flex;gap:calc(var(--u)*1);flex-wrap:wrap;justify-content:center;will-change:transform,opacity}
+.mg .cta a,.mg .cta span{display:inline-flex;align-items:center;gap:.5em;padding:.6em 1.3em;border-radius:999px;text-decoration:none;
+  font-weight:700;font-size:1em;letter-spacing:.06em;white-space:nowrap}
+.mg .cta .p{background:#17201B;color:#F4EFE4}
+.mg .cta .q{border:1.5px solid #17201B;color:#17201B}
+.mg .seal{position:absolute;left:0;top:0;opacity:0;writing-mode:vertical-rl;background:var(--zhu);color:#FBEFE3;font-family:var(--serif);font-weight:900;
+  line-height:1.03;text-align:center;border-radius:4px;box-shadow:inset 0 0 0 2px rgba(251,239,227,.55);will-change:transform,opacity}
+.mg .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}

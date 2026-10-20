@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>硬体设施 · 学习空间与科技楼 · 南华独立中学</title>
+<meta name="description" content="南华独立中学硬体设施：校内泳池、茶艺馆、运动与教室设施、技职教育中心（科技楼三层）、AI创客空间与学生宿舍。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* 骨干设计：11 Build + 02 Stamen + 10 Müller-Brockmann + 18 Kenya Hara暖化版，沿用 about/ 定稿版本。 */
+:root {
+  --cream:#F8F4EA; --paper:#FFFFFF; --ink:#2A2822; --muted:#7A6E56; --muted-lt:#9C9484;
+  --gold:#C9974A; --gold-deep:#B5804A; --terracotta:#B5643A; --rule:#E3D4B0; --mount:#EFE9DA;
+  --serif:"Noto Serif SC","Source Han Serif SC","STZhongsong","SimSun",serif;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--cream); color:var(--ink); font-family:"Noto Sans SC","Microsoft YaHei",system-ui,sans-serif; line-height:1.9; font-weight:300; }
+a { text-decoration:none; color:inherit; }
+img { max-width:100%; display:block; }
+
+.cover { position:relative; min-height:clamp(420px, 62vh, 620px); overflow:hidden; color:#fff;
+  background:linear-gradient(to bottom, #1a1208 0%, #2b1f10 55%, var(--cream) 100%); }
+.cover .bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; }
+.cover .scrim { position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(to top, rgba(20,14,6,.74) 0%, rgba(20,14,6,.32) 42%, rgba(20,14,6,.06) 66%, rgba(20,14,6,.24) 100%); }
+.cover .sun { position:absolute; width:520px; height:520px; border-radius:50%; top:-200px; right:-40px;
+  background:radial-gradient(circle, rgba(255,206,120,.35), transparent 68%); filter:blur(4px); pointer-events:none; }
+.cover .fade-bottom { position:absolute; left:0; right:0; bottom:-1px; height:clamp(70px,14vh,150px);
+  background:linear-gradient(to bottom, transparent, var(--cream)); pointer-events:none; }
+
+.topbar { position:relative; z-index:3; display:flex; align-items:center; justify-content:space-between; padding:1.1rem clamp(1.2rem,4vw,3rem); }
+.brand { display:flex; align-items:center; gap:.8rem; color:#fff; }
+.brand img { height:46px; width:auto; filter:drop-shadow(0 2px 6px rgba(0,0,0,.5)); }
+.brand .name { display:flex; align-items:baseline; gap:.7rem; }
+.brand b { font-family:var(--serif); font-weight:700; font-size:1.22rem; letter-spacing:.08em; text-shadow:0 1px 8px rgba(0,0,0,.55); }
+.brand small { font-size:.72rem; letter-spacing:.22em; color:#f0e2c4; opacity:.85; }
+.logo90 img { height:58px; width:auto; filter:drop-shadow(0 2px 8px rgba(0,0,0,.5)); transition:transform .2s ease; }
+.logo90:hover img { transform:scale(1.06); }
+
+.family-nav { position:relative; z-index:3; display:flex; gap:.6rem; flex-wrap:wrap; padding:0 clamp(1.2rem,4vw,3rem) 1rem; }
+.family-nav a { font-size:.82rem; letter-spacing:.05em; color:#f0e2c4; padding:.4rem 1.1rem; border:1px solid rgba(255,255,255,.32); border-radius:999px; transition:background .2s,border-color .2s; }
+.family-nav a:hover { background:rgba(255,255,255,.14); border-color:rgba(255,255,255,.65); }
+.family-nav a.active { background:rgba(255,255,255,.2); border-color:rgba(255,255,255,.8); font-weight:500; }
+
+.cover .content { position:relative; z-index:3; max-width:900px; margin:0 auto;
+  padding:clamp(2.4rem,10vh,4.4rem) clamp(1.2rem,4vw,3rem) clamp(1.8rem,5vh,2.6rem); }
+.kicker { font-size:.8rem; letter-spacing:.32em; color:#FFEFC4; margin-bottom:1rem;
+  text-shadow:0 1px 3px rgba(0,0,0,.8), 0 2px 14px rgba(0,0,0,.6), 0 0 18px rgba(255,201,120,.5); }
+.cover h1 { font-family:var(--serif); font-weight:200; font-size:clamp(2rem,5vw,3.2rem); line-height:1.5; letter-spacing:.02em;
+  text-shadow:0 2px 16px rgba(0,0,0,.55); }
+.cover h1 b { font-weight:900; }
+.shimmer-text {
+  background: linear-gradient(100deg, #F5E7C4 30%, #FFDD98 50%, #F5E7C4 70%);
+  background-size: 200% auto; -webkit-background-clip: text; background-clip: text; color: transparent;
+  text-shadow:0 0 26px rgba(255,204,120,.6), 0 0 64px rgba(255,204,120,.3);
+  animation: shimmer 3s linear infinite;
+}
+@keyframes shimmer { to { background-position: -200% center; } }
+@media (prefers-reduced-motion: reduce) { .shimmer-text { animation:none; background-position:0 center; } }
+.cover p.intro { margin-top:1.2rem; max-width:38em; color:#f2ecdd; line-height:2; font-size:.98rem; font-weight:300;
+  text-shadow:0 1px 8px rgba(0,0,0,.55); }
+
+section { max-width:960px; margin:0 auto; padding:3.2rem clamp(1.2rem,4vw,3rem) .6rem; }
+.sec-head { border-bottom:1px solid var(--rule); padding-bottom:1rem; margin-bottom:2rem; }
+.sec-head .en { font-size:.78rem; color:var(--gold); letter-spacing:.28em; }
+.sec-head h2 { font-family:var(--serif); font-weight:900; color:var(--ink); font-size:clamp(1.5rem,3.6vw,2.1rem); line-height:1.4; margin-top:.4rem; }
+
+.vision { margin-top:.6rem; font-size:.95rem; color:var(--muted); max-width:44em; font-weight:300; }
+
+.pillar { margin-top:3.2rem; }
+.pillar:first-child { margin-top:0; }
+.pillar-body { display:grid; gap:1.6rem; }
+@media (min-width:840px) { .pillar-body { grid-template-columns:1fr 1.1fr; align-items:center; } }
+.pillar-photo { background:var(--paper); border:1px solid var(--rule); box-shadow:0 6px 16px rgba(90,60,20,.14); padding:6px 6px 8px; }
+.pillar-photo img { width:100%; height:auto; display:block; }
+.pillar-text h3 { font-family:var(--serif); font-weight:800; color:var(--ink); font-size:clamp(1.1rem,2.4vw,1.35rem); margin-bottom:.8rem; }
+.pillar-text p { font-size:.92rem; color:var(--ink); line-height:1.9; margin-bottom:.9rem; font-weight:300; text-align:justify; text-justify:inter-character; }
+
+
+.policy-statement { position:relative; overflow:hidden; border-radius:.6rem;
+  background:linear-gradient(135deg,var(--gold-deep),var(--gold)); padding:clamp(2.4rem,7vw,4rem) 1.5rem;
+  text-align:center; margin-bottom:2rem; }
+.policy-quote { position:relative; z-index:2; font-family:var(--serif); font-weight:900; color:#fff;
+  font-size:clamp(1.2rem,3.6vw,1.7rem); line-height:1.7; text-shadow:0 2px 10px rgba(0,0,0,.18); }
+.spotlight-glow { position:absolute; left:50%; top:50%; width:220px; height:220px; border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,.28), transparent 70%); transform:translate(-50%, -50%); pointer-events:none; }
+
+footer { text-align:center; padding:2.5rem 1rem 3rem; font-size:.82rem; color:var(--muted-lt); }
+
+@media (max-width:760px) {
+  .topbar { padding:.9rem 1.1rem; }
+  .brand img { height:38px; }
+  .logo90 img { height:44px; }
+  .family-nav { padding:0 1.1rem 1rem; }
+}
+
+.has-js .reveal { opacity:0; transform:translateY(18px);
+  transition:opacity .7s cubic-bezier(.16,.8,.24,1), transform .7s cubic-bezier(.16,.8,.24,1); }
+.has-js .reveal.in { opacity:1; transform:translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .has-js .reveal { opacity:1; transform:none; transition:none; }
+}
+/* 玻璃按钮（同数码馆页返回键）：磨砂+内高光+悬停光扫+按下微缩；hover/active 沿用上方既有规则 */
+.family-nav a { position:relative; overflow:hidden; -webkit-backdrop-filter:blur(14px) saturate(1.4); backdrop-filter:blur(14px) saturate(1.4); border-color:rgba(255,255,255,.12); box-shadow:inset 0 1px 0 rgba(255,255,255,.18); }
+.family-nav a::after { content:""; position:absolute; inset:0; background:linear-gradient(105deg,transparent,rgba(255,255,255,.35),transparent); transform:translateX(-120%); transition:transform .65s cubic-bezier(0.16,1,0.3,1); pointer-events:none; }
+.family-nav a:hover::after { transform:translateX(220%); }
+.family-nav a:active { transform:scale(.97); }
+@media (prefers-reduced-motion:reduce){ .family-nav a::after { transition:none; } }
+
+/* ===== 首屏可读性（10-09，依美术老师意见）=====
+   ① 导航胶囊改深色玻璃：不论背后是白楼还是暗树都看得清；当前页用米白实底
+   ② 文字区垫一块局部墨绿暗晕，并把米白褪色带让到文字下方，字永远落在暗底上
+   ③ 标题平衡断行，不剩单字　④ 收宽字距　⑤ 手机顶栏：藏英文校名、胶囊一行可横滑 */
+.family-nav a { background:rgba(14,22,16,.42); border-color:rgba(255,255,255,.35); color:#F4EBD6; text-shadow:0 1px 2px rgba(0,0,0,.45); }
+.family-nav a:hover { background:rgba(14,22,16,.6); border-color:rgba(255,255,255,.7); }
+.family-nav a.active { background:#F4EFE4; border-color:#F4EFE4; color:#17201B; text-shadow:none; font-weight:700; }
+.cover .content { isolation:isolate; padding-bottom:calc(clamp(1.6rem,4.5vh,2.4rem) + clamp(70px,14vh,150px)); }
+.cover .content::before { content:""; position:absolute; z-index:-1; inset:-6% -14% 8% -14%; pointer-events:none;
+  background:radial-gradient(ellipse at 45% 50%, rgba(12,20,14,.66) 0%, rgba(12,20,14,.42) 42%, rgba(12,20,14,0) 72%); }
+.cover h1 { text-wrap:balance; }
+.cover video.bg { height:144.5%; object-position:center top; }   /* 鸟瞰片下方 400px 是糊掉的补边，拉高贴顶让它落在首屏外（同首页） */
+.cover h1 .nw { white-space:nowrap; }
+.kicker { letter-spacing:.12em; }
+.eyebrow { letter-spacing:.1em; }
+.brand small { letter-spacing:.12em; }
+.brand b { white-space:nowrap; }
+@media (max-width:560px) {
+  .brand small { display:none; }
+  .family-nav { flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; }
+  .family-nav::-webkit-scrollbar { display:none; }
+  .family-nav a { flex:none; }
+}
+/* ===== 入口照片格（10-10，同学术课程页）=====
+   排法＝Flickr／Google Photos 的「等高行」：同一行照片等高、宽度按各自原比例，整行左右对齐——一像素不裁。
+   行怎么分由下方脚本按容器宽度算（求每行高度最接近目标行高）；没 JS 时退成普通折行。
+   外框沿用本页「领域介绍」照片的白卡纸框，图说＝衬线中文＋金色英文（同 .sec-head .en），不用手册的红标签。 */
+.ph-grid { display:flex; flex-wrap:wrap; column-gap:14px; }   /* 行距不用 row-gap：换行用的 .br 自成一行会多吃一次间距 */
+.ph-grid > .br { flex-basis:100%; height:0; }
+.ph { flex:1 1 150px; min-width:0; margin:0 0 14px; }
+.ph-grid.is-justified .ph { flex:none; }
+.ph > button { display:flex; flex-direction:column; width:100%; height:100%; padding:6px; border:1px solid var(--rule);
+  background:var(--paper); box-shadow:0 6px 16px rgba(90,60,20,.14); cursor:zoom-in; font:inherit; color:inherit; text-align:left;
+  transition:box-shadow .35s ease, transform .35s cubic-bezier(.16,1,.3,1); }
+.ph > button:hover { transform:translateY(-3px); box-shadow:0 12px 26px rgba(90,60,20,.2); }
+.ph > button:focus-visible { outline:3px solid var(--gold); outline-offset:3px; }
+.ph img { display:block; width:100%; height:auto; }
+.ph .lab { display:block; padding:.55rem .25rem .2rem; line-height:1.4; }
+.ph .lab b { display:block; font-family:var(--serif); font-weight:700; font-size:.92rem; color:var(--ink); letter-spacing:.04em; }
+.ph .lab i { display:block; font-style:normal; font-size:.64rem; color:var(--gold); letter-spacing:.14em; margin-top:.15rem; }
+.ph-empty { display:grid; place-items:center; aspect-ratio:4/3; background:var(--mount); font-size:.76rem; color:var(--muted-lt); letter-spacing:.12em; }
+.ph.is-empty > button { cursor:pointer; }
+@media (prefers-reduced-motion:reduce) { .ph > button { transition:none; } .ph > button:hover { transform:none; } }
+
+#lb { margin:auto; width:min(920px,94vw); max-height:92vh; padding:0; border:1px solid var(--rule); border-radius:2px; background:var(--paper); color:var(--ink); overflow:auto; }
+#lb img[hidden] { display:none; }
+#lb::backdrop { background:rgba(20,15,8,.8); }
+#lb img { display:block; width:100%; max-height:62vh; object-fit:contain; background:var(--paper); }   /* 手册图自带白底圆角，底色用纸色才不露白角 */
+#lb .txt { padding:1.1rem 1.4rem 1.4rem; }
+#lb h3 { font-family:var(--serif); font-weight:800; font-size:1.25rem; }
+#lb .fl { font-size:.8rem; color:var(--muted); margin-top:.1rem; }
+#lb .mem { font-size:.86rem; color:var(--terracotta); margin-top:.5rem; }
+#lb .txt > p:not(.fl):not(.mem):not(.rel):not(.cr) { font-size:.92rem; margin-top:.6rem; }
+#lb .rel { font-size:.78rem; color:var(--gold-deep); letter-spacing:.12em; margin-top:1rem; }
+#lb ul { list-style:none; margin-top:.3rem; }
+#lb li { display:flex; gap:.8rem; justify-content:space-between; align-items:baseline; padding:.45rem 0; border-top:1px solid var(--rule); font-size:.9rem; }
+#lb li a { color:var(--ink); text-decoration:none; min-width:0; overflow-wrap:anywhere; }
+#lb li a:hover { color:var(--terracotta); text-decoration:underline; }
+#lb li time { flex:none; font-size:.75rem; color:var(--muted-lt); }
+#lb .cr { font-size:.72rem; color:var(--muted-lt); margin-top:1rem; }
+#lb .x { position:sticky; top:0; float:right; margin:.5rem .5rem -3rem 0; z-index:1; width:2.6rem; height:2.6rem; border-radius:50%;
+  border:0; background:rgba(0,0,0,.55); color:#fff; font-size:1.5rem; line-height:1; cursor:pointer; }
+@media (min-width:840px) {   /* 桌面：图左字右，相关报道不必往下滚 */
+  #lb[open] { display:grid; grid-template-columns:minmax(0,3fr) minmax(0,2fr); width:min(1100px,92vw); }
+  #lb img { max-height:86vh; height:100%; }
+  #lb img[hidden] + .txt { grid-column:1 / -1; }
+  #lb .txt { padding:2.6rem 1.6rem 1.6rem; align-self:center; }
+  #lb .x { position:absolute; top:.6rem; right:.6rem; float:none; margin:0; background:rgba(0,0,0,.08); color:var(--ink); }
+}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <video class="bg" autoplay muted loop playsinline preload="auto" poster="../assets/img/about-aerial-poster.jpg">
+    <source src="../assets/video/about-aerial-loop.mp4" type="video/mp4">
+  </video>
+  <div class="sun"></div>
+  <div class="scrim"></div>
+  <div class="fade-bottom"></div>
+
+  <div class="topbar">
+    <a class="brand" href="../index.html">
+      <img src="../assets/img/crest-color.png" alt="南华独中校徽">
+      <span class="name"><b>南华独立中学</b><small>NAN HWA HIGH SCHOOL</small></span>
+    </a>
+    <nav>
+      <a class="logo90" href="../90/index.html" title="1936 · 九十周年校庆专页"><img src="../assets/img/logo90.png" alt="90 周年徽标 · 九十年风雨兼程，育见百年"></a>
+    </nav>
+  </div>
+
+  <nav class="family-nav" aria-label="认识南华系列">
+    <a href="../about/index.html">认识南华</a>
+    <a href="../academic/index.html">学术课程</a>
+    <a href="../cocurricular/index.html">联课活动</a>
+    <a href="../facilities/index.html" class="active">硬体设施</a>
+    <a href="../admission/index.html">招生专区</a>
+    <a href="../history/index.html">南华春秋</a>
+  </nav>
+
+  <div class="content">
+    <p class="kicker">硬体设施 · 学习空间与科技楼</p>
+    <h1><b class="shimmer-text">为教育，<span class="nw">打造最好的环境</span></b></h1>
+    <p class="intro">从现代化的教室、相关的实验室或工作室，到休闲设施与其他便利，南华独立中学备有完善的教学设备和有利学习的硬体建设，一应俱全。</p>
+  </div>
+</div>
+
+<section id="leisure" class="reveal">
+  <div class="sec-head">
+    <p class="en">Campus Life</p>
+    <h2>生活与休闲设施</h2>
+  </div>
+
+  <div class="pillar">
+    <div class="pillar-body">
+      <div class="pillar-photo"><img src="../assets/img/facilities/pool.jpg" alt="南华独中丹斯里颜清文杯游泳比赛，学生在校内泳池竞泳" loading="lazy"></div>
+      <div class="pillar-text">
+        <h3>游泳池</h3>
+        <p>校内泳池就在宿舍楼与教学楼之间，是体育与健康素养领域校本课程的日常教学场地，也是游泳与救生学会的训练基地。2024 年首届「丹斯里颜清文杯游泳比赛」便在此举行，吸引十二所小学报名参加。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pillar">
+    <div class="pillar-body">
+      <div class="pillar-photo"><img src="../assets/img/facilities/tea-room.jpg" alt="南华独中中国茶文化推广中心，师生现场演示茶艺冲泡" loading="lazy"></div>
+      <div class="pillar-text">
+        <h3>中国茶文化推广中心</h3>
+        <p>南华独中与漳州科技职业学院携手共建「中国茶文化推广中心」，是中华文化素养课程的实践空间，学生在这里学习茶艺冲泡的礼仪与技法，是校园里最安静的一角。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ph-grid" style="margin-top:2.6rem;">
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p21_x9143.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p21_x9143.webp" width="1400" height="620" alt="大礼堂" loading="lazy"><span class="lab"><b>大礼堂</b></span></button><div class="more" hidden><h3>大礼堂</h3><p class="rel">新闻馆相关报道</p><ul><li><a href="../news/2022/20220929-1.html">《不能说的秘密》</a><time>2022-09-29</time></li></ul><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p21_x9152.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p21_x9152.webp" width="1002" height="635" alt="多用途学生餐厅" loading="lazy"><span class="lab"><b>多用途学生餐厅</b></span></button><div class="more" hidden><h3>多用途学生餐厅</h3><p class="rel">新闻馆相关报道</p><ul><li><a href="../news/2022/20220527-1.html">5月25日·10点10分</a><time>2022-05-27</time></li></ul><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p21_x9161.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p21_x9161.webp" width="905" height="691" alt="延展舞台" loading="lazy"><span class="lab"><b>延展舞台</b></span></button><div class="more" hidden><h3>延展舞台</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p21_x9170.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p21_x9170.webp" width="532" height="434" alt="亲子厅" loading="lazy"><span class="lab"><b>亲子厅</b></span></button><div class="more" hidden><h3>亲子厅</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p21_x9179.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p21_x9179.webp" width="720" height="434" alt="丹斯里颜清文铜像" loading="lazy"><span class="lab"><b>丹斯里颜清文铜像</b></span></button><div class="more" hidden><h3>丹斯里颜清文铜像</h3><p class="rel">新闻馆相关报道</p><ul><li><a href="../news/2023/20230328-1.html">南华独中开学典礼 暨·丹斯里颜清文铜像献花仪式</a><time>2023-03-28</time></li></ul><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+  </div>
+</section>
+
+<section id="dorm" class="reveal">
+  <div class="sec-head">
+    <p class="en">Student Dormitory</p>
+    <h2>学生宿舍</h2>
+  </div>
+  <p class="vision" style="margin-bottom:1.6rem;">对外地与远道而来的学生，宿舍就是在南华的第二个家。</p>
+
+  <div class="pillar">
+    <div class="pillar-body">
+      <div class="pillar-photo"><img src="../assets/img/facilities/dorm-room.jpg" alt="南华独中学生宿舍寝室，上下铺床位配书桌与衣柜，采光明亮" loading="lazy"></div>
+      <div class="pillar-text">
+        <h3>住得舒适，住得安心</h3>
+        <p>设备齐全的学生宿舍提供了良好的学习环境：床铺、衣柜、书桌、洗手间、淋浴间、洗衣机等生活设施一应俱全，让寄宿生方便地照顾自己的日常起居，在集体生活中养成自理能力。宿舍同时配备门禁系统、监控设备与消防设备，并设有宿舍办公室与医务室，保障寄宿生的人身与财产安全。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pillar">
+    <div class="pillar-body">
+      <div class="pillar-photo"><img src="../assets/img/facilities/dorm-balcony.jpg" alt="南华独中宿舍晾衣间，落地格栅外是大片绿意园景" loading="lazy"></div>
+      <div class="pillar-text">
+        <h3>自修与生活，都有位置</h3>
+        <p>晚自修有专属的自修室，洗衣、晾衣、烫衣各有独立空间，交谊厅让寄宿生在课业之余聚在一起。窗外是曼绒的大片绿意——离家求学的日子，也可以过得有条不紊。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ph-grid" style="margin-top:2.6rem;">
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p26_x10084.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p26_x10084.webp" width="1400" height="817" alt="学生寝室" loading="lazy"><span class="lab"><b>学生寝室</b></span></button><div class="more" hidden><h3>学生寝室</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p26_x10120.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p26_x10120.webp" width="1163" height="792" alt="自修室" loading="lazy"><span class="lab"><b>自修室</b></span></button><div class="more" hidden><h3>自修室</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p26_x10147.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p26_x10147.webp" width="889" height="497" alt="交谊厅" loading="lazy"><span class="lab"><b>交谊厅</b></span></button><div class="more" hidden><h3>交谊厅</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p26_x10111.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p26_x10111.webp" width="728" height="627" alt="洽谈室" loading="lazy"><span class="lab"><b>洽谈室</b></span></button><div class="more" hidden><h3>洽谈室</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p26_x10093.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p26_x10093.webp" width="913" height="634" alt="宿舍办公室" loading="lazy"><span class="lab"><b>宿舍办公室</b></span></button><div class="more" hidden><h3>宿舍办公室</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p26_x10102.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p26_x10102.webp" width="942" height="634" alt="宿舍医务室" loading="lazy"><span class="lab"><b>宿舍医务室</b></span></button><div class="more" hidden><h3>宿舍医务室</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p26_x10129.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p26_x10129.webp" width="933" height="517" alt="洗衣间" loading="lazy"><span class="lab"><b>洗衣间</b></span></button><div class="more" hidden><h3>洗衣间</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p26_x10156.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p26_x10156.webp" width="925" height="497" alt="晾衣间" loading="lazy"><span class="lab"><b>晾衣间</b></span></button><div class="more" hidden><h3>晾衣间</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p26_x10138.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p26_x10138.webp" width="889" height="517" alt="烫衣间" loading="lazy"><span class="lab"><b>烫衣间</b></span></button><div class="more" hidden><h3>烫衣间</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+  </div>
+</section>
+
+<section id="sports-classrooms" class="reveal">
+  <div class="sec-head">
+    <p class="en">Sports &amp; Classroom Facilities</p>
+    <h2>运动与教室设施</h2>
+  </div>
+  <p class="vision" style="margin-bottom:1.6rem;">从球场到专科教室，南华独中的硬体设施支撑着五大领域校本课程与选修课程的日常运作。</p>
+  <div class="ph-grid">
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p22_x9320.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p22_x9320.webp" width="637" height="1400" alt="篮球场" loading="lazy"><span class="lab"><b>篮球场</b></span></button><div class="more" hidden><h3>篮球场</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p22_x11834.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p22_x11834.webp" width="898" height="1005" alt="室内篮球场" loading="lazy"><span class="lab"><b>室内篮球场</b></span></button><div class="more" hidden><h3>室内篮球场</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p22_x9356.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p22_x9356.webp" width="930" height="684" alt="壁球场" loading="lazy"><span class="lab"><b>壁球场</b></span></button><div class="more" hidden><h3>壁球场</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p22_x9365.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p22_x9365.webp" width="930" height="682" alt="羽球场" loading="lazy"><span class="lab"><b>羽球场</b></span></button><div class="more" hidden><h3>羽球场</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p22_x9374.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p22_x9374.webp" width="930" height="607" alt="排球场" loading="lazy"><span class="lab"><b>排球场</b></span></button><div class="more" hidden><h3>排球场</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p22_x9383.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p22_x9383.webp" width="930" height="608" alt="大草场" loading="lazy"><span class="lab"><b>大草场</b></span></button><div class="more" hidden><h3>大草场</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p22_x9347.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p22_x9347.webp" width="1037" height="684" alt="音乐室" loading="lazy"><span class="lab"><b>音乐室</b></span></button><div class="more" hidden><h3>音乐室</h3><p class="rel">新闻馆相关报道</p><ul><li><a href="../news/2020/20201213-1.html">孩子们向往的音乐室，终于落实了</a><time>2020-12-13</time></li></ul><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p22_x9329.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p22_x9329.webp" width="1204" height="683" alt="缝纫教室" loading="lazy"><span class="lab"><b>缝纫教室</b></span></button><div class="more" hidden><h3>缝纫教室</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p22_x9392.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p22_x9392.webp" width="1203" height="684" alt="美工室" loading="lazy"><span class="lab"><b>美工室</b></span></button><div class="more" hidden><h3>美工室</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p22_x9338.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p22_x9338.webp" width="1036" height="683" alt="木工室" loading="lazy"><span class="lab"><b>木工室</b></span></button><div class="more" hidden><h3>木工室</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p22_x9410.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p22_x9410.webp" width="1037" height="683" alt="中央厨房" loading="lazy"><span class="lab"><b>中央厨房</b></span></button><div class="more" hidden><h3>中央厨房</h3><p class="rel">新闻馆相关报道</p><ul><li><a href="../news/2022/20221212-1.html">校园开放日暨义卖会</a><time>2022-12-12</time></li></ul><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p22_x9428.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p22_x9428.webp" width="1204" height="698" alt="咖啡与甜点艺术教室" loading="lazy"><span class="lab"><b>咖啡与甜点艺术教室</b></span></button><div class="more" hidden><h3>咖啡与甜点艺术教室</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p22_x9419.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p22_x9419.webp" width="1037" height="698" alt="A.I. 教室" loading="lazy"><span class="lab"><b>A.I. 教室</b></span></button><div class="more" hidden><h3>A.I. 教室</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p22_x9401.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p22_x9401.webp" width="1203" height="683" alt="影艺空间" loading="lazy"><span class="lab"><b>影艺空间</b></span></button><div class="more" hidden><h3>影艺空间</h3><p class="rel">新闻馆相关报道</p><ul><li><a href="../news/2022/20220806-1.html">《南华漫游》推介礼·暨影艺空间启动仪式</a><time>2022-08-06</time></li></ul><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+  </div>
+</section>
+
+<section id="vocational" class="reveal">
+  <div class="sec-head">
+    <p class="en">Vocational Education Centre</p>
+    <h2>技职教育中心 · 科技楼</h2>
+  </div>
+  <div class="pillar">
+    <div class="pillar-body">
+      <div class="pillar-photo"><img src="../assets/img/facilities/vocational-centre.jpg" alt="南华独中技职教育中心开幕仪式，董事与嘉宾于科技楼内合影" loading="lazy"></div>
+      <div class="pillar-text">
+        <h3>梦想从这里起航</h3>
+        <p>科技楼技职教育中心于 2024 年隆重开幕，为学生提供更广阔的学习空间和更丰富的资源：第一层的多用途活动室及技职教室，让学生展示所学技能、举办各种活动；第二层的 STEAM 教室，让学生探索科学、技术、工程、艺术与数学；第三层的南华酒店管理部门，则为对酒店管理和服务行业感兴趣的学生，提供实践机会，培养他们成为行业中的领导者。</p>
+      </div>
+    </div>
+  </div>
+  <div class="ph-grid" style="margin-top:2.6rem;">
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p23_x9653.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p23_x9653.webp" width="1376" height="679" alt="多用途活动室" loading="lazy"><span class="lab"><b>多用途活动室</b></span></button><div class="more" hidden><h3>多用途活动室</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p23_x9626.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p23_x9626.webp" width="1400" height="780" alt="美容教室" loading="lazy"><span class="lab"><b>美容教室</b></span></button><div class="more" hidden><h3>美容教室</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p23_x9617.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p23_x9617.webp" width="1400" height="714" alt="美甲教室" loading="lazy"><span class="lab"><b>美甲教室</b></span></button><div class="more" hidden><h3>美甲教室</h3><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p23_x9671.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p23_x9671.webp" width="640" height="493" alt="STEAM 教室" loading="lazy"><span class="lab"><b>STEAM 教室</b></span></button><div class="more" hidden><h3>STEAM 教室</h3><p class="rel">新闻馆相关报道</p><ul><li><a href="../news/2019/20190719-1.html">本校队伍在香港岭南大学举办STEAM 国际创客挑战赛中成功挺进决赛并斩获三等奖</a><time>2019-07-19</time></li><li><a href="../news/2025/20250804-1.html">南华独中师生走进UTAR校园</a><time>2025-08-04</time></li></ul><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+    <figure class="ph"><button type="button" data-big="../assets/img/facilities/p23_x9662.webp" aria-haspopup="dialog"><img src="../assets/img/facilities/p23_x9662.webp" width="896" height="470" alt="南华酒店管理" loading="lazy"><span class="lab"><b>南华酒店管理</b></span></button><div class="more" hidden><h3>南华酒店管理</h3><p class="rel">新闻馆相关报道</p><ul><li><a href="../news/2025/20251121-1.html">亚太科技大学莅临拜访南华独中</a><time>2025-11-21</time></li><li><a href="../news/2024/20240322-1.html">南华独中科技楼开幕礼·打造学生技职教育梦想摇篮</a><time>2024-03-22</time></li><li><a href="../news/2023/20231204-2.html">校园开放日 暨 体验课·热爱与关心教育的</a><time>2023-12-04</time></li></ul><p class="cr">图：2027 南华独中简介手册</p></div></figure>
+  </div>
+</section>
+
+<section id="ai" class="reveal">
+  <div class="sec-head">
+    <p class="en">AI Makerspace</p>
+    <h2>AI 创客空间</h2>
+  </div>
+  <div class="pillar">
+    <div class="pillar-body">
+      <div class="pillar-photo"><img src="../assets/img/facilities/ai-makerspace.jpg" alt="南华独中AI创客空间内部，展示厅与开放式玻璃教室" loading="lazy"></div>
+      <div class="pillar-text">
+        <h3>在动手中理解 AI</h3>
+        <p>「AI 创客空间」设于科技楼二楼，展示厅、开放式玻璃教室、六边形课桌与创客小间一应俱全，旨在打造一个融合创意、科技与教育的实践基地，让学生在动手中理解 AI，在协作中发展未来能力。空间支援项目式学习，鼓励学生亲手设计、编程、测试 AI 作品，也引导学生思考 AI 伦理与其对社会的影响，培育有责任感的科技公民。</p>
+      </div>
+    </div>
+  </div>
+  <div class="policy-statement" style="margin-top:2.4rem;">
+    <span class="spotlight-glow"></span>
+    <h3 class="policy-quote">前沿的科技，辅以深厚的人文底蕴</h3>
+  </div>
+</section>
+
+<dialog id="lb" aria-label="设施详情"><button type="button" class="x" aria-label="关闭">×</button><img alt=""><div class="txt"></div></dialog>
+<script>
+// 入口照片格 → 等高行（Flickr justified rows）：每组照片按原比例分行，求各行高度最接近目标行高，再整行撑满宽度
+(function(){
+  var GAP=14, PAD=14;                       // 卡片间距；卡纸框左右内距+边框合计（6+6+1+1）
+  function layout(grid){
+    var figs=[].slice.call(grid.querySelectorAll(':scope > .ph')), W=grid.getBoundingClientRect().width-.1;   // 用小数宽度：clientWidth 会四舍五入，多 0.3px 就整张掉到下一行
+    grid.querySelectorAll(':scope > .br').forEach(function(b){ b.remove(); });
+    if(!W) return;
+    var target = W < 560 ? 130 : 210, maxH = target*1.25;   // 全页行高上限：照片少的组宁可不满行，也不放大到跟别组差一截
+    var ar = figs.map(function(f){ var i=f.querySelector('img'); return i ? i.getAttribute('width')/i.getAttribute('height') : 4/3; });
+    var n=ar.length, best=[0], cut=[0];
+    function rowH(i,j){ var s=0; for(var k=i;k<j;k++) s+=ar[k]; return (W-GAP*(j-i-1)-PAD*(j-i))/s; }
+    for(var j=1;j<=n;j++){ best[j]=Infinity;
+      for(var i=0;i<j;i++){ var h=rowH(i,j), c=best[i]+Math.pow(Math.log(h/target),2)+(h>maxH?4*Math.pow(Math.log(h/maxH),2):0); // 对数差：太高太矮一样罚；会被封顶（不满行）的再加罚
+        if(h<target*.55) continue; if(c<best[j]){ best[j]=c; cut[j]=i; } }
+      if(best[j]===Infinity){ best[j]=best[j-1]+9; cut[j]=j-1; } }
+    var rows=[]; for(var e=n; e>0; e=cut[e]) rows.unshift([cut[e],e]);
+    rows.forEach(function(r,ri){
+      var h=Math.min(rowH(r[0],r[1]), maxH);   // 封顶后整行不满就左对齐
+            for(var k=r[0];k<r[1];k++){ figs[k].style.width=(ar[k]*h+PAD-.02)+'px';
+        var im=figs[k].querySelector('img, .ph-empty'); if(im) im.style.height=h+'px'; }   // 整行图高写成同一个值，宽度不取整，右缘才对得齐
+      if(ri<rows.length-1){ var br=document.createElement('span'); br.className='br'; figs[r[1]-1].after(br); }
+    });
+    grid.classList.add('is-justified');
+  }
+  var grids=document.querySelectorAll('.ph-grid');
+  function all(){ grids.forEach(layout); }
+  all();
+  if('ResizeObserver' in window){ var last=0; new ResizeObserver(function(){
+    var w=grids[0]&&grids[0].getBoundingClientRect().width; if(w!==last){ last=w; all(); } }).observe(document.body); }
+})();
+</script>
+<script>
+// 入口照片格 → 灯箱：大图＋卡片里预埋的说明与相关报道
+(function(){ var lb=document.getElementById('lb'); if(!lb||!lb.showModal) return;
+  var im=lb.querySelector('img'), tx=lb.querySelector('.txt');
+  document.querySelectorAll('.ph > button').forEach(function(b){ b.addEventListener('click', function(){
+    var big=b.dataset.big; im.hidden=!big; if(big){ im.src=big; im.alt=b.querySelector('b').textContent; }
+    tx.innerHTML=b.nextElementSibling.innerHTML; lb.showModal(); lb.scrollTop=0; }); });
+  lb.querySelector('.x').addEventListener('click', function(){ lb.close(); });
+  lb.addEventListener('click', function(e){ if(e.target===lb) lb.close(); });
+})();
+</script>
+
+<footer>© 2026 曼绒县南华独立中学</footer>
+
+<script>
+document.documentElement.classList.add('has-js');
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (reducedMotion) {
+  const bgVideo = document.querySelector('.cover video.bg');
+  if (bgVideo) { bgVideo.removeAttribute('autoplay'); bgVideo.pause(); }
+}
+const policyBox = document.querySelector('.policy-statement');
+const glow = policyBox && policyBox.querySelector('.spotlight-glow');
+if (policyBox && glow) {
+  policyBox.addEventListener('mousemove', (e) => {
+    const r = policyBox.getBoundingClientRect();
+    glow.style.left = (e.clientX - r.left) + 'px';
+    glow.style.top = (e.clientY - r.top) + 'px';
+  });
+}
+if (!reducedMotion && 'IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:.14, rootMargin:'0px 0px -6% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+} else {
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+}
+</script>
+<script>
+// 手机胶囊一行横滑时，把当前页那颗滑到看得见的位置
+(function(){ var n=document.querySelector('.family-nav'), a=n&&n.querySelector('.active');
+  if (a && n.scrollWidth > n.clientWidth) n.scrollLeft = a.offsetLeft - (n.clientWidth - a.offsetWidth)/2; })();
+</script>
+</body>
+</html>

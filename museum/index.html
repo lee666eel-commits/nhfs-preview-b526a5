@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>南华数码馆 · 南华独立中学</title>
+<meta name="description" content="南华数码馆：南华独立中学九十年校史、九十周年专题、2018 年以来的校园纪事与历届校刊的数码收藏入口。">
+<meta name="theme-color" content="#120F0B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+<style>
+/* 南华数码馆 · 入口页：暗室、旧照、展厅门牌。只做入口，馆内各厅沿用既有页面。 */
+:root{
+  --dark:#120F0B; --dark-2:#1B1712; --paper:#EDE4D0; --dim:#B9AC91; --faint:#7F7663;
+  --gold:#E3B24F; --zhu:#A8352A; --rule:rgba(237,228,208,.16);
+  --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","STZhongsong","SimSun",serif;
+  --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --latin:"Cormorant Garamond","Noto Serif SC",serif;
+  --gut:clamp(1rem,4vw,3.5rem); --ease:cubic-bezier(.16,.8,.24,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--dark);color:var(--paper);font-family:var(--sans);line-height:1.9;font-size:17px;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--gut)}
+.seal{display:inline-block;writing-mode:vertical-rl;height:2.3em;line-height:1.03;font-size:13px;width:2.3em;padding:.12em .1em;
+  background:var(--zhu);color:#FBEFE3;font-family:var(--serif);font-weight:900;border-radius:3px;text-align:center;box-shadow:inset 0 0 0 1.5px rgba(251,239,227,.55)}
+
+.top{position:absolute;inset:0 0 auto 0;z-index:5;display:flex;justify-content:space-between;align-items:center;height:72px;padding:0 var(--gut)}
+.top a{text-decoration:none;display:flex;align-items:center;gap:.7rem;font-family:var(--serif);font-weight:900;letter-spacing:.12em}
+.top img{height:40px;width:auto}
+.top .back{font-family:var(--sans);font-weight:400;font-size:.9rem;letter-spacing:.08em;color:var(--dim);padding:.5rem 1rem;border-radius:999px;position:relative;overflow:hidden}
+.top .back:hover{color:var(--gold)}
+.top .back.glass{backdrop-filter:blur(14px) saturate(1.4);border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+.top .back.glass::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent,rgba(255,255,255,.35),transparent);transform:translateX(-120%);transition:transform .65s cubic-bezier(0.16,1,0.3,1)}
+.top .back.glass:hover::after{transform:translateX(220%)}
+.top .back.glass:active{transform:scale(0.97)}
+
+.gate{position:relative;min-height:92vh;min-height:92svh;display:flex;align-items:flex-end;overflow:hidden}
+.gate .ph{position:absolute;inset:0;background:url(../history/img/era3-1972.jpg) center 40%/cover no-repeat;filter:sepia(.65) contrast(1.08) brightness(.5)}
+.gate::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--dark) 4%,rgba(18,15,11,.55) 45%,rgba(18,15,11,.35) 100%)}
+.gate .wrap{position:relative;z-index:2;width:100%;padding-bottom:clamp(3rem,9vh,6rem);display:grid;grid-template-columns:auto 1fr;gap:clamp(1rem,3vw,2.4rem);align-items:end}
+.gate .vt{writing-mode:vertical-rl;font-family:var(--serif);font-size:.95rem;letter-spacing:.5em;color:var(--dim)}
+.gate .en{font-family:var(--latin);font-style:italic;color:var(--gold);font-size:1.15rem;letter-spacing:.04em}
+.gate h1{font-family:var(--serif);font-weight:900;font-size:clamp(2.8rem,9vw,7rem);line-height:1.1;letter-spacing:.06em;margin-top:.3rem}
+.gate p{margin-top:1.2rem;max-width:30em;color:#D8CDB4;font-size:clamp(1rem,.95rem + .3vw,1.12rem);line-height:2}
+.gate .cap{margin-top:1.6rem;font-size:.8rem;color:var(--faint);letter-spacing:.06em}
+
+.halls{padding:clamp(3rem,8vw,6rem) 0 clamp(4rem,10vw,7rem)}
+.halls h2{font-family:var(--serif);font-weight:600;font-size:.95rem;letter-spacing:.4em;color:var(--dim);padding-bottom:1rem;border-bottom:1px solid var(--rule)}
+.hall{display:grid;grid-template-columns:7rem minmax(0,1fr) minmax(0,1.1fr) 7rem;gap:clamp(1rem,3vw,2.4rem);align-items:center;
+  padding:clamp(1.6rem,3.5vw,2.6rem) 0;border-bottom:1px solid var(--rule);text-decoration:none;position:relative}
+.hall .no{font-family:var(--latin);font-style:italic;font-size:clamp(2.4rem,5vw,3.8rem);color:var(--gold);line-height:1}
+.hall b{font-family:var(--serif);font-weight:900;font-size:clamp(1.6rem,3.4vw,2.6rem);letter-spacing:.08em;display:block;line-height:1.3}
+.hall small{display:block;font-family:var(--latin);font-style:italic;color:var(--faint);font-size:1rem;letter-spacing:.04em}
+.hall p{color:var(--dim);font-size:.95rem;line-height:1.9}
+.hall .go{justify-self:end;font-size:.86rem;font-weight:700;letter-spacing:.14em;color:var(--gold);white-space:nowrap}
+.hall .go i{font-style:normal;display:inline-block;transition:transform .3s var(--ease)}
+a.hall:hover b{color:var(--gold)} a.hall:hover .go i{transform:translateX(5px)}
+.hall.soon .go{color:var(--faint)}
+.hall.soon .go.neon{color:#FF8A00}
+.hall .thumb{position:absolute;right:9rem;top:50%;width:220px;aspect-ratio:4/3;object-fit:cover;border-radius:3px;opacity:0;
+  transform:translateY(-50%) rotate(-2deg) scale(.96);transition:opacity .4s ease,transform .5s var(--ease);pointer-events:none;filter:sepia(.25)}
+@media (hover:hover) and (min-width:1000px){ a.hall:hover .thumb{opacity:1;transform:translateY(-50%) rotate(-2deg)} }
+.years{margin-top:.8rem;display:flex;flex-wrap:wrap;gap:.2rem .7rem;font-family:var(--latin);font-style:italic;color:var(--faint);font-size:.95rem}
+@media (max-width:860px){
+  .hall{grid-template-columns:4rem 1fr;gap:.4rem 1rem}
+  .hall p{grid-column:2} .hall .go{grid-column:2;justify-self:start;margin-top:.4rem}
+  .hall .thumb{display:none}
+}
+
+
+footer{margin-top:clamp(4rem,9vw,6rem);border-top:1px solid var(--rule);padding:1.6rem var(--gut);text-align:center;font-size:.8rem;color:var(--faint)}
+footer a{color:var(--dim);text-decoration:none} footer a:hover{color:var(--gold)}
+
+.neon{color:#FF8A00;border:1px solid #FF8A00;border-radius:100px;animation:neon-pulse 2s ease-in-out infinite}
+@keyframes neon-pulse{0%,100%{text-shadow:0 0 4px #FF8A00;box-shadow:0 0 6px -1px #FF8A00,inset 0 0 6px -2px #FF8A00}50%{text-shadow:0 0 12px #FF8A00,0 0 22px #FF8A00;box-shadow:0 0 18px 0 #FF8A00,inset 0 0 12px -2px #FF8A00}}
+.tilt-zone{perspective:800px}
+.tilt-card{transition:transform .15s ease-out;transform-style:preserve-3d}
+.surface{position:relative;overflow:hidden}
+.surface::after{content:"";position:absolute;top:0;left:-60%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,0.18),transparent);transform:skewX(-18deg);transition:left .7s cubic-bezier(0.16,1,0.3,1)}
+.surface:hover::after{left:120%}
+.card{transition:transform .5s cubic-bezier(0.34,1.56,0.64,1),box-shadow .5s cubic-bezier(0.34,1.56,0.64,1)}
+.card:hover{transform:translateY(-10px);box-shadow:0 18px 40px -12px rgba(0,0,0,0.7)}
+.shimmer-text{background:linear-gradient(100deg,#6E6C68 30%,#FF8A00 50%,#6E6C68 70%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 3s linear infinite}
+@keyframes shimmer{to{background-position:-200% center}}
+.spotlight{position:relative}
+.spotlight-glow{position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(255,138,0,0.22),transparent 70%);transform:translate(-50%,-50%);pointer-events:none}
+.has-js .reveal{opacity:0;transform:translateY(20px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.has-js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){ .has-js .reveal{opacity:1;transform:none;transition:none} .hall .thumb,.hall .go i{transition:none} }
+/* 响应式护栏（飞鑫加）：桌面视觉不动，只管窄屏与「减少动画」偏好；!important 是为了压过画布导出的内联样式 */
+.top .back{margin-left:auto}
+.gate .wrap>img{left:auto!important;right:-97px!important}
+@media (max-width:860px){
+  .gate .wrap{grid-template-columns:1fr}
+  .gate p{width:auto!important;height:auto!important;max-width:100%!important}
+  .gate .wrap>img{width:min(72vw,340px)!important;height:auto!important;right:-14vw!important;top:-10px!important}
+  .hall>div{grid-column:2}
+  .surface::after{left:-150%}
+}
+@media (prefers-reduced-motion:reduce){ .neon{animation:none} .shimmer-text{animation:none;background-position:50% center} .tilt-card,.surface::after{transition:none} }
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="back glass" href="../index.html">← 返回首页</a>
+</header>
+
+<section class="gate">
+  <div class="ph" role="img" aria-label="早年南华校舍旧照"></div>
+  <div class="wrap">
+    <div>
+      <span class="en">Nan Hwa Digital Museum</span>
+      <h1 class="shimmer-text">南华数码馆</h1>
+      <p style="color: #C1B394; width: 657px; height: 194px"><i>以史明鉴，溯古瞻前。</i><br>九秩的校史 尚存的相片与刊物 记忆的回响<br>珍藏在云端 过去也许有血有泪 但雨过天晴的彩虹<br>打造出孩子的求学路 让孩子读一读 先贤与华教风雨来时路</p>
+    </div>
+    <img src="../assets/img/crest-ivory.png" alt="南华独中校徽" style="object-fit: cover; opacity: 0.16; position: absolute; top: -38px; width: 483px; height: 473px; left: 854px">
+  </div>
+</section>
+
+<main class="wrap">
+  <section class="halls" aria-labelledby="hh">
+    <h2 id="hh" class="reveal">馆藏 · 四个展厅</h2>
+
+    <div class="tilt-zone">
+    <a class="hall reveal tilt-card" href="../history/index.html">
+      <span class="no">I</span>
+      <span><b>南华春秋</b><small>The Chronicle</small></span>
+      <p>一部从胶林里写起的校史：1936 年四校合并创立，历经战火停办、独中复兴、新校迁建，直到今日。</p>
+      <span class="go neon" style="opacity: 1; border-radius: 6px; padding-top: 8px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px">展厅入口</span>
+      </a>
+    </div>
+
+    <a class="hall reveal surface" href="../90/index.html">
+      <span class="no">II</span>
+      <span><b>九十周年</b><small>1936 — 2026</small></span>
+      <p>九十年风雨兼程，育见百年。校庆专题、校友与讲座纪事。</p>
+      <span class="go neon" style="opacity: 1; border-radius: 6px; padding-top: 8px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px">展厅入口</span>
+      </a>
+
+    <a class="hall reveal surface" href="https://nanhwappd.github.io/kanwu/">
+      <span class="no">IV</span>
+      <span><b>校刊书架</b><small>The Magazine Shelf</small></span>
+      <div><p>1962 年起的历届校刊，已数码化，可在线翻阅。</p>
+        <div class="years" aria-hidden="true"><span>1962</span><span>·</span><span>1985</span><span>·</span><span>2005</span><span>·</span><span>2018</span><span>·</span><span>2024</span></div></div>
+      <span class="go neon" style="opacity: 1; border-radius: 6px; padding-top: 8px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px"><span style="letter-spacing: 2.6488px;">展厅入口</span></span>
+    </a>
+
+    <div class="tilt-zone">
+    <a class="hall reveal tilt-card" href="../news/index.html">
+      <span class="no">III</span>
+      <span><b>每日南华</b><small>The Daily Journal</small></span>
+      <p>2018 至 2026 年，1,198 篇校园纪事，按年份收藏，仍在继续。</p>
+      <span class="go neon" style="opacity: 1; border-radius: 6px; padding-top: 8px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px">展厅入口</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>© 2026 曼绒县南华独立中学 · <a href="../index.html">返回首页</a> · <a href="../admission/index.html">招生专区</a></footer>
+
+<script>
+document.documentElement.classList.add('has-js');
+const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); } }), {rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+const spotlightEl = document.querySelector('.spotlight');
+if (spotlightEl) {
+  const glow = spotlightEl.querySelector('.spotlight-glow');
+  spotlightEl.addEventListener('pointermove', e => {
+    const r = spotlightEl.getBoundingClientRect();
+    glow.style.left = (e.clientX - r.left) + 'px';
+    glow.style.top = (e.clientY - r.top) + 'px';
+  });
+}
+document.querySelectorAll('.tilt-zone').forEach(tiltZone => {
+  const tiltCard = tiltZone.querySelector('.tilt-card');
+  if (!tiltCard) return;
+  tiltZone.addEventListener('pointermove', e => {
+    const r = tiltZone.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+    tiltCard.style.transform = `rotateY(${x*8}deg) rotateX(${-y*8}deg)`;
+  });
+  tiltZone.addEventListener('pointerleave', () => { tiltCard.style.transform = ''; });
+});
+</script>
+</body>
+</html>

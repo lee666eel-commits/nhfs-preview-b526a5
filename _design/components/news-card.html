@@ -1,0 +1,52 @@
+<!-- @dsCard group="Components" -->
+<!-- 来源：news/index.html 真实卡片 + assets/news.css 原样式，非新造。
+     手机断点：320px 时 grid-template-columns:1fr（news.css 未写显式 mobile 规则——
+     .cards 默认就是 1fr，640px/900px 两条是 min-width 往上加列，本身就是 mobile-first 写法，
+     全站唯一一处。 --card-ar 由 build_news.py 按每张图真实比例写入 inline style，cover 不裁图。 -->
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>news-card 组件预览</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+:root { --green:#3EB370; --cream:#F5F1E8; --ink:#222; --green-ink:#276B4E; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:"Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;
+       color:var(--ink); background:var(--cream); line-height:1.85; font-size:18px; padding:1rem; }
+
+.cards { display:grid; grid-template-columns:1fr; gap:1rem; align-items:start; max-width:1080px; margin:0 auto; }
+@media (min-width:640px) { .cards { grid-template-columns:repeat(2,1fr); } }
+@media (min-width:900px) { .cards { grid-template-columns:repeat(3,1fr); } }
+
+.post-card { display:flex; flex-direction:column; background:#fff; border-radius:10px; overflow:hidden;
+             box-shadow:0 1px 4px rgba(0,0,0,.06); text-decoration:none; color:var(--ink);
+             transition:box-shadow .18s ease, transform .18s ease; }
+.post-card:hover, .post-card:focus-visible { box-shadow:0 6px 18px rgba(0,0,0,.13); transform:translateY(-2px); }
+.post-card:focus-visible { outline:3px solid var(--green); outline-offset:2px; }
+
+/* min-height:0 + 绝对定位的 img 缺一不可：卡片是 column flex，flex item 的 min-height:auto
+   会让直幅照片的内容高度压过 aspect-ratio，实测直幅缩图撑到 598px 高（应为 189px）。 */
+.post-card .thumb { position:relative; display:block; aspect-ratio:var(--card-ar, 16/9); min-height:0;
+                    overflow:hidden; background:#e6e1d6; }
+.post-card .thumb img { position:absolute; inset:0; width:100%; height:100%;
+                        object-fit:cover; object-position:center top; display:block; }
+.post-card .txt { padding:.9rem 1rem 1.1rem; display:flex; flex-direction:column; gap:.35rem; }
+.post-card time { font-size:.78rem; color:var(--green-ink); font-weight:700; }
+.post-card .t { font-size:1.02rem; line-height:1.5; }
+.post-card .ex { font-size:.85rem; color:#555; line-height:1.6;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.post-card .more { font-size:.8rem; color:var(--green-ink); font-weight:700; margin-top:auto; }
+</style>
+</head>
+<body>
+<div class="cards">
+  <a class="post-card" href="#"><span class="thumb" style="--card-ar:2/3"><img src="../../assets/img/crest-color.png" loading="lazy" alt=""></span><span class="txt"><time datetime="2026-06-28">2026-06-28</time><h3 class="t">课本之外的南洋史诗：南华师生吉隆坡寻根手记</h3><span class="ex">这两天，南华独中的10位同学在联课处老师的带领下，暂时放下紧凑的课业节奏，跨越山海，来了一场轻装上阵却分量十足的华人文化之旅。</span><span class="more">阅读全文 →</span></span></a>
+  <a class="post-card" href="#"><span class="thumb" style="--card-ar:480/222"><img src="../../assets/img/crest-color.png" loading="lazy" alt=""></span><span class="txt"><time datetime="2026-06-27">2026-06-27</time><h3 class="t">一盏清茶，一片匠心</h3><span class="ex">在今天的茶文化选修课上，南华独中的同学们不仅亲身体验了传统泡茶与品茶的宁静雅致，更发挥创意。</span><span class="more">阅读全文 →</span></span></a>
+  <a class="post-card" href="#"><span class="thumb" style="--card-ar:471/480"><img src="../../assets/img/crest-color.png" loading="lazy" alt=""></span><span class="txt"><time datetime="2026-06-26">2026-06-26</time><h3 class="t">祝贺陳麗冰校长荣获 HRD Corp 认证讲师资格</h3><span class="ex">卓越教育，领航先行！陈校长通过国家级严格审核，不仅是个人的专业荣耀，更是南华独中师资走向专业化的重要里程碑。</span><span class="more">阅读全文 →</span></span></a>
+</div>
+</body>
+</html>
+<!-- 注：img src 借用校徽占位（真实缩图路径 news/2026/img/*.jpg 不便在此单档预览引用），
+     只为示范直幅/横幅混排下 --card-ar 撑框效果；正式判版式须回真实新闻页看真图，不可用此预览当验收依据。 -->

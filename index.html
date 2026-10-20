@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>南华独立中学 Nan Hwa High School · 霹雳曼绒</title>
+<meta name="description" content="马来西亚霹雳州曼绒县南华独立中学——每个孩子，都值得被看见。以中华文化为底色、以未来科技为笔，培养「迎领」21 世纪中华文化素养领袖人才。招生资讯、办学特色、校园动态。">
+<meta name="theme-color" content="#0E1A14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="南华独立中学 · 每个孩子，都值得被看见">
+<meta property="og:description" content="霹雳曼绒南华独中官方网站：办学特色、领导力培养、招生资讯与南华数码馆。">
+<meta property="og:image" content="https://nanhwappd.github.io/nanhwafs-site/news/2024/img/20241226-1-0.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="motion/mg.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"School","name":"曼绒县南华独立中学",
+ "alternateName":"Nan Hwa High School","foundingDate":"1936",
+ "address":{"@type":"PostalAddress","streetAddress":"Lot 2446, Kg. Sungai Wangi","postalCode":"32400","addressLocality":"Ayer Tawar","addressRegion":"Perak","addressCountry":"MY"},
+ "telephone":"+60 5-691 1442","email":"stnh@nanhwafs.edu.my"}
+</script>
+<style>
+/* ==========================================================================
+   南华首页 2026-10 改版 · 概念「迎领」
+   一条叙事线：学生（主体）→ 同行四者 → 底色与远见 → 领导力年轮 → 实证 → 校园 → 数码馆 → 迎领（报名）
+   纸 + 墨绿 + 灯金 + 一点朱印；直排只用在章节签与印章，正文横排保可读。
+   ========================================================================== */
+:root{
+  --paper:#F4EFE4; --paper-2:#EAE2D0; --paper-3:#FBF8F1;
+  --ink:#17201B; --ink-soft:#4A4A40; --muted:#7A7263;
+  --night:#0E1A14; --night-2:#16271E;
+  --green:#3EB370; --green-deep:#1E5C3A;
+  --gold:#E3B24F; --gold-deep:#B5853C;
+  --zhu:#A8352A;
+  --rule:rgba(23,32,27,.14); --rule-lt:rgba(255,255,255,.14);
+  --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","STZhongsong","SimSun",serif;
+  --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --latin:"Cormorant Garamond","Noto Serif SC",serif;
+  --gut:clamp(1rem,4vw,3.5rem);
+  --ease:cubic-bezier(.16,.8,.24,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.8;font-size:17px;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:0;z-index:99;background:var(--gold);color:var(--ink);padding:.5rem 1rem}
+.skip:focus{left:1rem;top:1rem}
+
+/* ---------- 共用：章节签（直排）、印章、标题 ---------- */
+.seal{display:inline-block;writing-mode:vertical-rl;height:2.3em;line-height:1.03;font-size:13px;width:2.3em;
+  padding:.12em .1em;background:var(--zhu);color:#FBEFE3;font-family:var(--serif);font-weight:900;
+  border-radius:3px;letter-spacing:0;text-align:center;box-shadow:inset 0 0 0 1.5px rgba(251,239,227,.55)}
+/* 章节签：吉祥物（女/男逐章交替，两人同框＝本章最要紧）＋章号＋两字直排签。吉祥物刻意做小，只当路标不当主角 */
+.chap{display:flex;flex-direction:column;align-items:center;gap:.55rem;color:var(--muted)}
+.chap .kids{display:flex;align-items:flex-end;gap:3px}
+.chap .kids img{height:68px;width:auto}
+.chap .no{font-family:var(--serif);font-weight:900;font-size:1.05rem;color:var(--zhu);line-height:1}
+.chap .v{writing-mode:vertical-rl;font-family:var(--serif);font-size:.9rem;letter-spacing:.12em;line-height:1}
+h2.big{font-family:var(--serif);font-weight:900;font-size:clamp(1.9rem,4.6vw,3.6rem);line-height:1.25;letter-spacing:0}
+h2.big,h3{word-break:keep-all;overflow-wrap:anywhere}   /* 中文标题只在标点/<br> 处断行，免得「主／语。」这种单字落单 */
+h3{font-family:var(--serif);font-weight:900;letter-spacing:.02em}
+.lede{margin-top:1.3rem;font-size:clamp(1rem,.95rem + .3vw,1.12rem);color:var(--ink-soft);max-width:32em;line-height:1.8}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--gut)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;min-height:46px;padding:.6rem 1.4rem;border-radius:999px;
+  font-weight:700;font-size:.92rem;text-decoration:none;letter-spacing:.04em;
+  transition:transform .2s var(--ease),background .2s ease,color .2s ease,border-color .2s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-ink{background:var(--ink);color:var(--paper)} .btn-ink:hover{background:var(--green-deep)}
+.btn-gold{background:var(--gold);color:var(--night)} .btn-gold:hover{background:#F0C46A}
+.btn-line{border:1px solid currentColor;color:inherit}
+.arrow{display:inline-block;transition:transform .25s var(--ease)} a:hover .arrow{transform:translateX(4px)}
+
+/* ---------- 顶栏 ---------- */
+.topbar{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;align-items:center;justify-content:space-between;
+  gap:1rem;height:72px;padding:0 var(--gut);color:#fff;transition:background .35s ease,color .35s ease,box-shadow .35s ease}
+.topbar.solid{background:rgba(244,239,228,.92);color:var(--ink);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 var(--rule)}
+.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;min-width:0}
+.brand img{height:42px;width:auto;filter:drop-shadow(0 2px 6px rgba(0,0,0,.35))}
+.topbar.solid .brand img{filter:none}
+.brand b{font-family:var(--serif);font-weight:900;font-size:1.12rem;letter-spacing:.12em;white-space:nowrap;
+  text-shadow:0 1px 8px rgba(0,0,0,.45)}
+.brand small{display:block;font-size:.62rem;letter-spacing:.28em;opacity:.8;line-height:1.2;white-space:nowrap}
+.topbar.solid .brand b{text-shadow:none}
+.mainnav{display:flex;align-items:center;gap:clamp(.9rem,1.6vw,1.6rem);font-size:.9rem;letter-spacing:.08em}
+.mainnav a{text-decoration:none;padding:.4rem 0;position:relative;white-space:nowrap;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+.topbar.solid .mainnav a{text-shadow:none}
+.mainnav a.link::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;
+  transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.mainnav a.link:hover::after{transform:scaleX(1)}
+.mainnav .cta{padding:.5rem 1.1rem;border-radius:999px;background:rgba(227,178,79,.9);color:var(--night);font-weight:700;text-shadow:none}
+.mainnav .cta:hover{background:var(--gold)}
+.logo90 img{height:46px;width:auto;transition:transform .2s ease}
+.logo90:hover img{transform:scale(1.06)}
+.menu-btn{display:inline-flex;align-items:center;gap:.45rem;min-height:44px;padding:0 .2rem;background:none;border:0;
+  color:inherit;font:inherit;font-size:.9rem;letter-spacing:.1em;cursor:pointer}
+.menu-btn i{display:block;width:22px;height:9px;border-top:1.5px solid currentColor;border-bottom:1.5px solid currentColor}
+@media (max-width:1080px){ .mainnav .link{display:none} }
+@media (max-width:560px){
+  .topbar{height:62px} .brand img{height:34px} .brand b{font-size:1rem;letter-spacing:.06em} .brand small{display:none}
+  .logo90{display:none} .menu-btn span{display:none}
+  .mainnav .cta{padding:.45rem .9rem;font-size:.85rem}
+}
+
+/* 全站目录（dialog） */
+dialog.menu{border:0;margin:0;width:100%;max-width:none;height:100%;max-height:none;background:var(--night);color:var(--paper);
+  padding:0;overflow:auto}
+dialog.menu::backdrop{background:rgba(0,0,0,.4)}
+.menu-in{max-width:1240px;margin:0 auto;padding:1.2rem var(--gut) 3rem}
+.menu-top{display:flex;justify-content:space-between;align-items:center;height:56px}
+.menu-close{background:none;border:1px solid var(--rule-lt);color:inherit;border-radius:999px;min-height:44px;padding:0 1.1rem;
+  font:inherit;font-size:.9rem;letter-spacing:.1em;cursor:pointer}
+.menu-grid{display:grid;gap:2.4rem 2rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:2.6rem}
+.menu-grid h4{font-family:var(--latin);font-style:italic;font-weight:500;color:var(--gold);font-size:1.05rem;margin-bottom:.6rem;letter-spacing:.04em}
+.menu-grid a{display:block;font-family:var(--serif);font-weight:600;font-size:clamp(1.15rem,2.4vw,1.5rem);text-decoration:none;
+  padding:.35rem 0;border-bottom:1px solid var(--rule-lt)}
+.menu-grid a small{display:block;font-family:var(--sans);font-weight:400;font-size:.78rem;color:#A9B3AA;letter-spacing:.04em}
+.menu-grid a:hover{color:var(--gold)}
+.menu-foot{margin-top:3rem;display:flex;flex-wrap:wrap;gap:.8rem}
+
+/* ---------- Hero（保留：晨曦视频、磨砂半透明钮、衬线副文案、长转场） ---------- */
+.hero{position:relative;height:100vh;height:100svh;min-height:620px;overflow:hidden;color:#fff;background:#0b1410}
+/* 鸟瞰片是 1600×1300：上方 1600×900 是真画面，下方 400px 是糊掉的补边。把影片框拉高到 1300/900 倍并贴顶，糊边永远落在 hero 之外 */
+.hero video{position:absolute;left:0;top:0;width:100%;height:144.5%;object-fit:cover;object-position:center top}
+.hero .scrim{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to top,rgba(6,16,10,.86) 0%,rgba(6,16,10,.38) 36%,rgba(6,16,10,.04) 60%,rgba(6,16,10,.42) 100%)}
+#dust{position:absolute;inset:0;width:100%;height:100%;z-index:4;pointer-events:none}
+.hero .content{position:absolute;z-index:5;left:0;right:0;bottom:clamp(4.5rem,13vh,8rem);padding:0 var(--gut);max-width:1240px;margin:0 auto}
+.hero .place{font-family:var(--serif);font-size:.86rem;letter-spacing:.16em;color:#E9E2CE;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.hero h1{margin-top:.7rem;font-family:var(--serif);font-weight:900;font-size:clamp(1.9rem,4.2vw,3.4rem);line-height:1.25;letter-spacing:.04em;
+  text-shadow:0 2px 18px rgba(0,0,0,.5),0 0 14px rgba(255,244,214,.25)}
+.hero h1 .light{color:var(--gold);text-shadow:0 1px 10px rgba(0,0,0,.45),0 0 22px rgba(227,178,79,.55)}
+.hero .sub{margin-top:1rem;font-family:var(--serif);font-weight:600;font-size:clamp(.92rem,.86rem + .25vw,1.05rem);color:#F0ECE1;
+  max-width:33em;line-height:2;text-shadow:0 1px 3px rgba(0,0,0,.85),0 2px 14px rgba(0,0,0,.6)}
+.hero .cta{margin-top:1.4rem;display:flex;gap:.7rem;flex-wrap:wrap}
+.frost{display:inline-flex;align-items:center;min-height:46px;padding:.55rem 1.4rem;border-radius:999px;font-weight:700;font-size:.92rem;
+  text-decoration:none;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);letter-spacing:.06em;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.3);transition:transform .18s ease,background .18s ease}
+.frost:hover{transform:translateY(-2px)}
+.frost-gold{background:rgba(212,164,38,.34);color:#FFEDBE;border:1px solid rgba(232,184,75,.65);text-shadow:0 1px 4px rgba(0,0,0,.4)}
+.frost-gold:hover{background:rgba(212,164,38,.55);color:#FFF6DD}
+.frost-green{background:rgba(62,179,112,.48);color:#fff;border:1px solid rgba(255,255,255,.35);text-shadow:0 1px 4px rgba(0,0,0,.35)}
+.frost-green:hover{background:rgba(62,179,112,.7)}
+.cue{position:absolute;z-index:5;right:var(--gut);bottom:clamp(4.5rem,13vh,8rem);writing-mode:vertical-rl;font-family:var(--serif);
+  font-size:.8rem;letter-spacing:.2em;color:#E9E2CE;text-decoration:none;display:flex;align-items:center;gap:.8rem;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.cue::after{content:"";width:1px;height:56px;background:linear-gradient(#E9E2CE,transparent)}
+@media (max-width:760px){ .cue{display:none} .hero .content{bottom:clamp(2.5rem,8vh,4rem)} }
+
+/* ---------- 章：通用 ---------- */
+.chapter{padding:clamp(5rem,12vw,9rem) 0}
+.head{display:grid;grid-template-columns:auto 1fr;gap:clamp(1rem,3vw,2.6rem);align-items:start}
+@media (max-width:640px){
+  .head{grid-template-columns:1fr;gap:.9rem}
+  .head .chap .v{writing-mode:horizontal-tb;letter-spacing:.08em}
+  .head .chap{flex-direction:row;align-items:flex-end}
+  .chap .kids img{height:52px}
+  footer .wrap{grid-template-columns:1fr}
+}
+
+/* 壹 · 主体 */
+.subject h2.big{font-size:clamp(1.9rem,3.3vw,3rem)}
+.subject .grid{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center}
+.collage{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:clamp(54px,7vw,92px);gap:.7rem}
+.collage figure{overflow:hidden;border-radius:4px;background:var(--paper-2);position:relative}
+.collage img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.collage figure:hover img{transform:scale(1.04)}
+.collage .a{grid-column:1/5;grid-row:1/4} .collage .b{grid-column:5/7;grid-row:1/5}
+.collage .c{grid-column:1/3;grid-row:4/7} .collage .d{grid-column:3/5;grid-row:4/7} .collage .e{grid-column:5/7;grid-row:5/7}
+.collage .b img,.collage .c img{object-position:center 20%}
+@media (max-width:860px){ .subject .grid{grid-template-columns:1fr} .collage{grid-auto-rows:clamp(48px,13vw,80px)} }
+
+/* 贰 · 同行：四者 */
+.together{background:var(--paper-3)}
+.roles{margin-top:clamp(2.4rem,5vw,4rem);display:flex;gap:.7rem;height:clamp(460px,62vh,620px)}
+.role{position:relative;flex:1 1 0;min-width:0;overflow:hidden;border-radius:6px;color:#fff;text-decoration:none;
+  transition:flex-grow .7s var(--ease)}
+.role img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.role::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(8,14,10,.88) 0%,rgba(8,14,10,.25) 50%,rgba(8,14,10,.05) 100%)}
+.role .t{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:1.4rem 1.3rem}
+.role .who{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap}
+.role .who b{font-family:var(--serif);font-weight:900;font-size:clamp(1.5rem,2.4vw,2.1rem);letter-spacing:.08em}
+.role .who em{font-style:normal;font-family:var(--serif);color:var(--gold);font-size:.95rem;letter-spacing:.04em}
+.role p{margin-top:.6rem;font-size:.92rem;line-height:1.85;color:#E6E1D4;max-width:24em;opacity:.0;transform:translateY(8px);
+  transition:opacity .5s ease .1s,transform .6s var(--ease) .1s}
+@media (hover:hover) and (min-width:861px){
+  .role:hover,.role:focus-within{flex-grow:2.3} .role:hover img{transform:scale(1.04)}
+  .role:hover p,.role:focus-within p{opacity:1;transform:none}
+}
+@media (hover:none),(max-width:860px){ .role p{opacity:1;transform:none} }
+@media (max-width:860px){
+  .roles{flex-direction:column;height:auto}
+  .role{min-height:340px;flex:none}
+}
+
+/* 叁 · 底色与远见 */
+.diptych{display:grid;grid-template-columns:1fr 1fr}
+.dip{position:relative;padding:clamp(4rem,9vw,8rem) clamp(1.2rem,5vw,5rem);overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.dip-culture{background:var(--paper)}
+.dip-future{background:var(--night);color:#EDE8DA}
+.dip .kick{display:flex;align-items:flex-end;gap:.6rem;font-family:var(--serif);font-size:.95rem;letter-spacing:.08em;color:var(--zhu)}
+.dip .kick .kids img{height:60px;width:auto}
+.dip-future .kick{color:var(--gold)}
+.dip h3{margin-top:.9rem;font-size:clamp(1.7rem,3.4vw,2.8rem);line-height:1.3}
+.dip p{margin-top:1.2rem;max-width:28em;line-height:1.8;font-size:1rem}
+.dip-culture p{color:var(--ink-soft)} .dip-future p{color:#BFC6BC}
+.dip .pics{margin-top:2.2rem;display:grid;grid-template-columns:1.4fr 1fr;gap:.6rem;max-width:560px}
+.dip .pics img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px}
+.dip .pics img:first-child{aspect-ratio:auto;height:100%}
+.dip .pics .stack{display:grid;gap:.6rem}
+.dip .pics .stack img{aspect-ratio:4/3}
+.dip a.more{margin-top:1.8rem;display:inline-flex;gap:.4rem;font-weight:700;font-size:.92rem;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:.15rem;align-self:flex-start}
+.dip-culture a.more{color:var(--zhu)} .dip-future a.more{color:var(--gold)}
+@media (max-width:860px){
+  .diptych{grid-template-columns:1fr}
+}
+
+/* 肆 · 领导力年轮 */
+.rings-sec{background:var(--paper-3)}
+.rings-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(2rem,6vw,6rem);margin-top:clamp(2.4rem,5vw,4rem)}
+.rings-fig{position:sticky;top:calc(72px + 6vh);align-self:start}
+.rings-fig svg{width:100%;max-width:520px;height:auto;display:block;margin:0 auto;overflow:visible}
+.rings-fig circle.r{fill:none;stroke:rgba(23,32,27,.2);stroke-width:1.2;transition:stroke .6s ease,stroke-width .6s ease,opacity .6s ease}
+.rings-fig text{font-family:var(--serif);font-size:13px;letter-spacing:.06em;fill:var(--muted);transition:fill .6s ease}
+.rings-fig .core{fill:var(--zhu)}
+.rings-fig .glow{fill:none;stroke:var(--gold);stroke-width:16;opacity:0;transition:opacity .6s ease,r .6s var(--ease);filter:blur(10px)}
+.rings-fig[data-on] circle.r.on{stroke:var(--gold-deep);stroke-width:3}
+.rings-fig[data-on] circle.r.past{stroke:rgba(181,133,60,.45);stroke-width:1.6}
+.rings-fig[data-on] text.on{fill:var(--ink)}
+.rings-fig[data-on] .glow{opacity:.35}
+.rings-fig .caption{text-align:center;margin-top:1rem;font-family:var(--serif);color:var(--muted);font-size:.9rem;letter-spacing:.08em}
+.ring-step{min-height:44vh;display:flex;flex-direction:column;justify-content:center;padding:2rem 0;border-top:1px solid var(--rule)}
+.ring-step:first-child{border-top:0}
+.ring-step h3{font-size:clamp(1.45rem,2.6vw,2.1rem);line-height:1.35}
+.ring-step p{margin-top:.8rem;color:var(--ink-soft);max-width:30em;font-size:1rem}
+.ring-step .proof{margin-top:1.2rem;max-width:26em}
+.ring-step .proof img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:4px}
+@media (max-width:860px){
+  .rings-grid{grid-template-columns:1fr}
+  .rings-fig{position:sticky;top:62px;z-index:2;background:var(--paper-3);padding:.4rem 0 .6rem;border-bottom:1px solid var(--rule)}
+  .rings-fig svg{max-width:150px} .rings-fig .caption{display:none}
+  .ring-step{min-height:0;padding:2.2rem 0}
+}
+
+/* 伍 · 实证 */
+.proof-sec{background:var(--night);color:#EDE8DA}
+.proof-sec .lede{color:#BFC6BC}
+.proof-sec .chap .v,.proof-sec .chap{color:#9FA89F}
+.stats{margin-top:clamp(2.4rem,5vw,4rem);display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--rule-lt)}
+.stat{padding:1.6rem 1.2rem 1.6rem 0;border-right:1px solid var(--rule-lt)}
+.stat:last-child{border-right:0}
+.stat+.stat{padding-left:1.4rem}
+.stat b{display:block;font-family:var(--latin);font-style:italic;font-weight:500;font-size:clamp(2.6rem,6vw,4.6rem);line-height:1;color:var(--gold)}
+.stat b sup{font-size:.4em;vertical-align:top;margin-left:.1em;font-family:var(--serif);font-style:normal}
+.stat span{display:block;margin-top:.7rem;font-size:.88rem;color:#BFC6BC;line-height:1.7}
+.honors{margin-top:clamp(3rem,6vw,5rem);display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.honors figure img{width:100%;height:auto;aspect-ratio:5/4;object-fit:cover;object-position:center 72%;border-radius:4px}
+.honors figcaption{margin-top:.7rem;font-size:.85rem;color:#9FA89F}
+.honors ol{list-style:none;counter-reset:h}
+.honors li{counter-increment:h;display:grid;grid-template-columns:4.2rem 1fr;gap:1rem;padding:1.05rem 0;border-bottom:1px solid var(--rule-lt)}
+.honors li:first-child{border-top:1px solid var(--rule-lt)}
+.honors li time{font-family:var(--latin);font-style:italic;color:var(--gold);font-size:1.15rem;line-height:1.6}
+.honors li b{font-family:var(--serif);font-weight:600;font-size:1.02rem;color:#F5F0E3;display:block;line-height:1.6}
+.honors li span{font-size:.85rem;color:#9FA89F}
+@media (max-width:860px){
+  .stats{grid-template-columns:1fr 1fr} .stat{border-bottom:1px solid var(--rule-lt)}
+  .stat:nth-child(2){border-right:0} .stat:nth-child(3){padding-left:0}
+  .honors{grid-template-columns:1fr}
+}
+
+/* 陆 · 校园（横向胶卷） */
+.campus .reel{margin-top:clamp(2rem,4vw,3rem);display:grid;grid-auto-flow:column;grid-auto-columns:clamp(260px,34vw,460px);gap:1rem;
+  overflow-x:auto;scroll-snap-type:x mandatory;padding:0 var(--gut) 1.2rem;scroll-padding:0 var(--gut);scrollbar-width:thin}
+.campus .reel a{scroll-snap-align:start;text-decoration:none;color:var(--ink)}
+.campus .reel img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px;transition:filter .4s ease}
+.campus .reel a:hover img{filter:brightness(1.06)}
+.campus .reel b{display:block;margin-top:.8rem;font-family:var(--serif);font-weight:900;font-size:1.15rem;letter-spacing:.06em}
+.campus .reel span{display:block;font-size:.85rem;color:var(--muted);line-height:1.7}
+.reel-hint{display:flex;justify-content:space-between;align-items:end;gap:1rem;flex-wrap:wrap}
+.reel-hint a{font-weight:700;font-size:.92rem;color:var(--zhu);text-decoration:none}
+
+/* 柒 · 南华数码馆入口 */
+.museum{position:relative;background:#120F0B;color:#EDE4D0;overflow:hidden}
+.museum .bgimg{position:absolute;inset:0;background:url(history/img/era3-1972.jpg) center/cover no-repeat;filter:sepia(.6) contrast(1.05) brightness(.38);transform:scale(1.04)}
+.museum::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(18,15,11,.2),rgba(18,15,11,.92) 70%)}
+.museum .wrap{position:relative;z-index:1}
+.museum .chap,.museum .chap .v{color:#B9AC91}
+.museum .lede{color:#CFC4AC}
+.halls{margin-top:clamp(2.4rem,5vw,3.6rem);display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(237,228,208,.18)}
+.hall{display:flex;flex-direction:column;gap:.4rem;padding:1.6rem 1.3rem 1.8rem 0;text-decoration:none;color:inherit;border-right:1px solid rgba(237,228,208,.18);min-height:220px}
+.hall+.hall{padding-left:1.3rem}
+.hall:last-child{border-right:0}
+.hall i{font-style:normal;font-family:var(--serif);color:var(--gold);font-size:.85rem;letter-spacing:.08em}
+.hall b{font-family:var(--serif);font-weight:900;font-size:1.45rem;letter-spacing:.06em;margin-top:.4rem}
+.hall span{font-size:.86rem;color:#B9AC91;line-height:1.8}
+.hall em{margin-top:auto;font-style:normal;font-size:.82rem;font-weight:700;letter-spacing:.04em;color:var(--gold)}
+.hall.soon em{color:#8E846F}
+a.hall:hover b{color:var(--gold)}
+.museum .enter{margin-top:2.4rem}
+@media (max-width:860px){
+  .halls{grid-template-columns:1fr 1fr} .hall{border-bottom:1px solid rgba(237,228,208,.18);min-height:0}
+  .hall:nth-child(2){border-right:0} .hall:nth-child(3){padding-left:0}
+}
+@media (max-width:420px){ .halls{grid-template-columns:1fr} .hall,.hall+.hall{border-right:0;padding-left:0} }
+
+/* 校园动态 */
+.journal .cards{margin-top:2.4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,1.6rem)}
+.journal .card{text-decoration:none;color:var(--ink)}
+.journal .card .ph{aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:var(--paper-2)}
+.journal .card img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 1s var(--ease)}
+.journal .card:hover img{transform:scale(1.04)}
+.journal time{display:block;margin-top:.9rem;font-family:var(--latin);font-style:italic;color:var(--gold-deep)}
+.journal .card b{display:block;font-family:var(--serif);font-weight:600;font-size:1.05rem;line-height:1.6;margin-top:.2rem}
+.journal .card:hover b{color:var(--zhu)}
+@media (max-width:860px){ .journal .cards{grid-template-columns:1fr} .journal .card{display:grid;grid-template-columns:120px 1fr;gap:1rem;align-items:center}
+  .journal time{margin-top:0} }
+
+/* 语录 */
+.voices{background:var(--paper-2)}
+.voices .pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,6rem)}
+.voices blockquote{font-family:var(--serif);font-weight:600;font-size:clamp(1.15rem,1rem + .7vw,1.6rem);line-height:1.9;position:relative;padding-top:2.4rem}
+.voices blockquote::before{content:"「";position:absolute;top:-.4rem;left:-.3rem;font-size:3rem;color:var(--zhu);line-height:1}
+.voices cite{display:block;margin-top:1.2rem;font-style:normal;font-family:var(--sans);font-weight:400;font-size:.88rem;color:var(--muted);letter-spacing:.06em}
+@media (max-width:860px){ .voices .pair{grid-template-columns:1fr} }
+
+/* 捌 · 迎领（报名） */
+.welcome{position:relative;color:#fff;overflow:hidden;background:var(--night)}
+.welcome .bgimg{position:absolute;inset:0;background:url(assets/img/home/whole-school.webp) center/cover no-repeat;opacity:.4}
+.welcome::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(14,26,20,.96) 0%,rgba(14,26,20,.82) 48%,rgba(14,26,20,.45) 100%)}
+.welcome .wrap{position:relative;z-index:2}
+.welcome .chap,.welcome .chap .v{color:#B8C2B9}
+.welcome h2.big{max-width:12em}
+.welcome .lede{color:#D3DAD2}
+.steps{margin-top:clamp(2.4rem,5vw,3.4rem);display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:980px;counter-reset:s}
+.steps li{list-style:none;counter-increment:s;padding:1.2rem 1.2rem 1.2rem 0;border-top:1px solid rgba(255,255,255,.28)}
+.steps li::before{content:"0" counter(s);display:block;font-family:var(--latin);font-style:italic;color:var(--gold);font-size:1.4rem;line-height:1}
+.steps b{display:block;margin-top:.6rem;font-family:var(--serif);font-weight:900;font-size:1.08rem;letter-spacing:.04em}
+.steps span{display:block;font-size:.84rem;color:#B8C2B9;line-height:1.7;margin-top:.2rem}
+.welcome .acts{margin-top:2.4rem;display:flex;flex-wrap:wrap;gap:.8rem}
+.welcome .note{margin-top:1.2rem;font-size:.84rem;color:#9FAAA1}
+@media (max-width:760px){ .steps{grid-template-columns:1fr 1fr} }
+
+/* 页脚 */
+footer{background:#0A130E;color:#AEB7AE;font-size:.9rem}
+footer .wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:2rem;padding-top:3.6rem;padding-bottom:2.4rem}
+footer h4{font-family:var(--serif);color:#F3EEE2;font-weight:600;font-size:1rem;letter-spacing:.08em;margin-bottom:.8rem}
+footer p,footer li{line-height:2;font-size:.88rem}
+footer ul{list-style:none}
+footer a{text-decoration:none;color:#D9CFB5;white-space:nowrap} footer a:hover{color:var(--gold)}
+footer .crest{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
+footer .crest img{height:46px;width:auto}
+footer .crest b{font-family:var(--serif);color:#F3EEE2;font-size:1.05rem;letter-spacing:.12em}
+footer .copy{border-top:1px solid rgba(255,255,255,.08);padding:1.1rem var(--gut);text-align:center;font-size:.78rem;color:#7D877F}
+@media (max-width:860px){ footer .wrap{grid-template-columns:1fr 1fr} footer .wrap>div:first-child{grid-column:1/-1} }
+
+/* 手机常驻报名条 */
+.dock{position:fixed;z-index:30;left:.6rem;right:.6rem;bottom:calc(.6rem + env(safe-area-inset-bottom));display:none;gap:.5rem;
+  padding:.45rem;border-radius:999px;background:rgba(14,26,20,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 10px 30px rgba(0,0,0,.25);transform:translateY(140%);transition:transform .45s var(--ease)}
+.dock.show{transform:none}
+.dock a{flex:1;display:flex;align-items:center;justify-content:center;min-height:44px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none;letter-spacing:.06em}
+.dock .w{color:#fff;border:1px solid rgba(255,255,255,.25)}
+.dock .r{background:var(--gold);color:var(--night)}
+@media (max-width:760px){ .dock{display:flex} }
+
+/* 动态图形《迎领之路》：随滚动播放的独立段落（不挡 Hero） */
+.mg-track{position:relative;height:380vh;background:#0E1A14}
+.mg-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.mg-skip{position:absolute;z-index:5;right:var(--gut);bottom:1.2rem;font-size:.8rem;letter-spacing:.2em;color:#C9C2AE;text-decoration:none;
+  padding:.5rem .9rem;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(14,26,20,.4)}
+.mg-skip:hover{color:var(--gold)}
+@media (max-width:760px){ .mg-track{height:320vh} .mg-skip{bottom:5rem} }
+@media (prefers-reduced-motion:reduce){ .mg-track{height:100vh;height:100svh} }
+
+/* 入场：只做功能性淡入；内容默认可见 */
+.has-js .reveal{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.has-js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .has-js .reveal{opacity:1;transform:none;transition:none}
+  .role,.role img,.role p,.collage img,.dock,.btn,.frost,.rings-fig *{transition:none!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+
+<header class="topbar" id="topbar">
+  <a class="brand" href="index.html" aria-label="南华独立中学 首页">
+    <img src="assets/img/crest-color.png" alt="南华独中校徽" width="42" height="42">
+    <span><b>南华独立中学</b><small>NAN HWA HIGH SCHOOL</small></span>
+  </a>
+  <nav class="mainnav" aria-label="主导航">
+    <a class="link" href="about/index.html">认识南华</a>
+    <a class="link" href="academic/index.html">学术课程</a>
+    <a class="link" href="cocurricular/index.html">联课活动</a>
+    <a class="link" href="facilities/index.html">硬体设施</a>
+    <a class="link" href="museum/index.html">南华数码馆</a>
+    <a class="logo90" href="90/index.html" title="1936 · 九十周年校庆专页"><img src="assets/img/logo90.png" alt="90 周年徽标 · 九十年风雨兼程，育见百年"></a>
+    <a class="cta" href="admission/index.html">招生报名</a>
+    <button class="menu-btn" type="button" id="menuOpen" aria-haspopup="dialog" aria-controls="menu"><i></i><span>目录</span></button>
+  </nav>
+</header>
+
+<dialog class="menu" id="menu" aria-label="全站目录">
+  <div class="menu-in">
+    <div class="menu-top">
+      <span class="seal" aria-hidden="true">南华迎领</span>
+      <button class="menu-close" type="button" id="menuClose">关闭</button>
+    </div>
+    <div class="menu-grid">
+      <div><h4>About</h4>
+        <a href="about/index.html">认识南华<small>校训 · 一训三风 · 愿景与殊荣</small></a>
+        <a href="history/index.html">南华春秋<small>一部从胶林里写起的校史</small></a>
+        <a href="organization/index.html">学校组织<small>三机构 · 各处室 · 这事该找谁</small></a>
+        <a href="board/index.html">董事会<small>护校的人</small></a></div>
+      <div><h4>Learning</h4>
+        <a href="academic/index.html">学术课程<small>五大领域 · 走班制 · 跨学科 PBL</small></a>
+        <a href="cocurricular/index.html">联课活动<small>三十一个学会团体 · 文艺大汇演</small></a>
+        <a href="facilities/index.html">硬体设施<small>泳池 · 茶文化中心 · 科技楼 · 宿舍</small></a>
+        <a href="faculty/index.html">师资团队<small>与孩子同行的引路人</small></a></div>
+      <div><h4>Archive</h4>
+        <a href="museum/index.html">南华数码馆<small>校史 · 九十周年 · 新闻馆 · 校刊</small></a>
+        <a href="news/index.html">每日南华<small>1,198 篇校园纪事，仍在继续</small></a>
+        <a href="90/index.html">九十周年校庆<small>1936 — 2026</small></a></div>
+      <div><h4>Admission</h4>
+        <a href="admission/index.html">招生专区<small>对象 · 流程 · 日期 · 奖助学金</small></a>
+        <a href="https://nanhwa.eschool.edu.my/newreg/" target="_blank" rel="noopener">线上报名<small>eSchool 新生注册</small></a>
+        <a href="#contact">联系我们<small>电话 · WhatsApp · 邮箱 · 校址</small></a></div>
+    </div>
+    <div class="menu-foot">
+      <a class="btn btn-gold" href="https://wa.me/601164646267?text=%E6%82%A8%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E9%A2%84%E7%BA%A6%E5%8F%82%E8%A7%82%E5%8D%97%E5%8D%8E%E7%8B%AC%E4%B8%AD%E3%80%82" target="_blank" rel="noopener">WhatsApp 预约参观</a>
+      <a class="btn btn-line" href="tel:+6056911442">致电 05-691 1442</a>
+    </div>
+  </div>
+</dialog>
+
+<div class="hero" id="hero">
+  <video id="dawn" autoplay muted loop playsinline preload="auto" poster="assets/img/about-aerial-poster.jpg" aria-hidden="true">
+    <source src="assets/video/about-aerial-loop.mp4" type="video/mp4">
+  </video>
+  <div class="scrim"></div>
+  <canvas id="dust" aria-hidden="true"></canvas>
+  <div class="content">
+    <p class="place">霹雳 · 曼绒 · 创校于 1936</p>
+    <h1>一束照耀<span class="light">九十载</span>的光，<br>为每个孩子迎领前路。</h1>
+    <p class="sub">灯塔不替船选择方向，只把航道照亮。九十年来，南华独中只做一件事——让每一位孩子被看见，并找到属于自己的光。</p>
+    <div class="cta">
+      <a class="frost frost-gold" href="admission/index.html">了解报读资讯</a>
+      <a class="frost frost-green" href="https://nanhwa.eschool.edu.my/newreg/" target="_blank" rel="noopener">线上报名</a>
+    </div>
+  </div>
+  <a class="cue" href="#main">向下 · 认识南华的孩子</a>
+</div>
+
+<main id="main">
+
+<!-- 动态图形《迎领之路》：随滚动播放；源码在 motion/，同片另有 MP4 在 motion/video/ -->
+<section class="mg-track" id="mgTrack" aria-label="动态图形《迎领之路》">
+  <div class="mg-stick"><div id="mgStage"></div><a class="mg-skip" href="#t1">跳过动画 ↓</a></div>
+</section>
+
+<!-- 壹 · 主体 -->
+<section class="chapter subject" aria-labelledby="t1">
+  <div class="wrap grid">
+    <div class="copy reveal">
+      <div class="head">
+        <div class="chap"><span class="kids" aria-hidden="true"><img src="assets/img/home/kid-girl.webp" alt="" width="70" height="200"><img src="assets/img/home/kid-boy.webp" alt="" width="64" height="200"></span><span class="no">壹</span><span class="v">主体</span></div>
+        <div>
+          <h2 class="big" id="t1">孩子，<br>是这所学校的主语。</h2>
+          <p class="lede">课表、社团、宿舍、导师制度——在南华，一切都围绕同一个人设计：您的孩子。我们看见他的好奇，看见她的坚持，也看见那些还没被发现的天赋。</p>
+        </div>
+      </div>
+    </div>
+    <div class="collage reveal" aria-label="南华学生的日常">
+      <figure class="a"><img src="assets/img/home/lab-trio.webp" alt="三位南华学生在实验室里并肩微笑" width="1500" height="844" loading="lazy"></figure>
+      <figure class="b"><img src="assets/img/home/kite-girl.webp" alt="学生在校内端午节活动举起亲手彩绘的蝴蝶风筝" width="1000" height="1500" loading="lazy"></figure>
+      <figure class="c"><img src="assets/img/home/craft-smile.webp" alt="学生在校内成果展展示手作作品" width="1125" height="1500" loading="lazy"></figure>
+      <figure class="d"><img src="assets/img/home/fire-demo.webp" alt="校园开放日科学示范，火焰在学生面前升起" width="1500" height="1000" loading="lazy"></figure>
+      <figure class="e"><img src="assets/img/home/volley.webp" alt="排球场上学生跃起扣球" width="1500" height="998" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 贰 · 同行 -->
+<section class="chapter together" aria-labelledby="t2">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="chap"><span class="kids" aria-hidden="true"><img src="assets/img/home/kid-girl.webp" alt="" width="70" height="200"></span><span class="no">贰</span><span class="v">同行</span></div>
+      <div>
+        <h2 class="big" id="t2">一个孩子的成长，<br>需要四种力量同行。</h2>
+      </div>
+    </div>
+    <div class="roles reveal">
+      <a class="role" href="cocurricular/index.html">
+        <img src="assets/img/home/uniform-leaders.webp" alt="身着校服的南华学生列队" loading="lazy">
+        <div class="t"><div class="who"><b>学生</b><em>主体</em></div>
+          <p>从选修课到学会团体，从班级到全校，孩子在一次次选择与承担中认识自己。</p></div>
+      </a>
+      <a class="role" href="faculty/index.html">
+        <img src="assets/img/home/lab-teacher.webp" alt="老师在实验室指导学生操作" loading="lazy">
+        <div class="t"><div class="who"><b>教师</b><em>引路人</em></div>
+          <p>导师制度让每一位学生都有自己的导师：倾听心声，陪伴成长，在关键路口指一条路。</p></div>
+      </a>
+      <a class="role" href="admission/index.html">
+        <img src="assets/img/home/parents.webp" alt="校园开放日，学生向来访家长讲解项目式学习成果" loading="lazy">
+        <div class="t"><div class="who"><b>家长</b><em>港湾</em></div>
+          <p>您是孩子出航时的护航，也是归来时的港湾。校园开放日与家校沟通，让学校与家庭站在同一条船上。</p></div>
+      </a>
+      <a class="role" href="about/index.html">
+        <img src="assets/img/home/arch.webp" alt="南华独中校门牌楼与蓝天" loading="lazy">
+        <div class="t"><div class="who"><b>学校</b><em>灯塔</em></div>
+          <p>是灯塔，是指引，也是「迎领」——迎接每一个孩子到来，再领他走向更远的地方。</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 叁 · 底色与远见 -->
+<section class="diptych" aria-label="中华文化与未来科技">
+  <div class="dip dip-culture reveal">
+    <span class="kick"><span class="kids" aria-hidden="true"><img src="assets/img/home/kid-boy.webp" alt="" width="64" height="200"></span>叁 · 底色</span>
+    <h3>中华文化素养，<br>是孩子的底色。</h3>
+    <p>校训「明德格物，致知笃行」语出《大学》《中庸》。书法、茶艺、廿四节令鼓、龙狮与华乐，在南华不是舞台上偶尔的展演，而是日常课表的一部分。</p>
+    <div class="pics">
+      <img src="assets/img/home/calligraphy.webp" alt="学生在书法课上临帖" loading="lazy">
+      <div class="stack">
+        <img src="assets/img/home/lion-lawn.webp" alt="龙狮团与鼓手在校园草坪前合影" loading="lazy">
+        <img src="assets/img/facilities/tea-room.jpg" alt="中国茶文化推广中心，师生演示茶艺冲泡" loading="lazy">
+      </div>
+    </div>
+    <a class="more" href="academic/index.html">中华艺术 · 文化传承课程 <span class="arrow">→</span></a>
+  </div>
+  <div class="dip dip-future reveal">
+    <span class="kick">远见</span>
+    <h3>未来科技与人工智能，<br>是绘制蓝图的笔。</h3>
+    <p>AI 创客空间、Python 编程、机器人与无人机课程；「理解科技、运用科技、反思科技」的 AI 教学与应用计划。2025 年，南华学生夺下全国中学生 AI 机器人竞赛总决赛冠军。</p>
+    <div class="pics">
+      <img src="assets/img/home/robotics.webp" alt="学生在 AI 创客空间组装机器人" loading="lazy">
+      <div class="stack">
+        <img src="assets/img/home/ai-space.webp" alt="AI 创客空间展示厅与开放式玻璃教室" loading="lazy">
+        <img src="assets/img/home/openday-robot.webp" alt="校园开放日，孩子们围观 AI 象棋机器人" loading="lazy">
+      </div>
+    </div>
+    <a class="more" href="facilities/index.html">走进 AI 创客空间 <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<!-- 肆 · 领导力年轮 -->
+<section class="chapter rings-sec" aria-labelledby="t4">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="chap"><span class="kids" aria-hidden="true"><img src="assets/img/home/kid-girl.webp" alt="" width="70" height="200"></span><span class="no">肆</span><span class="v">年轮</span></div>
+      <div>
+        <h2 class="big" id="t4">领导力，像树的年轮<br>一圈一圈长出来。</h2>
+        <p class="lede">我们的愿景是培养「迎领」21 世纪中华文化素养领袖人才。领导力不是少数人的头衔，而是从认识自己开始，一圈一圈向外长成的能力。</p>
+      </div>
+    </div>
+    <div class="rings-grid">
+      <div class="rings-fig" id="ringsFig" aria-hidden="true">
+        <svg viewBox="0 0 440 440">
+          <circle class="glow" id="ringGlow" cx="220" cy="220" r="40"/>
+          <circle class="r" data-i="5" cx="220" cy="220" r="205"/>
+          <circle class="r" data-i="4" cx="220" cy="220" r="165"/>
+          <circle class="r" data-i="3" cx="220" cy="220" r="125"/>
+          <circle class="r" data-i="2" cx="220" cy="220" r="85"/>
+          <circle class="r" data-i="1" cx="220" cy="220" r="45"/>
+          <circle class="core" cx="220" cy="220" r="7"/>
+          <text data-i="1" x="220" y="193" text-anchor="middle">个人</text>
+          <text data-i="2" x="220" y="153" text-anchor="middle">团队</text>
+          <text data-i="3" x="220" y="113" text-anchor="middle">社区</text>
+          <text data-i="4" x="220" y="73" text-anchor="middle">社会与家国</text>
+          <text data-i="5" x="220" y="33" text-anchor="middle">民族与文化</text>
+        </svg>
+        <p class="caption">由内而外 · 五圈领导力</p>
+      </div>
+      <div class="ring-steps">
+        <article class="ring-step" data-i="1">
+          <h3>个人领导力</h3>
+          <p>领导别人之前，先认识自己。DISC 人格特质与霍兰德职业兴趣测评，帮助孩子看清自己的长处；《南华漫游》成长护照以七种「漫游」印记，记下每一次学习、服务与荣誉的足迹。</p>
+          <div class="proof"><img src="assets/img/home/tablets.webp" alt="学生专注使用平板进行学习" loading="lazy"></div>
+        </article>
+        <article class="ring-step" data-i="2">
+          <h3>团队领导力</h3>
+          <p>三十一个学会团体、学长团、宿舍自治委员会——从班级到社团，从社团到全校性活动，学生在岗位历练中学会统筹与协调，也学会谦卑。</p>
+          <div class="proof"><img src="assets/img/home/expo.webp" alt="成果展上学生分组讲解作品" loading="lazy"></div>
+        </article>
+        <article class="ring-step" data-i="3">
+          <h3>社区领导力</h3>
+          <p>「南华天使」社区关怀自 2012 年成立；2023 年华教节，近二十位学生受林连玉基金之邀，披星戴月绘制林连玉公祭墓园文化墙，以画笔纪念族魂与华教先贤。</p>
+          <div class="proof"><img src="assets/img/home/mural-girl.webp" alt="学生在户外为文化墙壁画上色" loading="lazy"></div>
+        </article>
+        <article class="ring-step" data-i="4">
+          <h3>社会与家国</h3>
+          <p>跨语言、跨民族、跨文化的文艺大汇演，让多元的马来西亚在同一个舞台相遇；学生更代表马来西亚出征台湾 TIRT 国际赛，夺得亚军与团体总冠军。</p>
+          <div class="proof"><img src="assets/img/home/concert.webp" alt="文艺大汇演舞台灯光下的乐团演出" loading="lazy"></div>
+        </article>
+        <article class="ring-step" data-i="5">
+          <h3>民族与文化</h3>
+          <p>1936 年，曼绒先贤在胶林里点燃华教灯火。今天，廿四节令鼓队远赴福建福清寻根，演出《Mari-mari Sitiawan》登上中国央视报道——把根留住，也把故事带向世界。</p>
+          <div class="proof"><img src="assets/img/cocurricular/qiaoqing-drums.jpg" alt="廿四节令鼓队于福清元洪高级中学校门前开演" loading="lazy"></div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 伍 · 实证 -->
+<section class="chapter proof-sec" aria-labelledby="t5">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="chap"><span class="kids" aria-hidden="true"><img src="assets/img/home/kid-boy.webp" alt="" width="64" height="200"></span><span class="no">伍</span><span class="v">实证</span></div>
+      <div>
+        <h2 class="big" id="t5">一所学校的实力，<br>来自学生的光。</h2>
+      </div>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><b>1936</b><span>曼绒先贤创校，<br>迈向九十周年</span></div>
+      <div class="stat"><b>18</b><span>五大素养领域<br>校本课程</span></div>
+      <div class="stat"><b>31</b><span>学会团体<br>与培训队</span></div>
+      <div class="stat"><b>5<sup>星</sup></b><span>私立学校素质标准<br>SKIPS 蝉联五星</span></div>
+    </div>
+    <div class="honors">
+      <figure class="reveal"><img src="news/2025/img/20250617-1-0.jpg" alt="2025 全国中学生 AI 机器人竞赛总决赛冠军团队" loading="lazy" width="1600" height="1572">
+        <figcaption>2025 全国中学生 AI 机器人竞赛 · 总决赛冠军</figcaption></figure>
+      <ol class="reveal">
+        <li><time>2025</time><div><b>全国中学生 AI 机器人竞赛 冠军与殿军</b><span>台湾 TIRT 国际赛代表马来西亚出征，获亚军与团体总冠军</span></div></li>
+        <li><time>2025</time><div><b>霹雳州私立学校领导力特别教育奖 州际冠军</b><span>校长陳麗冰博士获颁</span></div></li>
+        <li><time>2024–25</time><div><b>国际艺术节金奖</b><span>连续两年</span></div></li>
+        <li><time>2022</time><div><b>南洋卓越教育奖 · 杰出教育机构奖</b><span>董事长颜登逸同届获「年度教育业者奖」</span></div></li>
+        <li><time>2013–16</time><div><b>SKIPS 私立学校素质标准 五星级</b><span>两年内从四星跃升五星，并再度蝉联</span></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 陆 · 校园 -->
+<section class="chapter campus" aria-labelledby="t6">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="chap"><span class="kids" aria-hidden="true"><img src="assets/img/home/kid-girl.webp" alt="" width="70" height="200"></span><span class="no">陆</span><span class="v">校园</span></div>
+      <div class="reel-hint">
+        <div>
+          <h2 class="big" id="t6">在这里，<br>每一天都有地方可去。</h2>
+        </div>
+        <a href="facilities/index.html">全部硬体设施 <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="reel reveal" tabindex="0" aria-label="校园设施，可左右滑动">
+    <a href="facilities/index.html"><img src="assets/img/home/pool.webp" alt="校内泳池，学生在上游泳课" loading="lazy"><b>校内泳池</b><span>游泳课就在正课时间里</span></a>
+    <a href="facilities/index.html"><img src="assets/img/facilities/ai-makerspace.jpg" alt="AI 创客空间内部" loading="lazy"><b>AI 创客空间</b><span>科技楼二楼，动手中理解 AI</span></a>
+    <a href="facilities/index.html"><img src="assets/img/facilities/vocational-centre.jpg" alt="技职教育中心科技楼" loading="lazy"><b>技职教育中心</b><span>STEAM 教室 · 南华酒店管理</span></a>
+    <a href="facilities/index.html"><img src="assets/img/facilities/tea-room.jpg" alt="中国茶文化推广中心" loading="lazy"><b>中国茶文化推广中心</b><span>与漳州科技职业学院共建</span></a>
+    <a href="facilities/index.html"><img src="assets/img/facilities/dorm-room.jpg" alt="学生宿舍寝室，上下铺配书桌与衣柜" loading="lazy"><b>学生宿舍</b><span>门禁、监控、医务室，安心的第二个家</span></a>
+    <a href="facilities/index.html"><img src="assets/img/home/facade.webp" alt="南华独中校舍正面" loading="lazy"><b>校园</b><span>Lot 2446, Kg. Sungai Wangi</span></a>
+  </div>
+</section>
+
+<!-- 柒 · 南华数码馆 -->
+<section class="chapter museum" aria-labelledby="t7">
+  <div class="bgimg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="chap"><span class="kids" aria-hidden="true"><img src="assets/img/home/kid-boy.webp" alt="" width="64" height="200"></span><span class="no" style="color:var(--gold)">柒</span><span class="v">数码馆</span></div>
+      <div>
+        <h2 class="big" id="t7">九十年的光，<br>都收藏在这里。</h2>
+        <p class="lede">校史、九十周年、八年来上千篇校园纪事，还有历届校刊——南华数码馆，让孩子读得到自己学校走过的路。</p>
+      </div>
+    </div>
+    <div class="halls reveal">
+      <a class="hall" href="history/index.html"><i>第一厅</i><b>南华春秋</b><span>从 1936 年胶林里的四校合并，到今日新校园</span><em>入馆 →</em></a>
+      <a class="hall" href="90/index.html"><i>第二厅</i><b>九十周年</b><span>1936 — 2026 · 九十年风雨兼程，育见百年</span><em>入馆 →</em></a>
+      <a class="hall" href="news/index.html"><i>第三厅</i><b>每日南华</b><span>2018 — 2026 · 1,198 篇校园纪事</span><em>入馆 →</em></a>
+      <div class="hall soon"><i>第四厅</i><b>校刊书架</b><span>1962 年起的历届校刊，数码化整理中</span><em>筹备中</em></div>
+    </div>
+    <div class="enter reveal"><a class="btn btn-gold" href="museum/index.html">步入南华数码馆 <span class="arrow">→</span></a></div>
+  </div>
+</section>
+
+<!-- 校园动态 -->
+<section class="chapter journal" aria-labelledby="t8">
+  <div class="wrap">
+    <div class="reel-hint reveal">
+      <div><h2 class="big" id="t8" style="font-size:clamp(1.7rem,3.6vw,2.8rem)">南华的每一天，<br>都被记录下来。</h2></div>
+      <a href="news/index.html" style="color:var(--zhu);font-weight:700;text-decoration:none">进入新闻馆 · 1,198 篇 <span class="arrow">→</span></a>
+    </div>
+    <div class="cards reveal">
+      <a class="card" href="news/2026/20260628-1.html"><div class="ph"><img src="news/2026/img/20260628-1-0.jpg" alt="" loading="lazy"></div><div><time datetime="2026-06-28">2026 · 06 · 28</time><b>课本之外的南洋史诗：南华师生吉隆坡寻根手记</b></div></a>
+      <a class="card" href="news/2026/20260627-1.html"><div class="ph"><img src="news/2026/img/20260627-1-0.jpg" alt="" loading="lazy"></div><div><time datetime="2026-06-27">2026 · 06 · 27</time><b>一盏清茶，一片匠心</b></div></a>
+      <a class="card" href="news/2026/20260626-1.html"><div class="ph"><img src="news/2026/img/20260626-1-0.jpg" alt="" loading="lazy"></div><div><time datetime="2026-06-26">2026 · 06 · 26</time><b>祝贺陳麗冰校长荣获 HRD Corp 认证讲师资格</b></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- 语录 -->
+<section class="chapter voices" aria-label="董事长与校长寄语">
+  <div class="wrap pair">
+    <blockquote class="reveal">发挥天赋、发掘热忱、认识自己的前提是允许犯错，错误是最好的老师。学校让孩子在试错文化中推开一扇扇通往无垠而精彩的世界。
+      <cite>南华独立中学董事长　颜登逸先生</cite></blockquote>
+    <blockquote class="reveal">让花成花，让树成树，让教育成就每一个独特的灵魂。
+      <cite>南华独立中学校长　陳麗冰博士</cite></blockquote>
+  </div>
+</section>
+
+<!-- 捌 · 迎领 -->
+<section class="chapter welcome" id="welcome" aria-labelledby="t9">
+  <div class="bgimg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="chap"><span class="kids" aria-hidden="true"><img src="assets/img/home/kid-girl.webp" alt="" width="70" height="200"><img src="assets/img/home/kid-boy.webp" alt="" width="64" height="200"></span><span class="no" style="color:var(--gold)">捌</span><span class="v">迎领</span></div>
+      <div>
+        <h2 class="big" id="t9">下一个被看见的，<br>是您的孩子。</h2>
+        <p class="lede">招收小六毕业生（初一新生）及他校转学生。每年 10 月起开放报名，具体日期以南华独中招生处当年公告为准。最好的了解方式，是带孩子来校园走一走。</p>
+      </div>
+    </div>
+    <ol class="steps reveal">
+      <li><b>报名登记</b><span>线上注册或亲临招生处</span></li>
+      <li><b>入学考试与面试</b><span>11 月下旬</span></li>
+      <li><b>放榜与注册</b><span>12 月</span></li>
+      <li><b>开学</b><span>翌年 1 月，入学说明会后</span></li>
+    </ol>
+    <div class="acts reveal">
+      <a class="btn btn-gold" href="https://wa.me/601164646267?text=%E6%82%A8%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E9%A2%84%E7%BA%A6%E5%8F%82%E8%A7%82%E5%8D%97%E5%8D%8E%E7%8B%AC%E4%B8%AD%E3%80%82" target="_blank" rel="noopener">WhatsApp 预约参观</a>
+      <a class="btn btn-line" href="https://nanhwa.eschool.edu.my/newreg/" target="_blank" rel="noopener">线上报名</a>
+      <a class="btn btn-line" href="admission/index.html">招生专区 · 奖助学金</a>
+    </div>
+    <p class="note reveal">也欢迎直接来电：+60 5-691 1442 / 5-691 3457</p>
+  </div>
+</section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div>
+      <div class="crest"><img src="assets/img/crest-ivory.png" alt="南华独中校徽"><b>曼绒县南华独立中学</b></div>
+      <p>Lot 2446, Kg. Sungai Wangi,<br>32400 Ayer Tawar, Perak, Malaysia.</p>
+      <p><a href="https://www.google.com/maps/search/?api=1&query=Nan+Hwa+High+School+Ayer+Tawar" target="_blank" rel="noopener">在地图上查看 →</a></p>
+    </div>
+    <div>
+      <h4>联系我们</h4>
+      <p><a href="tel:+6056911442">+60 5-691 1442</a><br><a href="tel:+6056913457">+60 5-691 3457</a><br>
+        WhatsApp <a href="https://wa.me/601164646267" target="_blank" rel="noopener">+60 11-6464 6267</a><br>
+        <a href="mailto:stnh@nanhwafs.edu.my">stnh@nanhwafs.edu.my</a></p>
+    </div>
+    <div>
+      <h4>认识南华</h4>
+      <ul><li><a href="about/index.html">认识南华</a></li><li><a href="academic/index.html">学术课程</a></li><li><a href="cocurricular/index.html">联课活动</a></li>
+        <li><a href="facilities/index.html">硬体设施</a></li><li><a href="faculty/index.html">师资团队</a></li><li><a href="organization/index.html">学校组织</a></li></ul>
+    </div>
+    <div>
+      <h4>南华数码馆</h4>
+      <ul><li><a href="museum/index.html">馆藏总览</a></li><li><a href="history/index.html">南华春秋</a></li><li><a href="90/index.html">九十周年</a></li>
+        <li><a href="news/index.html">每日南华</a></li><li><a href="https://www.facebook.com/sekolahtingginanhwa" rel="noopener">Facebook 官方专页</a></li></ul>
+    </div>
+  </div>
+  <div class="copy">© 2026 曼绒县南华独立中学 Nan Hwa High School</div>
+</footer>
+
+<nav class="dock" id="dock" aria-label="快速报名">
+  <a class="w" href="https://wa.me/601164646267?text=%E6%82%A8%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E9%A2%84%E7%BA%A6%E5%8F%82%E8%A7%82%E5%8D%97%E5%8D%8E%E7%8B%AC%E4%B8%AD%E3%80%82" target="_blank" rel="noopener">WhatsApp 咨询</a>
+  <a class="r" href="admission/index.html">招生报名</a>
+</nav>
+
+<script>
+document.documentElement.classList.add('has-js');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Hero 主视觉：与「认识南华」页同款鸟瞰影片（校长 10-09 指定），影片本身是无缝循环，用原生 loop
+const vid = document.getElementById('dawn');
+if (reduced) { vid.removeAttribute('autoplay'); vid.pause(); }
+
+// 金色微尘（仅 hero 可见时绘制）
+if (!reduced) (function(){
+  const c = document.getElementById('dust'), ctx = c.getContext('2d');
+  let w, h, ps, on = true;
+  function reset(){
+    w = c.width = c.clientWidth; h = c.height = c.clientHeight;
+    ps = Array.from({length:24}, () => ({x:Math.random()*w, y:Math.random()*h, r:.6+Math.random()*1.5,
+      vy:.08+Math.random()*.22, vx:(Math.random()-.5)*.06, a:.18+Math.random()*.35, ph:Math.random()*Math.PI*2, f:.4+Math.random()*.8, gold:Math.random()<.7}));
+  }
+  reset(); addEventListener('resize', reset);
+  new IntersectionObserver(e => { on = e[0].isIntersecting; if (on) requestAnimationFrame(tick); }).observe(c);
+  function tick(t){
+    if (!on) return;
+    ctx.clearRect(0,0,w,h);
+    for (const p of ps){
+      p.y -= p.vy; p.x += p.vx; if (p.y < -5){ p.y = h + 5; p.x = Math.random()*w; }
+      const a = p.a * (.55 + .45*Math.sin(t/1000*p.f + p.ph));
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = p.gold ? `rgba(240,200,110,${a})` : `rgba(255,250,235,${a})`; ctx.fill();
+    }
+    requestAnimationFrame(tick);
+  }
+})();
+
+// 顶栏：离开 hero 后转实底
+const bar = document.getElementById('topbar'), hero = document.getElementById('hero'), dock = document.getElementById('dock');
+new IntersectionObserver(([e]) => { bar.classList.toggle('solid', !e.isIntersecting); }, {rootMargin:'-72px 0px 0px 0px'}).observe(hero);
+
+// 手机报名条：hero 之后出现，到「迎领」章与页脚时让位
+let pastHero = false, atEnd = false;
+const syncDock = () => dock.classList.toggle('show', pastHero && !atEnd);
+new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting && e.boundingClientRect.top < 0; syncDock(); }).observe(hero);
+const ends = new Set();
+const endIO = new IntersectionObserver(es => { es.forEach(x => x.isIntersecting ? ends.add(x.target) : ends.delete(x.target)); atEnd = ends.size > 0; syncDock(); });
+endIO.observe(document.getElementById('welcome')); endIO.observe(document.getElementById('mgTrack'));
+
+// 目录
+const menu = document.getElementById('menu');
+document.getElementById('menuOpen').onclick = () => menu.showModal();
+document.getElementById('menuClose').onclick = () => menu.close();
+menu.addEventListener('click', e => { if (e.target.closest('a')) menu.close(); });
+
+// 入场淡入
+const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); } }), {rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// 动态图形：接近视口才载入素材与脚本
+(function(){
+  const track = document.getElementById('mgTrack');
+  const io2 = new IntersectionObserver(([e]) => {
+    if (!e.isIntersecting) return; io2.disconnect();
+    const s = document.createElement('script'); s.src = 'motion/mg.js';
+    s.onload = () => NanhwaMG.mount(document.getElementById('mgStage'), {mode:'scroll', base:'motion/', crest:'assets/img/crest-color.png', track});
+    document.body.appendChild(s);
+  }, {rootMargin:'100% 0px'});
+  io2.observe(track);
+})();
+
+// 年轮：哪一段在视口中央，就点亮哪一圈
+const fig = document.getElementById('ringsFig'), glow = document.getElementById('ringGlow');
+const R = {1:45, 2:85, 3:125, 4:165, 5:205};
+const ringIO = new IntersectionObserver(es => es.forEach(x => {
+  if (!x.isIntersecting) return;
+  const i = +x.target.dataset.i;
+  fig.dataset.on = i;
+  fig.querySelectorAll('[data-i]').forEach(n => { const k = +n.dataset.i; n.classList.toggle('on', k === i); n.classList.toggle('past', k < i); });
+  glow.setAttribute('r', R[i]);
+}), {rootMargin:'-45% 0px -45% 0px'});
+document.querySelectorAll('.ring-step').forEach(s => ringIO.observe(s));
+</script>
+</body>
+</html>

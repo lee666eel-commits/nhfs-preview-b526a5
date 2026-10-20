@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>迎领之路 · 南华独立中学</title>
+<meta name="description" content="南华独立中学动态图形《迎领之路》：从 1936 年的一盏灯，到每一个被看见的孩子。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&family=Noto+Serif+SC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mg.css">
+<style>
+  html,body{margin:0;background:#0E1A14}
+  .track{position:relative;height:420vh}
+  .stick{position:sticky;top:0;height:100vh;height:100svh}
+  body.film .track{height:100vh;height:100svh}
+  .hint{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:9;font:13px/1 "Noto Serif SC",serif;letter-spacing:.4em;color:#E9E2CE;opacity:.7;pointer-events:none}
+  body.film .hint,body.still .hint{display:none}
+</style>
+</head>
+<body>
+<div class="track"><div class="stick"><div id="mg"></div></div></div>
+<p class="hint">向下滑动</p>
+<script src="mg.js"></script>
+<script>
+  // ?mode=scroll（默认，随滚动）| film（自动循环）| still&t=秒（静止一帧，导出用）
+  var q = new URLSearchParams(location.search), mode = q.get('mode') || 'scroll';
+  document.body.classList.add(mode);
+  window.MG = NanhwaMG.mount(document.getElementById('mg'), {mode: mode, t: q.has('t') ? +q.get('t') : undefined,
+    base: '', crest: '../assets/img/crest-color.png', track: document.querySelector('.track'), dpr: +(q.get('dpr') || 2)});
+</script>
+</body>
+</html>

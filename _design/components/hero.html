@@ -1,0 +1,85 @@
+<!-- @dsCard group="Components" -->
+<!-- 来源：index.html hero 真实markup+CSS，非新造。
+     视频背景改用真实 poster 帧（assets/img/dawn-poster.jpg）当静态占位——
+     Design 画布不适合塞 mp4，poster 是真实素材不是编的。 -->
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>hero 组件预览</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+:root { --green:#3EB370; --gold:#E8B84B; --serif:"Noto Serif SC","Source Han Serif SC","STZhongsong","SimSun",serif; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:"Noto Sans SC","Microsoft YaHei",system-ui,sans-serif; }
+
+.hero { position:relative; height:100vh; height:100svh; min-height:700px; overflow:hidden;
+  color:#fff; background:#0b1410 url(../../assets/img/dawn-poster.jpg) center/cover; }
+.hero .scrim { position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(to top, rgba(6,16,10,.82) 0%, rgba(6,16,10,.34) 34%, rgba(6,16,10,.06) 58%, rgba(6,16,10,.3) 100%); }
+
+.topbar { position:absolute; top:0; left:0; right:0; z-index:6;
+  display:flex; align-items:center; justify-content:space-between; padding:1rem 2rem; height:76px; }
+.brand { display:flex; align-items:center; gap:.8rem; color:#fff; }
+.brand img { height:46px; width:auto; filter:drop-shadow(0 2px 6px rgba(0,0,0,.5)); }
+.brand .name { display:flex; align-items:baseline; gap:.7rem; }
+.brand b { font-family:var(--serif); font-weight:700; font-size:1.22rem; letter-spacing:.08em; text-shadow:0 1px 8px rgba(0,0,0,.55); }
+.brand small { font-size:.72rem; letter-spacing:.22em; color:#d7eadf; opacity:.85; }
+
+.content { position:absolute; z-index:5; left:0; right:0; bottom:clamp(8.5rem, 20vh, 12rem); padding:0 clamp(1rem,3vw,2.6rem); max-width:1180px; }
+.content h1 { font-family:var(--serif); font-weight:900; font-size:clamp(1.35rem, 2.4vw, 2rem); line-height:1.3; letter-spacing:.03em;
+  text-shadow:0 1px 10px rgba(0,0,0,.55), 0 0 14px rgba(255,244,214,.35); }
+.content h1 .light { color:var(--gold); text-shadow:0 1px 10px rgba(0,0,0,.5), 0 0 16px rgba(232,184,75,.55); }
+.content .sub { margin-top:.8rem; font-family:var(--serif); font-weight:600; font-size:clamp(.875rem, .82rem + .2vw, .95rem); color:#f0ece1;
+  max-width:36em; line-height:1.9; text-shadow:0 1px 3px rgba(0,0,0,.85), 0 2px 14px rgba(0,0,0,.6); }
+.cta { margin-top:1rem; display:flex; gap:.7rem; flex-wrap:wrap; }
+.btn { display:inline-block; padding:.55rem 1.35rem; border-radius:999px; font-weight:700; font-size:.875rem;
+  text-decoration:none; backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+.btn-solid { background:rgba(62,179,112,.5); color:#fff; border:1px solid rgba(255,255,255,.35); box-shadow:inset 0 1px 0 rgba(255,255,255,.3); text-shadow:0 1px 4px rgba(0,0,0,.35); }
+.btn-mustard { background:rgba(212,164,38,.32); color:#ffedbe; border:1px solid rgba(232,184,75,.6); box-shadow:inset 0 1px 0 rgba(255,255,255,.3); text-shadow:0 1px 4px rgba(0,0,0,.4); }
+
+.doors { position:absolute; z-index:5; left:0; right:0; bottom:0; display:grid; grid-template-columns:repeat(5, 1fr); gap:.6rem; align-items:end; padding:0 clamp(1rem, 3vw, 2.6rem); }
+.door { --peek:3.3rem; display:block; color:#fff; overflow:hidden; text-decoration:none; border-radius:.9rem .9rem 0 0;
+  background:rgba(8,20,13,.5); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border:1px solid rgba(255,255,255,.18); border-bottom:none;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18); padding:.95rem 1.15rem 1.15rem; }
+.door span { display:block; font-size:.78rem; opacity:.8; margin-top:.2rem; }
+
+@media (max-width:1080px) { .door { --peek:3rem; padding:.85rem .9rem 1rem; } }
+@media (max-width:760px) {
+  .topbar { padding:.9rem 1.1rem; } .brand img { height:38px; }
+  .content { bottom:clamp(11rem, 30vh, 14rem); }
+  .doors { grid-template-columns:1fr 1fr; gap:.45rem; padding:0 .6rem; }
+  .door { padding:.75rem .9rem; border-radius:.7rem .7rem 0 0; }
+  .door:last-child { grid-column:1 / -1; }
+  .door span { display:none; }
+}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="scrim"></div>
+  <header class="topbar">
+    <div class="brand">
+      <img src="../../assets/img/crest-color.png" alt="南华独中校徽">
+      <span class="name"><b>南华独立中学</b><small>NAN HWA HIGH SCHOOL</small></span>
+    </div>
+  </header>
+  <div class="content">
+    <h1>一束照耀<span class="light">九十载</span>的光</h1>
+    <p class="sub">自1936年曼绒先贤点燃的华教灯火，直至今日工艺楼、技职教育大楼、中国茶文化馆等的设立，九十载光阴，南华独中只做一件事：帮助每一位孩子，找到属于自己的光。</p>
+    <div class="cta">
+      <a class="btn btn-mustard" href="#">了解报读资讯</a>
+      <a class="btn btn-solid" href="#">线上报名</a>
+    </div>
+  </div>
+  <nav class="doors" aria-label="快速入口">
+    <a class="door" href="#"><b>认识南华</b><span>校训 · 一训三风 · 办学特色</span></a>
+    <a class="door" href="#"><b>学术课程</b><span>五大领域 · 走班制 · 跨学科 PBL</span></a>
+    <a class="door" href="#"><b>联课活动</b><span>三十一个社团 · 文艺大汇演</span></a>
+    <a class="door" href="#"><b>硬体设施</b><span>泳池 · 茶艺馆 · 科技楼 · 宿舍</span></a>
+    <a class="door" href="#"><b>师资团队</b><span>与孩子同行的点灯人</span></a>
+  </nav>
+</div>
+</body>
+</html>

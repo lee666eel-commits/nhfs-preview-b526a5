@@ -1,0 +1,53 @@
+<!-- @dsCard group="Components" -->
+<!-- 来源：faculty/index.html 真实卡片 + 原样式，非新造。
+     ⚠️ 已知疑似 bug（照抄未修，故意留着给 Design 画布测）：.portrait 是 .card（column flex）
+     的直接子层，写了 aspect-ratio:4/5 但没写 min-height:0——按 reference_aspect_ratio_loses_to_flex_min_height
+     的实测经验，直幅照片有机会撑爆卡片高度（news.css 的 .thumb 已经修过这个坑，这里没有）。
+     在 375px 用真实直幅照片测一次就知道会不会中招，此预览用占位图看不出来。 -->
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>faculty-card 组件预览</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:#F8F4EA; --paper:#FFFFFF; --ink:#2A2822; --muted:#7A6E56; --muted-lt:#9C9484;
+  --gold:#C9974A; --gold-deep:#B5804A; --terracotta:#B5643A; --rule:#E3D4B0; --mount:#EFE9DA;
+  --serif:"Noto Serif SC","Source Han Serif SC","STZhongsong","SimSun",serif;
+  --spring-bouncy:linear(0, .4 16%, .95 32%, 1.18 44%, .96 60%, 1.04 74%, .99 86%, 1);
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--cream); color:var(--ink); font-family:"Noto Sans SC","Microsoft YaHei",system-ui,sans-serif; font-weight:300; padding:1rem; }
+
+.grid { max-width:1080px; margin:0 auto; padding:2.5rem clamp(1.2rem,4vw,3rem) 5rem;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; }
+@media (max-width:880px) { .grid { grid-template-columns:1fr; max-width:520px; } }
+
+.card { background:var(--paper); border:1px solid var(--rule); border-radius:.6rem; overflow:hidden; display:flex; flex-direction:column;
+  box-shadow:0 2px 10px rgba(90,60,20,.08); }
+
+/* ⚠️ 与 news.css 对照组：这里故意没加 min-height:0，见档头说明 */
+.portrait { position:relative; aspect-ratio:4/5; overflow:hidden;
+  background:linear-gradient(155deg, var(--mount) 0%, #E3D4B0 55%, #C9974A 100%); }
+.portrait img { width:100%; height:100%; object-fit:cover; display:block; }
+
+.body { padding:1.2rem 1.4rem 1.5rem; display:flex; flex-direction:column; flex:1; }
+.body h2 { font-family:var(--serif); font-weight:700; font-size:1.3rem; letter-spacing:.06em; color:var(--ink); }
+.role { color:var(--muted); font-size:.85rem; margin-top:.3rem; }
+</style>
+</head>
+<body>
+<main class="grid">
+  <article class="card">
+    <div class="portrait"><img src="../../assets/img/crest-color.png" alt="占位头像（真实照片见 faculty/index.html）" loading="lazy"></div>
+    <div class="body"><h2>陳麗冰博士</h2><p class="role">校长</p></div>
+  </article>
+  <article class="card">
+    <div class="portrait"><img src="../../assets/img/crest-color.png" alt="占位头像" loading="lazy"></div>
+    <div class="body"><h2>杨秀珍老师</h2><p class="role">教务主任</p></div>
+  </article>
+</main>
+</body>
+</html>
