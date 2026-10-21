@@ -1,7 +1,10 @@
 /* 南华 · 迎领之路 —— 动态图形
    一切画面都由 render(t) 依时间 t（秒）算出：同一份代码供滚动播放、自动播放、逐帧导出 MP4。
    没有 CSS transition/animation，随机数用固定种子，所以任何一帧都可以精确重现。
-   幕次：壹 光（1936）→ 贰 降落校园 → 叁 学生是主体 → 肆 走进南华 → 伍 灯塔与四种力量 → 陆 领导力年轮 → 柒 迎领（天亮） */
+   幕次：壹 光（1936）→ 贰 降落校园 → 叁 学生是主体 → 肆 走进南华 → 伍 孩子眼里的光（点亮、绽放）→ 陆 领导力年轮 → 柒 迎领（天亮）
+   10-21 改：肆 由飘浮小卡改为满版照片逐张叠化（校园仍在，就给沉浸，不给缩图）；
+   伍 一只慢慢睁开的眼睛：眼里亮起光（点亮），光从眼中绽放成金屑（绽放），再收成下一幕年轮的圆心。
+      （上一版摆四个名牌加灯塔光束，道理讲通了，画面却碎了，整幕作废重来。） */
 (function () {
   'use strict';
   var T = 33;                                   // 总长（秒）
@@ -33,9 +36,9 @@
   }
   // 吉祥物出场表：[起点秒, 在场者]（g 女 / b 男）。两人同框只在「学生是主体」(叁) 与终章报名 (柒) 之前
   var CAST = [[0, 'g'], [5, 'b'], [8.7, 'gb'], [13.4, 'g'], [18.2, 'b'], [24.5, 'g'], [28.8, 'gb']];
-  var LABELS = [['学生', '主体'], ['教师', '引路人'], ['家长', '港湾'], ['学校', '灯塔']];
   var RINGS = ['个人', '团队', '社区', '社会与家国', '民族与文化'];
-  var CARDS = [['stone', '南华独中'], ['pool', '校园泳池'], ['block', '校舍'], ['arch', '牌楼']];
+  // 走进南华：满版照片（相对 base；高清原图 ≥1800px 宽，满版不糊）
+  var WALK = [['assets/stone.webp', '校名石与颜清文先生像'], ['../assets/img/home/lion-lawn.webp', '草场与校舍'], ['assets/pool.webp', '校园泳池'], ['../assets/img/home/whole-school.webp', '全校师生']];
 
   function chars(s, cls) { return s.split('').map(function (c) { return '<span class="ch' + (cls ? ' ' + cls : '') + '">' + (c === ' ' ? '&nbsp;' : c) + '</span>'; }).join(''); }
 
@@ -45,17 +48,17 @@
     var crest = opt.crest || (A + '../assets/img/crest-color.png');
     root.classList.add('mg');
     root.setAttribute('role', 'img');
-    root.setAttribute('aria-label', '动态图形：南华独中，一九三六年创校。学生是主体；教师是引路人，家长是港湾，学校是灯塔；领导力由个人、团队、社区、社会与家国到民族与文化，一圈一圈长出来；根系本土，枝繁叶茂。迎领每一个孩子。');
+    root.setAttribute('aria-label', '动态图形：南华独中，一九三六年创校。学生是主体；孩子眼里的光，值得点亮、绽放；领导力由个人、团队、社区、社会与家国到民族与文化，一圈一圈长出来；根系本土，枝繁叶茂。迎领每一个孩子。');
     root.innerHTML =
       '<canvas data-k="back"></canvas>' +
       '<div class="photo" data-k="aerial"><img alt="" src="' + A + 'assets/aerial.webp"></div>' +
       '<div class="photo" data-k="front"><img alt="" src="' + A + 'assets/front.webp"></div>' +
+      WALK.map(function (w, i) { return '<div class="photo" data-k="w' + i + '"><img alt="" src="' + A + w[0] + '"></div>'; }).join('') +
       '<div class="scrim" data-k="scrim"></div><div class="night" data-k="night"></div>' +
       '<div class="L planet" data-k="planet"><img alt="" src="' + A + 'assets/planet.webp"></div>' +
-      '<div class="full flash" data-k="flash"></div><div class="L beam" data-k="beam"></div><div class="L core" data-k="core"></div>' +
+      '<div class="full flash" data-k="flash"></div><div class="L core" data-k="core"></div>' +
       '<svg class="rings" data-k="svg"></svg>' +
-      CARDS.map(function (c, i) { return '<div class="card" data-k="card' + i + '"><img alt="" src="' + A + 'assets/' + c[0] + '.webp"><b>' + c[1] + '</b></div>'; }).join('') +
-      LABELS.map(function (l, i) { return '<div class="lab" data-k="lab' + i + '"><b>' + l[0] + '</b><i>' + l[1] + '</i></div>'; }).join('') +
+      WALK.map(function (w, i) { return '<div class="t wcap shadow" data-k="wc' + i + '">' + w[1] + '</div>'; }).join('') +
       RINGS.map(function (r, i) { return '<div class="rlab" data-k="rl' + i + '">' + r + '</div>'; }).join('') +
       // 壹
       '<div class="t vcol big" data-k="s1a" style="color:var(--gold)">' + chars('一九三六') + '</div>' +
@@ -68,8 +71,8 @@
       // 肆
       '<div class="t big shadow" data-k="s4h">' + chars('一步一步，走进南华') + '</div>' +
       // 伍
-      '<div class="t big" data-k="s5h">' + chars('四种力量，与孩子同行') + '</div>' +
-      '<div class="t big" data-k="s5x">' + chars('学校是灯塔，是指引，也是「迎领」') + '</div>' +
+      '<div class="t big" data-k="s5h" style="letter-spacing:.14em">孩子眼里的光</div>' +
+      '<div class="t sub" data-k="s5x" style="color:var(--gold);letter-spacing:.5em">值得点亮、绽放</div>' +
       // 陆
       '<div class="t big" data-k="s6h">' + chars('领导力，像年轮') + '<br>' + chars('一圈一圈长出来') + '</div>' +
       '<div class="t big" data-k="s6x" style="color:var(--gold)">' + chars('根系本土，枝繁叶茂') + '</div>' +
@@ -95,6 +98,7 @@
     var R = rng(1936), dust = [];
     for (var i = 0; i < 80; i++) dust.push({ x: R(), y: R(), vx: (R() - .5) * .006, vy: .004 + R() * .012, r: .5 + R() * 1.7, a: .25 + R() * .5, ph: R() * 6.28, f: .6 + R() * 1.4 });
     var blobPh = [R() * 6, R() * 6, R() * 6];
+    var bloom = []; for (i = 0; i < 150; i++) bloom.push({ a: R() * 6.28, sp: .3 + R() * .95, r: .4 + R() * 1.5, tw: R() * 6.28, d: R() * .35 });
     var splat = []; for (i = 0; i < 14; i++) splat.push({ a: R() * 6.28, d: .25 + R() * .5, r: .006 + R() * .02, t: .15 + R() * .9 });
 
     // 枝条：从角色身后向上分叉（固定种子）
@@ -137,29 +141,28 @@
       cb.setTransform(dpr, 0, 0, dpr, 0, 0); cf.setTransform(dpr, 0, 0, dpr, 0, 0);
       var P = H > W * 1.05, u = Math.min(W, H) / 100;
       root.style.setProperty('--u', u + 'px');
-      L = { W: W, H: H, P: P, u: u, diag: Math.hypot(W, H) };
+      L = { W: W, H: H, P: P, u: u, diag: Math.hypot(W, H), top: opt.topInset || 0 };   // top：页面固定顶栏压住的高度，标题要避开
       L.D1 = P ? W * .8 : H * .66;
       L.pc = P ? [W / 2, H * .38] : [W / 2, H * .5];
       L.Hc = P ? Math.min(H * .4, W * 1.05) : H * .52;   // 年轮/枝条的尺度
       L.Hm = P ? H * .2 : H * .28;                          // 吉祥物身高：全片固定，小于画面三分之一
       L.gy = H * .965;
       L.src = P ? [W / 2, H * .5] : [W / 2, H * .4];
+      L.stu = P ? [W / 2, H * .4] : [W / 2, H * .42];   // 伍：眼睛的中心
+      L.ew = P ? W * .62 : Math.min(W * .34, H * .62);   // 伍：眼睛宽度
       // 字号
       fontPx($.s1a, u * (P ? 11 : 9)); fontPx($.s1b, u * (P ? 3.4 : 2.6)); fontPx($.s1c, u * (P ? 3.6 : 2.6)); fontPx($.s2a, u * (P ? 3.4 : 2.4));
       fontPx($.s3h, u * (P ? 13 : 10)); fontPx($.s3s, u * (P ? 3.8 : 2.8));
       fontPx($.s4h, u * (P ? 8 : 6.4));
-      fontPx($.s5h, u * (P ? 6.4 : 5.2)); fontPx($.s5x, u * (P ? 5 : 4.8));
+      fontPx($.s5h, u * (P ? 6 : 4.6)); fontPx($.s5x, u * (P ? 3.4 : 2.6));
       fontPx($.s6h, u * (P ? 5.6 : 5.4)); fontPx($.s6x, u * (P ? 8.6 : 7.6)); fontPx($.s6y, u * (P ? 3.6 : 3));
       fontPx($.s7h, u * (P ? 13 : 9.6)); fontPx($.s7l, u * (P ? 3.8 : 2.8)); fontPx($.s7x, u * (P ? 6.4 : 4.4));
       fontPx($.seal, u * (P ? 3.4 : 2.4)); $.seal.style.height = '2.3em'; $.seal.style.width = '2.3em'; $.seal.style.padding = '.12em .1em';
       $.s3s.style.whiteSpace = 'nowrap';
-      $.cta.style.width = P ? (W * .9) + 'px' : 'auto'; $.cta.style.fontSize = (u * (P ? 2.3 : 1.4)) + 'px';
-      if (P) { fontPx($.s5x, u * 5); }
+      $.cta.style.width = P ? (W * .9) + 'px' : 'auto'; $.cta.style.fontSize = Math.max(14, u * (P ? 2.3 : 1.6)) + 'px';   // 报名钮不小于 14px
       $.s5x.style.whiteSpace = P ? 'normal' : 'nowrap'; $.s5x.style.width = P ? (W * .86) + 'px' : 'auto'; $.s5x.style.textAlign = 'center';
       $.s6h.style.whiteSpace = P ? 'normal' : 'nowrap'; $.s6h.style.width = P ? (W * .8) + 'px' : 'auto'; $.s6h.style.textAlign = P ? 'center' : 'left';
-      // 卡片
-      var cw = P ? W * .62 : W * .25;
-      CARDS.forEach(function (c, i) { var el = $['card' + i]; el.style.width = cw + 'px'; el.style.height = (cw * .75 + u * 2.6) + 'px'; });
+      WALK.forEach(function (_, i) { fontPx($['wc' + i], u * (P ? 3.6 : 2.6)); });
       // 角色
       ['girl', 'boy'].forEach(function (n) {
         var c = CHAR[n], el = $[n], w = L.Hm * c.w / c.h;
@@ -191,7 +194,7 @@
       var gl = W * 1.1; $.ground.setAttribute('stroke-dasharray', gl); $.ground.setAttribute('stroke-dashoffset', gl / 2 + W * .05);
       L.gl = gl;
       // 量尺寸（字号定了才量）
-      root.querySelectorAll('.t,.lab,.rlab,.card,.cta,.seal,.crest').forEach(function (el) { size[el.dataset.k] = measure(el); });
+      root.querySelectorAll('.t,.lab,.rlab,.cta,.seal,.crest').forEach(function (el) { size[el.dataset.k] = measure(el); });
       if (lastT !== null) render(lastT);
     }
 
@@ -271,46 +274,28 @@
         pos($.s3s, lx, H * .52 + (1 - out3(seg(t, 10.7, 11.5))) * u * 2, 1, 0, seg(t, 10.7, 11.4) * (1 - s3out), 0, .5);
       }
 
-      /* ---------- 肆 · 走进南华 ---------- */
-      var s4out = seg(t, 17.6, 18.2);
-      if (P) {
-        kinetic($.s4h, t, 13.8, .06, u * 5); pos($.s4h, W / 2, H * .15, 1, 0, 1 - s4out);
-      } else {
-        kinetic($.s4h, t, 13.8, .06, u * 5); pos($.s4h, lx, H * .2, 1, 0, 1 - s4out, 0, .5);
-      }
-      CARDS.forEach(function (c, i) {
-        var el = $['card' + i], t0 = 14.1 + i * .95, q = seg(t, t0, t0 + 3.8), m = size['card' + i];
-        var x = lerp(W + m.w * .7, -m.w * .7, lerp(q, io3(q), .35));
-        var y = P ? H * (i % 2 ? .43 : .31) : H * (i % 2 ? .6 : .47);
-        var ry = lerp(24, -24, q), rz = (i % 2 ? 1 : -1) * 3 + Math.sin(q * 6) * 1.5;
-        el.style.transformOrigin = '50% 50%';
-        el.style.transform = 'translate(' + (x - m.w / 2) + 'px,' + (y - m.h / 2) + 'px) perspective(1400px) rotateY(' + ry + 'deg) rotate(' + rz + 'deg)';
-        el.style.opacity = q > 0 && q < 1 ? clamp(Math.min(q * 8, (1 - q) * 8)) : 0;
+      /* ---------- 肆 · 走进南华：满版照片逐张叠化＋缓推 ---------- */
+      var s4out = seg(t, 15.2, 15.8);
+      kinetic($.s4h, t, 13.8, .06, u * 5);
+      if (P) pos($.s4h, W / 2, H * .15, 1, 0, 1 - s4out); else pos($.s4h, lx, H * .2, 1, 0, 1 - s4out, 0, .5);
+      WALK.forEach(function (_, i) {
+        var t0 = 13.6 + i * 1.15, el = $['w' + i], cap = $['wc' + i];
+        el.style.opacity = seg(t, t0, t0 + .35) * (1 - seg(t, 19.0, 19.1));   // 叠化要短：两张满版照片重影的时间越短越干净
+        el.firstChild.style.transform = 'translate(-50%,-50%) scale(' + lerp(1.12, 1.0, out3(seg(t, t0, t0 + 2.4))).toFixed(4) + ')';
+        var next = i < WALK.length - 1 ? 13.6 + (i + 1) * 1.15 : 17.6;
+        pos(cap, W / 2, H * (P ? .84 : .84), 1, 0, seg(t, t0 + .3, t0 + .8) * (1 - seg(t, next + .1, next + .45)));   // 置中：左右两侧是吉祥物
       });
 
-      /* ---------- 伍 · 灯塔与四种力量 ---------- */
-      var bIn = seg(t, 18.6, 19.4), bOut = seg(t, 24.0, 24.8);
-      var ang = LABELS.map(function (_, i) {
-        var lp = labPos(i); return Math.atan2(lp[1] - L.src[1], lp[0] - L.src[0]) * 180 / Math.PI;
-      });
-      for (i = 1; i < 4; i++) while (ang[i] < ang[i - 1]) ang[i] += 360;
-      var keys = [[18.6, ang[0] - 80], [19.6, ang[0]], [20.6, ang[1]], [21.6, ang[2]], [22.6, ang[3]], [24.8, ang[3] + 250]];
-      var bang = keys[0][1];
-      for (i = 0; i < keys.length - 1; i++) if (t >= keys[i][0]) bang = lerp(keys[i][1], keys[i + 1][1], io3(seg(t, keys[i][0], keys[i + 1][0])));
-      var bs = (P ? L.diag * 1.1 : L.diag * 1.05) / 4000 * 2;
-      $.beam.style.transform = 'translate(' + (L.src[0] - 2000) + 'px,' + (L.src[1] - 2000) + 'px) rotate(' + (bang + 90 - 9).toFixed(2) + 'deg) scale(' + bs.toFixed(4) + ')';
-      $.beam.style.opacity = bIn * (1 - bOut);
-      var cs = (u * 30 / 200) * (1 + .06 * Math.sin(t * 3)) * lerp(.4, 1, out3(bIn));
-      $.core.style.transform = 'translate(' + (L.src[0] - 100) + 'px,' + (L.src[1] - 100) + 'px) scale(' + cs.toFixed(4) + ')';
-      $.core.style.opacity = bIn * (1 - seg(t, 28.0, 29.0)) * .9;
-      LABELS.forEach(function (_, i) {
-        var tk = 19.6 + i, lp = labPos(i), pp = spring(t - tk + .15, 1.8, .45);
-        pos($['lab' + i], lp[0], lp[1], lerp(.55, 1, pp), 0, seg(t, tk - .15, tk + .15) * (1 - bOut));
-        $['lab' + i].style.color = i === 3 ? '#F6D58A' : '#F4EFE4';
-      });
-      var hk = P ? [W / 2, H * .085] : [W / 2, H * .1];
-      kinetic($.s5h, t, 18.9, .05, u * 4); pos($.s5h, hk[0], hk[1] + u * 2, 1, 0, 1 - seg(t, 22.6, 23.0));
-      kinetic($.s5x, t, 22.9, .04, u * 4); pos($.s5x, hk[0], hk[1] + u * 2, 1, 0, seg(t, 22.85, 22.9) * (1 - seg(t, 24.1, 24.6)));
+      /* ---------- 伍 · 孩子眼里的光：眼睛睁开、眼里亮光、光绽放成金屑（眼与金屑画在前景画布） ---------- */
+      var eOut = seg(t, 24.0, 24.8), hand = io3(seg(t, 24.0, 24.9));
+      var glow = lerp(.2, .7, out3(seg(t, 19.8, 21.0))) + .45 * out3(seg(t, 21.2, 23.4));
+      var cpx = lerp(L.stu[0], L.src[0], hand), cpy = lerp(L.stu[1], L.src[1], hand);
+      var cs = (u * 30 / 200) * (1 + .05 * Math.sin(t * 3)) * lerp(glow, 1, hand);
+      $.core.style.transform = 'translate(' + (cpx - 100) + 'px,' + (cpy - 100) + 'px) scale(' + cs.toFixed(4) + ')';
+      $.core.style.opacity = seg(t, 19.6, 20.6) * (1 - seg(t, 28.0, 29.0)) * .9;
+      var ty = L.stu[1] + L.ew * .2 + u * (P ? 9 : 7);
+      pos($.s5h, W / 2, ty + (1 - out3(seg(t, 19.9, 21.0))) * u * 1.5, 1, 0, seg(t, 19.9, 20.7) * (1 - eOut));
+      pos($.s5x, W / 2, ty + u * (P ? 8 : 6.4) + (1 - out3(seg(t, 21.5, 22.6))) * u * 1.2, 1, 0, seg(t, 21.5, 22.3) * (1 - eOut));
 
       /* ---------- 陆 · 领导力年轮 + 枝繁叶茂 ---------- */
       var circles = $.svg.querySelectorAll('circle[data-c]'), rOut = seg(t, 28.6, 29.4);
@@ -340,18 +325,40 @@
         kinetic($.s6h, t, 24.7, .05, u * 4); pos($.s6h, lx, H * .42, 1, 0, 1 - seg(t, 26.8, 27.2), 0, .5);
       }
       kinetic($.s6x, t, 27.0, .08, u * 6);
-      var x6 = P ? [W / 2, H * .1] : [W / 2, H * .13];
+      var x6 = P ? [W / 2, L.top + H * .07] : [W / 2, L.top + H * .09];
       pos($.s6x, x6[0], x6[1], 1, 0, seg(t, 26.95, 27.0) * (1 - seg(t, 28.5, 29.0)));
       pos($.s6y, x6[0], x6[1] + u * (P ? 9 : 7.5), 1, 0, seg(t, 27.8, 28.3) * (1 - seg(t, 28.5, 29.0)));
 
       /* ---------- 前景画布：金尘 + 天亮（纸面从灯塔处晕开） ---------- */
       cf.clearRect(0, 0, W, H);
+      // 伍：眼睛——上下眼睑两道金线，睁开时眼中透出暖光
+      var ea = seg(t, 18.7, 19.3) * (1 - seg(t, 22.4, 23.4));
+      if (ea > 0) {
+        var ex = L.stu[0], ey = L.stu[1], hw = L.ew / 2, eo = io3(seg(t, 19.2, 20.6));
+        var up = eo * L.ew * .44, dn = eo * L.ew * .32;   // 二次曲线控制点＝顶点高度的两倍
+        cf.save();
+        cf.beginPath(); cf.moveTo(ex - hw, ey); cf.quadraticCurveTo(ex, ey - up, ex + hw, ey); cf.quadraticCurveTo(ex, ey + dn, ex - hw, ey); cf.closePath();
+        var g = cf.createRadialGradient(ex, ey, 0, ex, ey, hw * .9);
+        g.addColorStop(0, 'rgba(246,213,138,' + (.5 * eo * ea) + ')'); g.addColorStop(1, 'rgba(14,26,20,0)');
+        cf.fillStyle = g; cf.fill();
+        cf.strokeStyle = 'rgba(227,178,79,' + (.85 * ea) + ')'; cf.lineWidth = Math.max(1.2, u * .2); cf.lineCap = 'round'; cf.stroke();
+        cf.restore();
+      }
+      // 伍：绽放——金屑从眼中向四周散开，椭圆展开呼应眼形
+      if (t > 21.1 && t < 24.9) {
+        bloom.forEach(function (b) {
+          var k = out3(seg(t, 21.2 + b.d, 23.9 + b.d)); if (k <= 0) return;
+          var dist = k * b.sp * L.ew * 1.15, a = (1 - seg(t, 23.3, 24.7)) * Math.min(1, k * 5) * (.55 + .45 * Math.sin(t * 3 + b.tw));
+          cf.beginPath(); cf.arc(L.stu[0] + Math.cos(b.a) * dist, L.stu[1] + Math.sin(b.a) * dist * .72, b.r * u * .26 * (1.6 - .6 * k), 0, 7);
+          cf.fillStyle = 'rgba(240,200,110,' + a.toFixed(3) + ')'; cf.fill();
+        });
+      }
       var dawn = out3(seg(t, 28.7, 30.1));
       if (dawn > 0) {
         cf.fillStyle = '#F4EFE4';
         if (dawn < 1) inkBlob(cf, L.src[0], L.src[1], dawn * L.diag * .75, t, 2.5); else cf.fillRect(0, 0, W, H);
       }
-      var dustAmt = t < 5 ? .9 : t < 9 ? .55 : t < 18.4 ? .2 : t < 28.7 ? lerp(.3, 1, seg(t, 18.4, 20)) : lerp(1, .45, seg(t, 28.7, 30));
+      var dustAmt = t < 5 ? .9 : t < 9 ? .55 : t < 18.4 ? .2 : t < 28.7 ? lerp(.22, 1, seg(t, 24.2, 25.6)) : lerp(1, .45, seg(t, 28.7, 30));
       dust.forEach(function (d) {
         var x = ((d.x + d.vx * t) % 1 + 1) % 1 * W, y = ((d.y - d.vy * t) % 1 + 1) % 1 * H;
         var a = d.a * dustAmt * (.55 + .45 * Math.sin(t * d.f + d.ph));
@@ -379,25 +386,20 @@
       });
 
       /* ---------- 柒 · 迎领 ---------- */
-      var cr = spring(t - 29.8, 1.6, .42);
-      var fy = P ? [H * .09, H * .18, H * .235, H * .29, H * .37] : [H * .21, H * .4, H * .49, H * .59, H * .73];
-      pos($.crest, W / 2, fy[0], lerp(.4, 1, cr), lerp(-25, 0, out3(seg(t, 29.8, 30.6))), seg(t, 29.8, 30.1));
-      kinetic($.s7h, t, 30.1, .07, u * 4); pos($.s7h, W / 2, fy[1], 1, 0, seg(t, 30.05, 30.1));
-      pos($.s7l, W / 2, fy[2], 1, 0, seg(t, 30.6, 31.1));
-      kinetic($.s7x, t, 30.8, .08, u * 3); pos($.s7x, W / 2, fy[3], 1, 0, seg(t, 30.75, 30.8));
-      pos($.cta, W / 2, fy[4] + (1 - out3(seg(t, 31.3, 31.9))) * u * 2, 1, 0, seg(t, 31.3, 31.8));
-      $.cta.style.pointerEvents = t > 31.3 ? 'auto' : 'none';
+      // 柒：纸面一晕开就出校徽（与天亮重叠），不留整片空白
+      var cr = spring(t - 29.3, 1.6, .42);
+      var fy = (P ? [H * .09, H * .18, H * .235, H * .29, H * .37] : [H * .21, H * .4, H * .49, H * .59, H * .73]).map(function (y) { return y + L.top * .5; });
+      pos($.crest, W / 2, fy[0], lerp(.4, 1, cr), lerp(-25, 0, out3(seg(t, 29.3, 30.1))), seg(t, 29.3, 29.6));
+      kinetic($.s7h, t, 29.6, .07, u * 4); pos($.s7h, W / 2, fy[1], 1, 0, seg(t, 29.55, 29.6));
+      pos($.s7l, W / 2, fy[2], 1, 0, seg(t, 30.1, 30.6));
+      kinetic($.s7x, t, 30.3, .08, u * 3); pos($.s7x, W / 2, fy[3], 1, 0, seg(t, 30.25, 30.3));
+      pos($.cta, W / 2, fy[4] + (1 - out3(seg(t, 30.8, 31.4))) * u * 2, 1, 0, seg(t, 30.8, 31.3));
+      $.cta.style.pointerEvents = t > 30.8 ? 'auto' : 'none';
       if (t >= 20) {
-        var s2 = seg(t, 31.7, 31.95), stamp2 = t < 31.7 ? 0 : (t < 31.95 ? lerp(2.4, .92, in3(s2)) : lerp(.92, 1, out3(seg(t, 31.95, 32.2))));
+        var s2 = seg(t, 31.2, 31.45), stamp2 = t < 31.2 ? 0 : (t < 31.45 ? lerp(2.4, .92, in3(s2)) : lerp(.92, 1, out3(seg(t, 31.45, 31.7))));
         var m7 = size.s7h || { w: 0 };
         pos($.seal, P ? W / 2 + W * .36 : W / 2 + m7.w / 2 + u * 3.6, P ? fy[0] : fy[1], stamp2 || .001, -4, clamp(s2 * 3));
       }
-    }
-
-    function labPos(i) {
-      var W = L.W, H = L.H;
-      var lp = L.P ? [[.2, .47], [.25, .29], [.75, .29], [.8, .47]] : [[.18, .73], [.2, .33], [.8, .33], [.82, .73]];
-      return [lp[i][0] * W, lp[i][1] * H];
     }
 
     layout();
@@ -413,11 +415,15 @@
     var mg = create(root, opt), mode = opt.mode || 'scroll';
     var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduce || mode === 'still') { mg.render(opt.t === undefined ? T : opt.t); return mg; }
-    var cur = 0, target = 0, visible = true, start = null;
+    // t0：从第几秒起播（首页接在深色 Hero 之后，跳过纸面滴墨开场）；lead：区段顶端进入视口下缘就开始推进（以视口高为单位），免得入场时停在空白帧
+    var t0 = opt.t0 || 0, lead = opt.lead || 0;
+    var cur = t0, target = t0, visible = true, start = null;
+    if (mode !== 'film') mg.render(t0);
     if (window.IntersectionObserver) new IntersectionObserver(function (e) { visible = e[0].isIntersecting; if (visible) requestAnimationFrame(tick); }).observe(root);
     function progress() {
       var track = opt.track || root.parentElement.parentElement, r = track.getBoundingClientRect();
-      return clamp(-r.top / Math.max(1, r.height - innerHeight));
+      var pre = innerHeight * lead;
+      return clamp((pre - r.top) / Math.max(1, r.height - innerHeight + pre));
     }
     function tick(now) {
       if (!visible) return;
@@ -426,7 +432,7 @@
         var loop = T + 2;                       // 片尾多停 2 秒再重播
         cur = Math.min(T, ((now - start) / 1000) % loop);
       } else {
-        target = progress() * T;
+        target = t0 + progress() * (T - t0);
         cur += (target - cur) * .12;
         if (Math.abs(target - cur) < .002) cur = target;
       }
@@ -434,6 +440,7 @@
       requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
+    mg.now = function () { return cur; };
     return mg;
   }
 

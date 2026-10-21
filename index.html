@@ -3,7 +3,6 @@
 <head>
 <meta name="robots" content="noindex,nofollow">
 <script src="preview-gate.js"></script>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>南华独立中学 Nan Hwa High School · 霹雳曼绒</title>
@@ -16,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="motion/mg.css">
+<link rel="stylesheet" href="motion/mg.css?v=20261021d">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"School","name":"曼绒县南华独立中学",
  "alternateName":"Nan Hwa High School","foundingDate":"1936",
@@ -65,6 +64,7 @@ a{color:inherit}
 .chap .v{writing-mode:vertical-rl;font-family:var(--serif);font-size:.9rem;letter-spacing:.12em;line-height:1}
 h2.big{font-family:var(--serif);font-weight:900;font-size:clamp(1.9rem,4.6vw,3.6rem);line-height:1.25;letter-spacing:0}
 h2.big,h3{word-break:keep-all;overflow-wrap:anywhere}   /* 中文标题只在标点/<br> 处断行，免得「主／语。」这种单字落单 */
+p,blockquote{text-wrap:pretty}   /* 段末不留单字（如「事。」「卑。」独占一行） */
 h3{font-family:var(--serif);font-weight:900;letter-spacing:.02em}
 .lede{margin-top:1.3rem;font-size:clamp(1rem,.95rem + .3vw,1.12rem);color:var(--ink-soft);max-width:32em;line-height:1.8}
 .wrap{max-width:1240px;margin:0 auto;padding:0 var(--gut)}
@@ -77,36 +77,41 @@ h3{font-family:var(--serif);font-weight:900;letter-spacing:.02em}
 .btn-line{border:1px solid currentColor;color:inherit}
 .arrow{display:inline-block;transition:transform .25s var(--ease)} a:hover .arrow{transform:translateX(4px)}
 
-/* ---------- 顶栏 ---------- */
+/* ---------- 顶栏 ----------
+   10-21 重做：首屏透明、只留校名＋导览＋90 标＋目录（报名入口交给首屏按钮，避免一屏三颗报名钮）；
+   离开首屏后变半透明磨砂纸面，压在深色区块上自动换深色磨砂，不再是一条硬线切开的米色横条。
+   导览链接放不下时整组收进「目录」，断点由 1024–1600 逐 16px 实测碰撞得出，不靠猜。 */
 .topbar{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;align-items:center;justify-content:space-between;
-  gap:1rem;height:72px;padding:0 var(--gut);color:#fff;transition:background .35s ease,color .35s ease,box-shadow .35s ease}
-.topbar.solid{background:rgba(244,239,228,.92);color:var(--ink);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  box-shadow:0 1px 0 var(--rule)}
-.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;min-width:0}
-.brand img{height:42px;width:auto;filter:drop-shadow(0 2px 6px rgba(0,0,0,.35))}
+  gap:1.5rem;height:64px;padding:0 var(--gut);color:#fff;
+  transition:background .35s ease,color .35s ease,box-shadow .35s ease}
+.topbar.solid{background:rgba(244,239,228,.78);color:var(--ink);
+  backdrop-filter:saturate(1.4) blur(18px);-webkit-backdrop-filter:saturate(1.4) blur(18px);box-shadow:0 1px 0 rgba(23,32,27,.06)}
+.topbar.solid.dark{background:rgba(12,22,17,.66);color:#ECE6D6;box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;min-width:0;flex:none}
+.brand img{height:36px;width:auto;filter:drop-shadow(0 1px 4px rgba(0,0,0,.3))}
 .topbar.solid .brand img{filter:none}
-.brand b{font-family:var(--serif);font-weight:900;font-size:1.12rem;letter-spacing:.12em;white-space:nowrap;
-  text-shadow:0 1px 8px rgba(0,0,0,.45)}
-.brand small{display:block;font-size:.62rem;letter-spacing:.28em;opacity:.8;line-height:1.2;white-space:nowrap}
-.topbar.solid .brand b{text-shadow:none}
-.mainnav{display:flex;align-items:center;gap:clamp(.9rem,1.6vw,1.6rem);font-size:.9rem;letter-spacing:.08em}
-.mainnav a{text-decoration:none;padding:.4rem 0;position:relative;white-space:nowrap;text-shadow:0 1px 6px rgba(0,0,0,.4)}
-.topbar.solid .mainnav a{text-shadow:none}
-.mainnav a.link::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;
+.brand b{display:block;font-family:var(--serif);font-weight:900;font-size:1rem;letter-spacing:.14em;line-height:1.25;white-space:nowrap}
+.brand small{display:block;font-size:.56rem;letter-spacing:.3em;opacity:.72;line-height:1.3;white-space:nowrap}
+.topbar:not(.solid) .brand b,.topbar:not(.solid) .mainnav a{text-shadow:0 1px 3px rgba(0,0,0,.35)}
+.mainnav{display:flex;align-items:center;gap:clamp(1.1rem,1.7vw,1.9rem);font-size:.875rem;letter-spacing:.08em}
+.mainnav a{text-decoration:none;padding:.4rem 0;position:relative;white-space:nowrap}
+.mainnav a.link{opacity:.88;transition:opacity .2s ease} .mainnav a.link:hover{opacity:1}
+.mainnav a.link::after{content:"";position:absolute;left:0;right:0;bottom:.1rem;height:1px;background:currentColor;
   transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
 .mainnav a.link:hover::after{transform:scaleX(1)}
-.mainnav .cta{padding:.5rem 1.1rem;border-radius:999px;background:rgba(227,178,79,.9);color:var(--night);font-weight:700;text-shadow:none}
-.mainnav .cta:hover{background:var(--gold)}
-.logo90 img{height:46px;width:auto;transition:transform .2s ease}
+.mainnav .cta{padding:.42rem 1.05rem;border-radius:999px;background:var(--gold);color:var(--night);font-weight:600;font-size:.84rem;letter-spacing:.1em}
+.mainnav .cta:hover{background:#F0C46A}
+.topbar:not(.solid) .mainnav .cta{display:none}
+.logo90 img{height:38px;width:auto;display:block;transition:transform .2s ease}
 .logo90:hover img{transform:scale(1.06)}
-.menu-btn{display:inline-flex;align-items:center;gap:.45rem;min-height:44px;padding:0 .2rem;background:none;border:0;
-  color:inherit;font:inherit;font-size:.9rem;letter-spacing:.1em;cursor:pointer}
-.menu-btn i{display:block;width:22px;height:9px;border-top:1.5px solid currentColor;border-bottom:1.5px solid currentColor}
-@media (max-width:1080px){ .mainnav .link{display:none} }
+.menu-btn{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;padding:0 .1rem;background:none;border:0;white-space:nowrap;
+  color:inherit;font:inherit;font-size:.875rem;letter-spacing:.12em;cursor:pointer}
+.menu-btn i{display:block;width:20px;height:8px;border-top:1.5px solid currentColor;border-bottom:1.5px solid currentColor}
+@media (max-width:1180px){ .mainnav .link{display:none} }
 @media (max-width:560px){
-  .topbar{height:62px} .brand img{height:34px} .brand b{font-size:1rem;letter-spacing:.06em} .brand small{display:none}
+  .topbar{height:58px} .brand img{height:32px} .brand b{font-size:.95rem;letter-spacing:.08em} .brand small{display:none}
   .logo90{display:none} .menu-btn span{display:none}
-  .mainnav .cta{padding:.45rem .9rem;font-size:.85rem}
+  .mainnav .cta{padding:.4rem .9rem;font-size:.8rem}
 }
 
 /* 全站目录（dialog） */
@@ -126,32 +131,39 @@ dialog.menu::backdrop{background:rgba(0,0,0,.4)}
 .menu-foot{margin-top:3rem;display:flex;flex-wrap:wrap;gap:.8rem}
 
 /* ---------- Hero（保留：晨曦视频、磨砂半透明钮、衬线副文案、长转场） ---------- */
-.hero{position:relative;height:100vh;height:100svh;min-height:620px;overflow:hidden;color:#fff;background:#0b1410}
+/* 10-21：首屏固定在底层，往下滑时原地渐隐（不被推上去），底下的《迎领之路》动画在它淡出时浮现，两段之间没有接缝 */
+.hero{position:fixed;inset:0 0 auto 0;z-index:3;height:100vh;height:100svh;min-height:620px;overflow:hidden;color:#fff;background:#0b1410;will-change:opacity}
+.hero.gone{visibility:hidden}
 /* 鸟瞰片是 1600×1300：上方 1600×900 是真画面，下方 400px 是糊掉的补边。把影片框拉高到 1300/900 倍并贴顶，糊边永远落在 hero 之外 */
-.hero video{position:absolute;left:0;top:0;width:100%;height:144.5%;object-fit:cover;object-position:center top}
+.hero video{position:absolute;left:0;top:0;width:100%;height:144.5%;object-fit:cover;object-position:center top;filter:saturate(.72) brightness(.92)}
+/* 竖排主角（10-21 他选 B 版）：右侧压暗承托竖排标题，左侧留给校园航拍；首屏只留地名、标题、一颗按钮 */
 .hero .scrim{position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(to top,rgba(6,16,10,.86) 0%,rgba(6,16,10,.38) 36%,rgba(6,16,10,.04) 60%,rgba(6,16,10,.42) 100%)}
-#dust{position:absolute;inset:0;width:100%;height:100%;z-index:4;pointer-events:none}
-.hero .content{position:absolute;z-index:5;left:0;right:0;bottom:clamp(4.5rem,13vh,8rem);padding:0 var(--gut);max-width:1240px;margin:0 auto}
-.hero .place{font-family:var(--serif);font-size:.86rem;letter-spacing:.16em;color:#E9E2CE;text-shadow:0 1px 6px rgba(0,0,0,.6)}
-.hero h1{margin-top:.7rem;font-family:var(--serif);font-weight:900;font-size:clamp(1.9rem,4.2vw,3.4rem);line-height:1.25;letter-spacing:.04em;
-  text-shadow:0 2px 18px rgba(0,0,0,.5),0 0 14px rgba(255,244,214,.25)}
-.hero h1 .light{color:var(--gold);text-shadow:0 1px 10px rgba(0,0,0,.45),0 0 22px rgba(227,178,79,.55)}
-.hero .sub{margin-top:1rem;font-family:var(--serif);font-weight:600;font-size:clamp(.92rem,.86rem + .25vw,1.05rem);color:#F0ECE1;
-  max-width:33em;line-height:2;text-shadow:0 1px 3px rgba(0,0,0,.85),0 2px 14px rgba(0,0,0,.6)}
-.hero .cta{margin-top:1.4rem;display:flex;gap:.7rem;flex-wrap:wrap}
-.frost{display:inline-flex;align-items:center;min-height:46px;padding:.55rem 1.4rem;border-radius:999px;font-weight:700;font-size:.92rem;
-  text-decoration:none;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);letter-spacing:.06em;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.3);transition:transform .18s ease,background .18s ease}
-.frost:hover{transform:translateY(-2px)}
-.frost-gold{background:rgba(212,164,38,.34);color:#FFEDBE;border:1px solid rgba(232,184,75,.65);text-shadow:0 1px 4px rgba(0,0,0,.4)}
-.frost-gold:hover{background:rgba(212,164,38,.55);color:#FFF6DD}
-.frost-green{background:rgba(62,179,112,.48);color:#fff;border:1px solid rgba(255,255,255,.35);text-shadow:0 1px 4px rgba(0,0,0,.35)}
-.frost-green:hover{background:rgba(62,179,112,.7)}
-.cue{position:absolute;z-index:5;right:var(--gut);bottom:clamp(4.5rem,13vh,8rem);writing-mode:vertical-rl;font-family:var(--serif);
-  font-size:.8rem;letter-spacing:.2em;color:#E9E2CE;text-decoration:none;display:flex;align-items:center;gap:.8rem;text-shadow:0 1px 6px rgba(0,0,0,.6)}
-.cue::after{content:"";width:1px;height:56px;background:linear-gradient(#E9E2CE,transparent)}
-@media (max-width:760px){ .cue{display:none} .hero .content{bottom:clamp(2.5rem,8vh,4rem)} }
+  background:linear-gradient(270deg,rgba(6,16,10,.80) 0%,rgba(6,16,10,.50) 30%,rgba(6,16,10,.06) 62%,rgba(6,16,10,0) 100%),
+    linear-gradient(to bottom,rgba(6,16,10,.45) 0%,rgba(6,16,10,0) 22%)}
+/* 布局：右上起两列竖排标题，左侧下方落款（地点＋年份＋朱印，读完标题才读到，像书法作品的署名）；按钮置于标题正下方右对齐 */
+.hero .content{position:absolute;z-index:5;right:var(--gut);top:calc(64px + 7vh);display:flex;flex-direction:column;align-items:flex-end;gap:clamp(1.4rem,3vh,2.2rem)}
+.hero .verse{display:flex;flex-direction:row-reverse;align-items:flex-end;gap:clamp(.9rem,1.6vw,1.4rem)}
+/* 字号同时受宽、高约束：一列 10 字＝11.6em，标题＋按钮必须塞进首屏（100svh−顶栏−上下留白−按钮区），浏览器缩放或矮窗口都不会断出第三列 */
+.hero h1{writing-mode:vertical-rl;white-space:nowrap;font-family:var(--serif);font-weight:900;
+  font-size:min(3.3rem,3.7vw,calc((100svh - 64px - 16vh - 76px) / 12));line-height:1.7;letter-spacing:.16em;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.hero h1 .light{color:var(--gold)}
+.hero h1 .vp{display:inline-block;transform:translateX(-.28em)}   /* 竖排逗号置中，与「︒」对齐（台式竖排） */
+/* 落款：clreq——短句可松排（字距 1/4–1 字）；竖排里阿拉伯数字会横躺，改用汉字数字「一九三六」 */
+.hero .colophon{writing-mode:vertical-rl;white-space:nowrap;font-family:var(--serif);font-size:clamp(.78rem,.74rem + .2vw,.88rem);
+  letter-spacing:.42em;line-height:1;color:rgba(255,255,255,.8);text-shadow:0 1px 2px rgba(0,0,0,.4)}
+.hero .colophon .seal{display:inline-grid;place-items:center;writing-mode:vertical-rl;width:1.6em;height:2.7em;margin-top:.9em;padding:0;font-size:.86em;font-weight:900;letter-spacing:0;line-height:1.05;
+  background:var(--zhu);color:#FBEFE3;border-radius:2px;text-shadow:none}
+.frost{display:inline-flex;align-items:center;min-height:44px;padding:.5rem 1.35rem;border-radius:999px;font-size:.875rem;font-weight:500;
+  letter-spacing:.16em;text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.7);transition:transform .18s ease,background .18s ease}
+.frost:hover{transform:translateY(-2px);background:rgba(255,255,255,.12)}
+.hero::after{content:"";position:absolute;z-index:5;left:50%;bottom:1.4rem;width:1px;height:40px;
+  background:linear-gradient(rgba(255,255,255,.65),transparent);pointer-events:none}
+@media (max-width:760px){
+  .hero .scrim{background:linear-gradient(270deg,rgba(6,16,10,.82) 0%,rgba(6,16,10,.55) 45%,rgba(6,16,10,.25) 100%)}
+  .hero .content{top:calc(58px + 4vh);left:var(--gut)}
+  .hero h1{font-size:min(2.05rem,calc((100svh - 58px - 10vh - 70px) / 11.6));letter-spacing:.1em}
+  .hero::after{display:none}
+}
 
 /* ---------- 章：通用 ---------- */
 .chapter{padding:clamp(5rem,12vw,9rem) 0}
@@ -224,7 +236,7 @@ dialog.menu::backdrop{background:rgba(0,0,0,.4)}
 /* 肆 · 领导力年轮 */
 .rings-sec{background:var(--paper-3)}
 .rings-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(2rem,6vw,6rem);margin-top:clamp(2.4rem,5vw,4rem)}
-.rings-fig{position:sticky;top:calc(72px + 6vh);align-self:start}
+.rings-fig{position:sticky;top:calc(64px + 6vh);align-self:start}
 .rings-fig svg{width:100%;max-width:520px;height:auto;display:block;margin:0 auto;overflow:visible}
 .rings-fig circle.r{fill:none;stroke:rgba(23,32,27,.2);stroke-width:1.2;transition:stroke .6s ease,stroke-width .6s ease,opacity .6s ease}
 .rings-fig text{font-family:var(--serif);font-size:13px;letter-spacing:.06em;fill:var(--muted);transition:fill .6s ease}
@@ -243,7 +255,7 @@ dialog.menu::backdrop{background:rgba(0,0,0,.4)}
 .ring-step .proof img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:4px}
 @media (max-width:860px){
   .rings-grid{grid-template-columns:1fr}
-  .rings-fig{position:sticky;top:62px;z-index:2;background:var(--paper-3);padding:.4rem 0 .6rem;border-bottom:1px solid var(--rule)}
+  .rings-fig{position:sticky;top:58px;z-index:2;background:var(--paper-3);padding:.4rem 0 .6rem;border-bottom:1px solid var(--rule)}
   .rings-fig svg{max-width:150px} .rings-fig .caption{display:none}
   .ring-step{min-height:0;padding:2.2rem 0}
 }
@@ -252,7 +264,7 @@ dialog.menu::backdrop{background:rgba(0,0,0,.4)}
 .proof-sec{background:var(--night);color:#EDE8DA}
 .proof-sec .lede{color:#BFC6BC}
 .proof-sec .chap .v,.proof-sec .chap{color:#9FA89F}
-.stats{margin-top:clamp(2.4rem,5vw,4rem);display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--rule-lt)}
+.stats{margin-top:clamp(2.4rem,5vw,4rem);display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--rule-lt)}
 .stat{padding:1.6rem 1.2rem 1.6rem 0;border-right:1px solid var(--rule-lt)}
 .stat:last-child{border-right:0}
 .stat+.stat{padding-left:1.4rem}
@@ -270,7 +282,7 @@ dialog.menu::backdrop{background:rgba(0,0,0,.4)}
 .honors li span{font-size:.85rem;color:#9FA89F}
 @media (max-width:860px){
   .stats{grid-template-columns:1fr 1fr} .stat{border-bottom:1px solid var(--rule-lt)}
-  .stat:nth-child(2){border-right:0} .stat:nth-child(3){padding-left:0}
+  .stat:nth-child(even){border-right:0} .stat:nth-child(odd){padding-left:0} .stat:last-child{grid-column:1/-1}
   .honors{grid-template-columns:1fr}
 }
 
@@ -370,12 +382,12 @@ footer .copy{border-top:1px solid rgba(255,255,255,.08);padding:1.1rem var(--gut
 @media (max-width:760px){ .dock{display:flex} }
 
 /* 动态图形《迎领之路》：随滚动播放的独立段落（不挡 Hero） */
-.mg-track{position:relative;height:380vh;background:#0E1A14}
+.mg-track{position:relative;height:460vh;background:#0E1A14}
 .mg-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
-.mg-skip{position:absolute;z-index:5;right:var(--gut);bottom:1.2rem;font-size:.8rem;letter-spacing:.2em;color:#C9C2AE;text-decoration:none;
+.mg-skip{position:absolute;z-index:5;left:50%;transform:translateX(-50%);bottom:1.2rem;white-space:nowrap;font-size:.8rem;letter-spacing:.2em;color:#C9C2AE;text-decoration:none;
   padding:.5rem .9rem;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(14,26,20,.4)}
 .mg-skip:hover{color:var(--gold)}
-@media (max-width:760px){ .mg-track{height:320vh} .mg-skip{bottom:5rem} }
+@media (max-width:760px){ .mg-track{height:400vh} .mg-skip{bottom:5rem} }
 @media (prefers-reduced-motion:reduce){ .mg-track{height:100vh;height:100svh} }
 
 /* 入场：只做功能性淡入；内容默认可见 */
@@ -386,6 +398,37 @@ footer .copy{border-top:1px solid rgba(255,255,255,.08);padding:1.1rem var(--gut
   .has-js .reveal{opacity:1;transform:none;transition:none}
   .role,.role img,.role p,.collage img,.dock,.btn,.frost,.rings-fig *{transition:none!important}
 }
+
+/* ===== 10-21 分节与字级 =====
+   浅色区一律同一张纸，不再靠换底色分节；深色区（文化／科技对开、实证、数码馆、报名）改为嵌在纸面上的圆角嵌板，
+   不再整片铺满、一刀切开。字级：章标题 ≤38px、正文 16px，对齐一般学校网站与小米／苹果首页的比例。 */
+body{font-size:16px}
+.chapter{padding:clamp(3.5rem,7vw,6rem) 0}
+/* 浅色区一律同一张纸，不再换色分节 */
+.together,.rings-sec,.voices,.campus,.journal,.subject{background:var(--paper)}
+.rings-fig{background:var(--paper)!important}
+/* 深色区改为嵌在纸面上的圆角嵌板 */
+.diptych{gap:clamp(.75rem,1.4vw,1.25rem);padding:0 var(--gut)}
+.dip{border-radius:clamp(18px,2vw,28px)}
+.dip-culture{background:var(--paper-2)}
+.proof-sec,.museum,.welcome{margin:0 var(--gut);border-radius:clamp(18px,2vw,28px);overflow:hidden}
+.welcome{margin-bottom:var(--gut)}
+footer{border-radius:0}
+/* 字级：标题收到 38px 以内，正文 16px */
+h2.big,.subject h2.big{font-size:clamp(1.55rem,2.5vw,2.35rem);line-height:1.3}
+.journal h2.big{font-size:clamp(1.55rem,2.5vw,2.35rem)!important}
+.lede{font-size:clamp(.95rem,.92rem + .15vw,1.03rem)}
+.dip h3{font-size:clamp(1.4rem,2.2vw,2rem)}
+.dip p,.ring-step p{font-size:.95rem}
+.ring-step h3{font-size:clamp(1.2rem,1.8vw,1.5rem)}
+.role .who b{font-size:clamp(1.2rem,1.8vw,1.6rem)}
+.stat b{font-size:clamp(2.2rem,4vw,3.4rem)}
+.voices blockquote{font-size:clamp(1.05rem,.95rem + .4vw,1.3rem)}
+.hall b{font-size:1.25rem}
+/* 校园卡：桌面改三栏网格，不再出现横向滚动条；手机保留左右滑但隐藏滚动条 */
+.campus .reel{scrollbar-width:none} .campus .reel::-webkit-scrollbar{display:none}
+/* 三栏网格时改横幅比例：直幅 4:5 在桌面上一张就占大半屏，还把人裁掉一半 */
+@media (min-width:861px){.campus .reel{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);grid-auto-columns:auto;overflow:visible;max-width:1240px;margin-left:auto;margin-right:auto} .campus .reel img{aspect-ratio:3/2}}
 </style>
 </head>
 <body>
@@ -421,7 +464,7 @@ footer .copy{border-top:1px solid rgba(255,255,255,.08);padding:1.1rem var(--gut
         <a href="organization/index.html">学校组织<small>三机构 · 各处室 · 这事该找谁</small></a>
         <a href="board/index.html">董事会<small>护校的人</small></a></div>
       <div><h4>Learning</h4>
-        <a href="academic/index.html">学术课程<small>五大领域 · 走班制 · 跨学科 PBL</small></a>
+        <a href="academic/index.html">学术课程<small>五大领域 · 跨学科自主选课 · PBL</small></a>
         <a href="cocurricular/index.html">联课活动<small>三十一个学会团体 · 文艺大汇演</small></a>
         <a href="facilities/index.html">硬体设施<small>泳池 · 茶文化中心 · 科技楼 · 宿舍</small></a>
         <a href="faculty/index.html">师资团队<small>与孩子同行的引路人</small></a></div>
@@ -446,17 +489,15 @@ footer .copy{border-top:1px solid rgba(255,255,255,.08);padding:1.1rem var(--gut
     <source src="assets/video/about-aerial-loop.mp4" type="video/mp4">
   </video>
   <div class="scrim"></div>
-  <canvas id="dust" aria-hidden="true"></canvas>
   <div class="content">
-    <p class="place">霹雳 · 曼绒 · 创校于 1936</p>
-    <h1>一束照耀<span class="light">九十载</span>的光，<br>为每个孩子迎领前路。</h1>
-    <p class="sub">灯塔不替船选择方向，只把航道照亮。九十年来，南华独中只做一件事——让每一位孩子被看见，并找到属于自己的光。</p>
+    <div class="verse">
+      <h1 aria-label="一束照耀九十载的光，为每个孩子迎领前路。">一束照耀<span class="light">九十载</span>的光<span class="vp">︐</span><br>为每个孩子迎领前路︒</h1><!-- 竖排标点用 U+FE10／FE12，「，」在 Noto Serif SC 竖排会挤进前一字 -->
+      <p class="colophon">霹雳曼绒　一九三六年创校<span class="seal">南华</span></p>
+    </div>
     <div class="cta">
-      <a class="frost frost-gold" href="admission/index.html">了解报读资讯</a>
-      <a class="frost frost-green" href="https://nanhwa.eschool.edu.my/newreg/" target="_blank" rel="noopener">线上报名</a>
+      <a class="frost" href="admission/index.html">了解报读资讯</a>
     </div>
   </div>
-  <a class="cue" href="#main">向下 · 认识南华的孩子</a>
 </div>
 
 <main id="main">
@@ -473,8 +514,8 @@ footer .copy{border-top:1px solid rgba(255,255,255,.08);padding:1.1rem var(--gut
       <div class="head">
         <div class="chap"><span class="kids" aria-hidden="true"><img src="assets/img/home/kid-girl.webp" alt="" width="70" height="200"><img src="assets/img/home/kid-boy.webp" alt="" width="64" height="200"></span><span class="no">壹</span><span class="v">主体</span></div>
         <div>
-          <h2 class="big" id="t1">孩子，<br>是这所学校的主语。</h2>
-          <p class="lede">课表、社团、宿舍、导师制度——在南华，一切都围绕同一个人设计：您的孩子。我们看见他的好奇，看见她的坚持，也看见那些还没被发现的天赋。</p>
+          <h2 class="big" id="t1">孩子眼里的光，<br>值得点亮、绽放。</h2>
+          <p class="lede">课表、社团、宿舍、导师制度——在南华，一切都围绕同一个人设计：您的孩子。我们看见他的好奇，看见她的坚持，也看见那些还没被发现的天赋。我们希望看见眼里有光、心中有爱、脚下有路的孩子。</p>
         </div>
       </div>
     </div>
@@ -516,7 +557,7 @@ footer .copy{border-top:1px solid rgba(255,255,255,.08);padding:1.1rem var(--gut
       <a class="role" href="about/index.html">
         <img src="assets/img/home/arch.webp" alt="南华独中校门牌楼与蓝天" loading="lazy">
         <div class="t"><div class="who"><b>学校</b><em>灯塔</em></div>
-          <p>是灯塔，是指引，也是「迎领」——迎接每一个孩子到来，再领他走向更远的地方。</p></div>
+          <p>灯塔不替船选择方向，只把航道照亮。学校是指引，也是「迎领」——迎接每一个孩子到来，再领他走向更远的地方。</p></div>
       </a>
     </div>
   </div>
@@ -540,7 +581,7 @@ footer .copy{border-top:1px solid rgba(255,255,255,.08);padding:1.1rem var(--gut
   <div class="dip dip-future reveal">
     <span class="kick">远见</span>
     <h3>未来科技与人工智能，<br>是绘制蓝图的笔。</h3>
-    <p>AI 创客空间、Python 编程、机器人与无人机课程；「理解科技、运用科技、反思科技」的 AI 教学与应用计划。2025 年，南华学生夺下全国中学生 AI 机器人竞赛总决赛冠军。</p>
+    <p>AI 创客空间、Python 编程、机器人与无人机课程；「理解科技、运用科技、反思科技」的 AI 教学与应用计划。2025 年，南华学生夺下全国中学生 AI 机器人竞赛总决赛冠军。技术可以扩大人的能力，却不能代替人的价值判断。</p>
     <div class="pics">
       <img src="assets/img/home/robotics.webp" alt="学生在 AI 创客空间组装机器人" loading="lazy">
       <div class="stack">
@@ -559,7 +600,7 @@ footer .copy{border-top:1px solid rgba(255,255,255,.08);padding:1.1rem var(--gut
       <div class="chap"><span class="kids" aria-hidden="true"><img src="assets/img/home/kid-girl.webp" alt="" width="70" height="200"></span><span class="no">肆</span><span class="v">年轮</span></div>
       <div>
         <h2 class="big" id="t4">领导力，像树的年轮<br>一圈一圈长出来。</h2>
-        <p class="lede">我们的愿景是培养「迎领」21 世纪中华文化素养领袖人才。领导力不是少数人的头衔，而是从认识自己开始，一圈一圈向外长成的能力。</p>
+        <p class="lede">我们的愿景是培养「迎领」21 世纪中华文化素养领袖人才。这一愿景化为贯穿六年的三个办学方针：学会读书、学会做人、学会领导——读书使人明理，做人使人有根，领导让知识、品格与行动相互连结。领导力不是少数人的头衔，而是从认识自己开始，一圈一圈向外长成的能力。</p>
       </div>
     </div>
     <div class="rings-grid">
@@ -583,12 +624,12 @@ footer .copy{border-top:1px solid rgba(255,255,255,.08);padding:1.1rem var(--gut
       <div class="ring-steps">
         <article class="ring-step" data-i="1">
           <h3>个人领导力</h3>
-          <p>领导别人之前，先认识自己。DISC 人格特质与霍兰德职业兴趣测评，帮助孩子看清自己的长处；《南华漫游》成长护照以七种「漫游」印记，记下每一次学习、服务与荣誉的足迹。</p>
+          <p>领导别人之前，先认识自己。DISC 人格特质与霍兰德职业兴趣测评，帮助孩子看清自己的长处；《南华漫游》成长护照以七种「漫游」印记，记下每一次学习、服务与荣誉的足迹。学生自己经营《诚实商店》与《馨品银行》——即使无人看见，也知道什么是自己该做的事。</p>
           <div class="proof"><img src="assets/img/home/tablets.webp" alt="学生专注使用平板进行学习" loading="lazy"></div>
         </article>
         <article class="ring-step" data-i="2">
           <h3>团队领导力</h3>
-          <p>三十一个学会团体、学长团、宿舍自治委员会——从班级到社团，从社团到全校性活动，学生在岗位历练中学会统筹与协调，也学会谦卑。</p>
+          <p>三十一个学会团体、学长团、宿舍自治委员会——从班级到社团，从社团到全校性活动，学生在岗位历练中学会统筹与协调，也学会谦卑。家长日由学生主导：从联系家长到上台汇报，孩子自己策划；班导退后一步，孩子才有机会向前一步。</p>
           <div class="proof"><img src="assets/img/home/expo.webp" alt="成果展上学生分组讲解作品" loading="lazy"></div>
         </article>
         <article class="ring-step" data-i="3">
@@ -623,6 +664,7 @@ footer .copy{border-top:1px solid rgba(255,255,255,.08);padding:1.1rem var(--gut
     <div class="stats reveal">
       <div class="stat"><b>1936</b><span>曼绒先贤创校，<br>迈向九十周年</span></div>
       <div class="stat"><b>18</b><span>五大素养领域<br>校本课程</span></div>
+      <div class="stat"><b>60</b><span>2025 年高一<br>60 人，60 张课表</span></div>
       <div class="stat"><b>31</b><span>学会团体<br>与培训队</span></div>
       <div class="stat"><b>5<sup>星</sup></b><span>私立学校素质标准<br>SKIPS 蝉联五星</span></div>
     </div>
@@ -631,7 +673,7 @@ footer .copy{border-top:1px solid rgba(255,255,255,.08);padding:1.1rem var(--gut
         <figcaption>2025 全国中学生 AI 机器人竞赛 · 总决赛冠军</figcaption></figure>
       <ol class="reveal">
         <li><time>2025</time><div><b>全国中学生 AI 机器人竞赛 冠军与殿军</b><span>台湾 TIRT 国际赛代表马来西亚出征，获亚军与团体总冠军</span></div></li>
-        <li><time>2025</time><div><b>霹雳州私立学校领导力特别教育奖 州际冠军</b><span>校长陳麗冰博士获颁</span></div></li>
+        <li><time>2025</time><div><b>霹雳州教育表扬大会 · 私立学校领导力特别奖 全州冠军</b><span>校长陳麗冰博士获颁</span></div></li>
         <li><time>2024–25</time><div><b>国际艺术节金奖</b><span>连续两年</span></div></li>
         <li><time>2022</time><div><b>南洋卓越教育奖 · 杰出教育机构奖</b><span>董事长颜登逸同届获「年度教育业者奖」</span></div></li>
         <li><time>2013–16</time><div><b>SKIPS 私立学校素质标准 五星级</b><span>两年内从四星跃升五星，并再度蝉联</span></div></li>
@@ -704,7 +746,7 @@ footer .copy{border-top:1px solid rgba(255,255,255,.08);padding:1.1rem var(--gut
   <div class="wrap pair">
     <blockquote class="reveal">发挥天赋、发掘热忱、认识自己的前提是允许犯错，错误是最好的老师。学校让孩子在试错文化中推开一扇扇通往无垠而精彩的世界。
       <cite>南华独立中学董事长　颜登逸先生</cite></blockquote>
-    <blockquote class="reveal">让花成花，让树成树，让教育成就每一个独特的灵魂。
+    <blockquote class="reveal">让花成花，让树成树。学校不能太早替孩子下结论，而应给他时间与空间，让他在尝试中发现自己。
       <cite>南华独立中学校长　陳麗冰博士</cite></blockquote>
   </div>
 </section>
@@ -776,38 +818,29 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const vid = document.getElementById('dawn');
 if (reduced) { vid.removeAttribute('autoplay'); vid.pause(); }
 
-// 金色微尘（仅 hero 可见时绘制）
-if (!reduced) (function(){
-  const c = document.getElementById('dust'), ctx = c.getContext('2d');
-  let w, h, ps, on = true;
-  function reset(){
-    w = c.width = c.clientWidth; h = c.height = c.clientHeight;
-    ps = Array.from({length:24}, () => ({x:Math.random()*w, y:Math.random()*h, r:.6+Math.random()*1.5,
-      vy:.08+Math.random()*.22, vx:(Math.random()-.5)*.06, a:.18+Math.random()*.35, ph:Math.random()*Math.PI*2, f:.4+Math.random()*.8, gold:Math.random()<.7}));
-  }
-  reset(); addEventListener('resize', reset);
-  new IntersectionObserver(e => { on = e[0].isIntersecting; if (on) requestAnimationFrame(tick); }).observe(c);
-  function tick(t){
-    if (!on) return;
-    ctx.clearRect(0,0,w,h);
-    for (const p of ps){
-      p.y -= p.vy; p.x += p.vx; if (p.y < -5){ p.y = h + 5; p.x = Math.random()*w; }
-      const a = p.a * (.55 + .45*Math.sin(t/1000*p.f + p.ph));
-      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-      ctx.fillStyle = p.gold ? `rgba(240,200,110,${a})` : `rgba(255,250,235,${a})`; ctx.fill();
-    }
-    requestAnimationFrame(tick);
-  }
-})();
-
 // 顶栏：离开 hero 后转实底
 const bar = document.getElementById('topbar'), hero = document.getElementById('hero'), dock = document.getElementById('dock');
-new IntersectionObserver(([e]) => { bar.classList.toggle('solid', !e.isIntersecting); }, {rootMargin:'-72px 0px 0px 0px'}).observe(hero);
+let pastHero = false, atEnd = false;
+// 首屏渐隐：滑过 0.6 屏就完全透明（之后隐藏、停播影片），顶栏同时转实底
+let heroOut = false;
+const fadeHero = () => { const k = Math.min(1, scrollY / (innerHeight * .6)); hero.style.opacity = (1 - k).toFixed(3);
+  const out = k >= 1; hero.classList.toggle('gone', out); bar.classList.toggle('solid', k > .55);
+  if (out !== heroOut) { heroOut = out; if (!reduced) out ? vid.pause() : vid.play().catch(() => {}); }
+  pastHero = out; syncDock(); };
+addEventListener('scroll', fadeHero, {passive:true});
+// 顶栏压在深色区块上时换深色磨砂（动画轨、实证、数码馆、报名、页脚）
+const darkEls = [...document.querySelectorAll('#mgTrack,.proof-sec,.museum,.welcome,footer')];
+let darkTick = false;
+const syncDark = () => { darkTick = false; const y = bar.offsetHeight / 2;
+  bar.classList.toggle('dark', darkEls.some(el => { const r = el.getBoundingClientRect();
+    if (!(r.top <= y && r.bottom > y)) return false;
+    return el.id !== 'mgTrack' || !window.mgHome || window.mgHome.now() < 29.2; })); };   // 动画最后天亮成纸面，顶栏跟着回浅色
+addEventListener('scroll', () => { if (!darkTick) { darkTick = true; requestAnimationFrame(syncDark); } }, {passive:true}); syncDark();
+setInterval(syncDark, 400);   // ponytail: 动画带惯性，停止滚动后画面仍在走，低频补一次；够用，不另挂动画回调
 
 // 手机报名条：hero 之后出现，到「迎领」章与页脚时让位
-let pastHero = false, atEnd = false;
 const syncDock = () => dock.classList.toggle('show', pastHero && !atEnd);
-new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting && e.boundingClientRect.top < 0; syncDock(); }).observe(hero);
+fadeHero();
 const ends = new Set();
 const endIO = new IntersectionObserver(es => { es.forEach(x => x.isIntersecting ? ends.add(x.target) : ends.delete(x.target)); atEnd = ends.size > 0; syncDock(); });
 endIO.observe(document.getElementById('welcome')); endIO.observe(document.getElementById('mgTrack'));
@@ -827,8 +860,8 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   const track = document.getElementById('mgTrack');
   const io2 = new IntersectionObserver(([e]) => {
     if (!e.isIntersecting) return; io2.disconnect();
-    const s = document.createElement('script'); s.src = 'motion/mg.js';
-    s.onload = () => NanhwaMG.mount(document.getElementById('mgStage'), {mode:'scroll', base:'motion/', crest:'assets/img/crest-color.png', track});
+    const s = document.createElement('script'); s.src = 'motion/mg.js?v=20261021d';
+    s.onload = () => { window.mgHome = NanhwaMG.mount(document.getElementById('mgStage'), {mode:'scroll', base:'motion/', crest:'assets/img/crest-color.png', track, t0:1.6, lead:-.55, topInset:document.getElementById('topbar').offsetHeight}); };
     document.body.appendChild(s);
   }, {rootMargin:'100% 0px'});
   io2.observe(track);
