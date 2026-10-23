@@ -137,6 +137,7 @@ section { max-width:1080px; margin:0 auto; padding:0 clamp(1.2rem,4vw,3rem); }
 .topbar a.back:active { transform:scale(.97); }
 @media (prefers-reduced-motion:reduce){ .topbar a.back::after { transition:none; } }
 </style>
+<link rel="stylesheet" href="../assets/sitenav.css">
 </head>
 <body>
 
@@ -145,6 +146,15 @@ section { max-width:1080px; margin:0 auto; padding:0 clamp(1.2rem,4vw,3rem); }
   <b>南华独立中学</b>
   <a class="back" href="../index.html">← 回到首页</a>
 </div>
+<!--sitenav:start-->
+<nav class="sitenav light" aria-label="全站导览">
+  <details><summary>学校介绍</summary><div class="sn-panel"><a href="../about/index.html">认识南华<small>校训 · 一训三风 · 校歌与校旗</small></a><a href="../about/index.html#policy">愿景与办学方针<small>学会读书 · 学会做人 · 学会领导</small></a><a href="../history/index.html">南华春秋<small>一九三六年创校至今</small></a><a href="../about/index.html#honors">被以殊荣<small>学校获颁的奖项</small></a><a href="../facilities/index.html">硬体设施<small>校园与学习空间</small></a><a href="../museum/index.html">南华数码馆<small>校史 · 新闻馆 · 校刊</small></a><a href="../90/index.html">九十周年校庆<small>1936 — 2026</small></a></div></details>
+  <details class="on"><summary>学校组织</summary><div class="sn-panel"><a href="../organization/index.html" aria-current="page">组织架构<small>三机构 · 校长室 · 各处室</small></a><a href="../board/index.html">董事会<small>现任董事与历届董事长</small></a><a href="../faculty/index.html">师资团队<small>全体教师</small></a><a href="../organization/index.html#who">这件事该找谁<small>常见事项与对应处室</small></a></div></details>
+  <details><summary>学校资讯</summary><div class="sn-panel"><a href="../notices/index.html">最新通告<small>各处室发布的通告</small></a><a href="../notices/index.html#calendar">行事历<small>按月查看学校重要日程</small></a><a href="../news/index.html">校园新闻<small>按年份查阅校园纪事</small></a><a href="../downloads/index.html">下载区<small>行事历 · 表格 · 指南</small></a></div></details>
+  <details><summary>学生资讯</summary><div class="sn-panel"><a href="../academic/index.html">学术课程<small>五大素养领域 · 校本课程 · 选修课程</small></a><a href="../cocurricular/index.html">联课活动<small>31 个学会团体</small></a><a href="../admission/index.html#pathway">升学情报<small>升学途径 · 建教合作院校</small></a><a href="../facilities/index.html#dorm">宿舍生活<small>学生宿舍与舍务</small></a></div></details>
+  <details><summary>招生报名</summary><div class="sn-panel"><a href="../admission/index.html">招生专区<small>对象 · 流程 · 重要日期</small></a><a href="../admission/index.html#aid">奖助学金<small>奖助学金与贷书计划</small></a><a href="https://nanhwa.eschool.edu.my/newreg/" target="_blank" rel="noopener">线上报名<small>eSchool 新生注册</small></a><a href="../contact/index.html">联系我们<small>电话 · WhatsApp · 邮箱 · 校址</small></a></div></details>
+</nav>
+<!--sitenav:end-->
 
 <header class="lead">
   <p class="kicker">学校组织 · ORGANIZATION</p>
@@ -398,7 +408,7 @@ section { max-width:1080px; margin:0 auto; padding:0 clamp(1.2rem,4vw,3rem); }
 
 <section>
   <div class="sec-head">
-    <h2>六、这件事该找谁</h2>
+    <h2 id="who">六、这件事该找谁</h2>
     <p>家长与新生最常问的十件事，对应的处室与第一联系人。</p>
   </div>
   <table class="lookup">
@@ -440,5 +450,6 @@ document.querySelectorAll('.card').forEach((c,i)=>{ c.style.transitionDelay=(i%6
 io.observe(document.getElementById('subjects'));
 document.querySelectorAll('#subjects .subj').forEach((s,i)=>{ s.style.transitionDelay=(i*.06)+'s'; });
 </script>
+<script src="../assets/sitenav.js" defer></script>
 </body>
 </html>

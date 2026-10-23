@@ -460,7 +460,10 @@ h2.big,.subject h2.big{font-size:clamp(1.55rem,2.5vw,2.35rem);line-height:1.3}
 .cal li.past{color:var(--muted)} .cal li.past time{color:var(--muted)}
 .cal li span small{display:block;color:var(--muted);font-size:.82rem}
 @media (max-width:860px){ .notice .cols{grid-template-columns:1fr} .board summary{grid-template-columns:5.6rem 1fr;gap:.2rem .6rem} }
+.notice .more{margin-top:1.6rem;display:flex;flex-wrap:wrap;gap:.6rem 1.6rem}
+.notice .more a{color:var(--zhu);font-weight:700;text-decoration:none}
 </style>
+<link rel="stylesheet" href="assets/sitenav.css">
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>
@@ -471,11 +474,13 @@ h2.big,.subject h2.big{font-size:clamp(1.55rem,2.5vw,2.35rem);line-height:1.3}
     <span><b>南华独立中学</b><small>NAN HWA HIGH SCHOOL</small></span>
   </a>
   <nav class="mainnav" aria-label="主导航">
-    <a class="link" href="about/index.html">认识南华</a>
-    <a class="link" href="academic/index.html">学术课程</a>
-    <a class="link" href="cocurricular/index.html">联课活动</a>
-    <a class="link" href="facilities/index.html">硬体设施</a>
-    <a class="link" href="museum/index.html">南华数码馆</a>
+    <!--mainnav:start-->
+    <details class="dd"><summary>学校介绍</summary><div class="sn-panel"><a href="about/index.html">认识南华<small>校训 · 一训三风 · 校歌与校旗</small></a><a href="about/index.html#policy">愿景与办学方针<small>学会读书 · 学会做人 · 学会领导</small></a><a href="history/index.html">南华春秋<small>一九三六年创校至今</small></a><a href="about/index.html#honors">被以殊荣<small>学校获颁的奖项</small></a><a href="facilities/index.html">硬体设施<small>校园与学习空间</small></a><a href="museum/index.html">南华数码馆<small>校史 · 新闻馆 · 校刊</small></a><a href="90/index.html">九十周年校庆<small>1936 — 2026</small></a></div></details>
+    <details class="dd"><summary>学校组织</summary><div class="sn-panel"><a href="organization/index.html">组织架构<small>三机构 · 校长室 · 各处室</small></a><a href="board/index.html">董事会<small>现任董事与历届董事长</small></a><a href="faculty/index.html">师资团队<small>全体教师</small></a><a href="organization/index.html#who">这件事该找谁<small>常见事项与对应处室</small></a></div></details>
+    <details class="dd"><summary>学校资讯</summary><div class="sn-panel"><a href="notices/index.html">最新通告<small>各处室发布的通告</small></a><a href="notices/index.html#calendar">行事历<small>按月查看学校重要日程</small></a><a href="news/index.html">校园新闻<small>按年份查阅校园纪事</small></a><a href="downloads/index.html">下载区<small>行事历 · 表格 · 指南</small></a></div></details>
+    <details class="dd"><summary>学生资讯</summary><div class="sn-panel"><a href="academic/index.html">学术课程<small>五大素养领域 · 校本课程 · 选修课程</small></a><a href="cocurricular/index.html">联课活动<small>31 个学会团体</small></a><a href="admission/index.html#pathway">升学情报<small>升学途径 · 建教合作院校</small></a><a href="facilities/index.html#dorm">宿舍生活<small>学生宿舍与舍务</small></a></div></details>
+    <details class="dd"><summary>招生报名</summary><div class="sn-panel"><a href="admission/index.html">招生专区<small>对象 · 流程 · 重要日期</small></a><a href="admission/index.html#aid">奖助学金<small>奖助学金与贷书计划</small></a><a href="https://nanhwa.eschool.edu.my/newreg/" target="_blank" rel="noopener">线上报名<small>eSchool 新生注册</small></a><a href="contact/index.html">联系我们<small>电话 · WhatsApp · 邮箱 · 校址</small></a></div></details>
+    <!--mainnav:end-->
     <a class="logo90" href="90/index.html" title="1936 · 九十周年校庆专页"><img src="assets/img/logo90.png" alt="90 周年徽标 · 九十年风雨兼程，育见百年"></a>
     <a class="cta" href="admission/index.html">招生报名</a>
     <button class="menu-btn" type="button" id="menuOpen" aria-haspopup="dialog" aria-controls="menu"><i></i><span>目录</span></button>
@@ -490,24 +495,33 @@ h2.big,.subject h2.big{font-size:clamp(1.55rem,2.5vw,2.35rem);line-height:1.3}
     </div>
     <div class="menu-grid">
       <div><h4>About</h4>
-        <a href="about/index.html">认识南华<small>校训 · 一训三风 · 愿景与殊荣</small></a>
-        <a href="history/index.html">南华春秋<small>一部从胶林里写起的校史</small></a>
-        <a href="organization/index.html">学校组织<small>三机构 · 各处室 · 这事该找谁</small></a>
-        <a href="board/index.html">董事会<small>护校的人</small></a></div>
-      <div><h4>Learning</h4>
-        <a href="academic/index.html">学术课程<small>五大领域 · 跨学科自主选课 · PBL</small></a>
-        <a href="cocurricular/index.html">联课活动<small>三十一个学会团体 · 文艺大汇演</small></a>
-        <a href="facilities/index.html">硬体设施<small>泳池 · 茶文化中心 · 科技楼 · 宿舍</small></a>
-        <a href="faculty/index.html">师资团队<small>与孩子同行的引路人</small></a></div>
-      <div><h4>Archive</h4>
-        <a href="museum/index.html">南华数码馆<small>校史 · 九十周年 · 新闻馆 · 校刊</small></a>
-        <a href="news/index.html">每日南华<small>1,251 篇校园纪事，仍在继续</small></a>
+        <a href="about/index.html">认识南华<small>校训 · 一训三风 · 校歌与校旗</small></a>
+        <a href="about/index.html#policy">愿景与办学方针<small>学会读书 · 学会做人 · 学会领导</small></a>
+        <a href="history/index.html">南华春秋<small>一九三六年创校至今</small></a>
+        <a href="about/index.html#honors">被以殊荣<small>学校获颁的奖项</small></a>
+        <a href="facilities/index.html">硬体设施<small>校园与学习空间</small></a>
+        <a href="museum/index.html">南华数码馆<small>校史 · 新闻馆 · 校刊</small></a>
         <a href="90/index.html">九十周年校庆<small>1936 — 2026</small></a></div>
+      <div><h4>Organization</h4>
+        <a href="organization/index.html">组织架构<small>三机构 · 校长室 · 各处室</small></a>
+        <a href="board/index.html">董事会<small>现任董事与历届董事长</small></a>
+        <a href="faculty/index.html">师资团队<small>全体教师</small></a>
+        <a href="organization/index.html#who">这件事该找谁<small>常见事项与对应处室</small></a></div>
+      <div><h4>News</h4>
+        <a href="notices/index.html">最新通告<small>各处室发布的通告</small></a>
+        <a href="notices/index.html#calendar">行事历<small>按月查看学校重要日程</small></a>
+        <a href="news/index.html">校园新闻<small>按年份查阅校园纪事</small></a>
+        <a href="downloads/index.html">下载区<small>行事历 · 表格 · 指南</small></a></div>
+      <div><h4>Students</h4>
+        <a href="academic/index.html">学术课程<small>五大素养领域 · 校本课程 · 选修课程</small></a>
+        <a href="cocurricular/index.html">联课活动<small>31 个学会团体</small></a>
+        <a href="admission/index.html#pathway">升学情报<small>升学途径 · 建教合作院校</small></a>
+        <a href="facilities/index.html#dorm">宿舍生活<small>学生宿舍与舍务</small></a></div>
       <div><h4>Admission</h4>
-        <a href="admission/index.html">招生专区<small>对象 · 流程 · 日期 · 奖助学金</small></a>
+        <a href="admission/index.html">招生专区<small>对象 · 流程 · 重要日期</small></a>
+        <a href="admission/index.html#aid">奖助学金<small>奖助学金与贷书计划</small></a>
         <a href="https://nanhwa.eschool.edu.my/newreg/" target="_blank" rel="noopener">线上报名<small>eSchool 新生注册</small></a>
-        <a href="#notice">家长布告栏<small>最新动态 · 本月行事历</small></a>
-        <a href="#contact">联系我们<small>电话 · WhatsApp · 邮箱 · 校址</small></a></div>
+        <a href="contact/index.html">联系我们<small>电话 · WhatsApp · 邮箱 · 校址</small></a></div>
     </div>
     <div class="menu-foot">
       <a class="btn btn-gold" href="https://wa.me/601164646267?text=%E6%82%A8%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E9%A2%84%E7%BA%A6%E5%8F%82%E8%A7%82%E5%8D%97%E5%8D%8E%E7%8B%AC%E4%B8%AD%E3%80%82" target="_blank" rel="noopener">WhatsApp 预约参观</a>
@@ -533,6 +547,22 @@ h2.big,.subject h2.big{font-size:clamp(1.55rem,2.5vw,2.35rem);line-height:1.3}
 </div>
 
 <main id="main">
+
+<!-- 家长布告栏 -->
+<section class="chapter notice" id="notice" aria-labelledby="tn">
+  <div class="wrap">
+    <div class="reel-hint reveal">
+      <div><h2 class="big" id="tn" style="font-size:clamp(1.7rem,3.6vw,2.8rem)">家长布告栏</h2>
+        <p class="lede">学校通告、董总统考日程、独中教育动态，以及本月校历，都在这里。</p></div>
+    </div>
+    <div class="cols reveal">
+      <div class="board"><h3>最新动态</h3><div id="noticeList"><p class="empty">载入中……</p></div></div>
+      <div class="cal"><h3 id="calTitle">本月行事历</h3><div id="calList"><p class="empty">载入中……</p></div></div>
+    </div>
+    <p class="more reveal"><a href="notices/index.html">全部通告 →</a><a href="notices/index.html#calendar">全年行事历 →</a><a href="downloads/index.html">下载区 →</a></p>
+  </div>
+</section>
+
 
 <!-- 动态图形《迎领之路》：随滚动播放；源码在 motion/，同片另有 MP4 在 motion/video/ -->
 <section class="mg-track" id="mgTrack" aria-label="动态图形《迎领之路》">
@@ -656,12 +686,12 @@ h2.big,.subject h2.big{font-size:clamp(1.55rem,2.5vw,2.35rem);line-height:1.3}
       <div class="ring-steps">
         <article class="ring-step" data-i="1">
           <h3>个人领导力</h3>
-          <p>领导别人之前，先认识自己。DISC 人格特质与霍兰德职业兴趣测评，帮助孩子看清自己的长处；《南华漫游》成长护照以七种「漫游」印记，记下每一次学习、服务与荣誉的足迹。学生自己经营《诚实商店》与《馨品银行》——即使无人看见，也知道什么是自己该做的事。</p>
+          <p>领导别人之前，先认识自己。DISC 人格特质与霍兰德职业兴趣测评，帮助孩子看清自己的长处；开放性质性评量与学生成长记录，让分数不易呈现的学习历程也被看见。学生自己经营《诚实商店》与《馨品银行》——即使无人看见，也知道什么是自己该做的事。</p>
           <div class="proof"><img src="assets/img/home/honesty-shop.webp" alt="学生自主经营的《诚实商店》" loading="lazy"></div>
         </article>
         <article class="ring-step" data-i="2">
           <h3>团队领导力</h3>
-          <p>三十一个学会团体、学长团、宿舍自治委员会——从班级到社团，从社团到全校性活动，学生在岗位历练中学会统筹与协调，也学会谦卑。家长日由学生主导：从联系家长到上台汇报，孩子自己策划；班导退后一步，孩子才有机会向前一步。</p>
+          <p>31 个学会团体、学长团、宿舍自治委员会——从班级到社团，从社团到全校性活动，学生在岗位历练中学会统筹与协调，也学会谦卑。家长日由学生主导：从联系家长到上台汇报，孩子自己策划；班导退后一步，孩子才有机会向前一步。</p>
           <div class="proof"><img src="assets/img/home/expo.webp" alt="成果展上学生分组讲解作品" loading="lazy"></div>
         </article>
         <article class="ring-step" data-i="3">
@@ -756,20 +786,6 @@ h2.big,.subject h2.big{font-size:clamp(1.55rem,2.5vw,2.35rem);line-height:1.3}
       <div class="hall soon"><i>第四厅</i><b>校刊书架</b><span>1962 年起的历届校刊，数码化整理中</span><em>筹备中</em></div>
     </div>
     <div class="enter reveal"><a class="btn btn-gold" href="museum/index.html">步入南华数码馆 <span class="arrow">→</span></a></div>
-  </div>
-</section>
-
-<!-- 家长布告栏 -->
-<section class="chapter notice" id="notice" aria-labelledby="tn">
-  <div class="wrap">
-    <div class="reel-hint reveal">
-      <div><h2 class="big" id="tn" style="font-size:clamp(1.7rem,3.6vw,2.8rem)">家长布告栏</h2>
-        <p class="lede">学校通告、董总统考日程、独中教育动态，以及本月校历，都在这里。</p></div>
-    </div>
-    <div class="cols reveal">
-      <div class="board"><h3>最新动态</h3><div id="noticeList"><p class="empty">载入中……</p></div></div>
-      <div class="cal"><h3 id="calTitle">本月行事历</h3><div id="calList"><p class="empty">载入中……</p></div></div>
-    </div>
   </div>
 </section>
 
@@ -926,69 +942,7 @@ const ringIO = new IntersectionObserver(es => es.forEach(x => {
 }), {rootMargin:'-45% 0px -45% 0px'});
 document.querySelectorAll('.ring-step').forEach(s => ringIO.observe(s));
 </script>
-<script>
-// 家长布告栏：两份 Google 表格「发布到网络」CSV 网址，建表后填进来（步骤见 data/notice/README.md）
-// 网址留空＝显示「暂无」；本机加 ?sample 看示例数据
-const SAMPLE = location.search.includes('sample');
-const NOTICE_CSV = SAMPLE ? 'data/notice/sample-notice.csv' : '';
-// ponytail: 行事历先读站内 assets/notice/calendar.csv（教务处 2026 行事历摘家长相关项），表格建好后换成「行事历」分页的 CSV 网址
-const CAL_CSV = SAMPLE ? 'data/notice/sample-calendar.csv' : 'assets/notice/calendar.csv';
-// ponytail: 只处理 RFC4180 引号/逗号/换行，够 Google 表格导出用
-function parseCSV(t){
-  const rows=[]; let row=[], f='', q=false;
-  for(let i=0;i<t.length;i++){
-    const c=t[i];
-    if(q){ if(c=='"'){ if(t[i+1]=='"'){f+='"';i++} else q=false } else f+=c }
-    else if(c=='"') q=true;
-    else if(c==','){ row.push(f); f='' }
-    else if(c=='\n'||c=='\r'){ if(c=='\r'&&t[i+1]=='\n') i++; row.push(f); rows.push(row); row=[]; f='' }
-    else f+=c;
-  }
-  if(f||row.length){ row.push(f); rows.push(row) }
-  return rows.filter(r=>r.some(x=>x.trim()));
-}
-// 第一栏日期统一成 yyyy-mm-dd（表格显示格式若是 2026/10/5 也照收）
-const normDate=d=>{ const m=(d||'').match(/(\d{4})\D(\d{1,2})\D(\d{1,2})/); return m?m[1]+'-'+m[2].padStart(2,'0')+'-'+m[3].padStart(2,'0'):'' };
-async function loadCSV(u){ if(!u) return []; const r=await fetch(u,{cache:'no-store'}); if(!r.ok) throw r.status; return parseCSV(await r.text()).slice(1).map(r=>(r[0]=normDate(r[0]),r)) }
-const el=(tag,cls,txt)=>{ const e=document.createElement(tag); if(cls) e.className=cls; if(txt!=null) e.textContent=txt; return e };
-const driveIds=s=>[...(s||'').matchAll(/(?:id=|\/d\/)([\w-]{20,})/g)].map(m=>m[1]);
-const fmtDate=d=>d.replace(/-/g,' · ');
-function link(href,txt){ if(!/^https:\/\//.test(href)) return null; const a=el('a',null,txt); a.href=href; a.target='_blank'; a.rel='noopener'; return a }
-// 布告栏列：日期 yyyy-mm-dd, 部门, 标题, 内容, 照片, 影片, 相关链接
-loadCSV(NOTICE_CSV).then(rows=>{
-  const box=document.getElementById('noticeList');
-  rows=rows.filter(r=>r[0]&&r[2]).sort((a,b)=>b[0].localeCompare(a[0])).slice(0,6);
-  if(!rows.length){ box.firstChild.textContent='暂无公告。'; return }
-  box.replaceChildren(...rows.map(([date,dept,title,body,pics,vids,url],n)=>{
-    const d=el('details'); if(n==0) d.open=true;
-    const s=el('summary'); const t=el('time',null,fmtDate(date)); t.dateTime=date;
-    s.append(t,el('b',null,title)); if(dept) s.append(el('em',null,dept)); d.append(s);
-    const b=el('div','body',body||'');
-    const ids=driveIds(pics);
-    if(ids.length){ const g=el('div','pics'); ids.forEach(id=>{ const im=el('img'); im.src='https://drive.google.com/thumbnail?id='+id+'&sz=w800'; im.alt=title; im.loading='lazy'; g.append(im) }); b.append(g) }
-    const p=el('p'); p.style.marginTop='.8rem';
-    driveIds(vids).forEach(id=>p.append(link('https://drive.google.com/file/d/'+id+'/view','观看影片 →')));
-    (url||'').split(/[\s,]+/).forEach(u=>{ const a=link(u,'相关链接 →'); if(a) p.append(a) });
-    if(p.childNodes.length) b.append(p);
-    d.append(b); return d;
-  }));
-}).catch(()=>{ document.getElementById('noticeList').firstChild.textContent='布告暂时无法载入，请稍后再看。' });
-// 行事历列：日期 yyyy-mm-dd, 活动, 备注；只显示本月
-loadCSV(CAL_CSV).then(rows=>{
-  const box=document.getElementById('calList'), now=new Date();
-  const ym=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0'), today=ym+'-'+String(now.getDate()).padStart(2,'0');
-  document.getElementById('calTitle').textContent=(now.getMonth()+1)+' 月行事历';
-  rows=rows.filter(r=>(r[0]||'').startsWith(ym)&&r[1]).sort((a,b)=>a[0].localeCompare(b[0]));
-  if(!rows.length){ box.firstChild.textContent='本月行事历整理中。'; return }
-  const ol=el('ol');
-  rows.forEach(([date,what,note])=>{
-    const m=(note||'').match(/至 (\d+) 月 (\d+) 日/), end=m?ym.slice(0,5)+m[1].padStart(2,'0')+'-'+m[2].padStart(2,'0'):date;
-    const li=el('li',end<today?'past':''); const t=el('time',null,String(Number(date.slice(8,10)))); t.dateTime=date;
-    const sp=el('span',null,what); if(note) sp.append(el('small',null,note));
-    li.append(t,sp); ol.append(li);
-  });
-  box.replaceChildren(ol);
-}).catch(()=>{ document.getElementById('calList').firstChild.textContent='行事历暂时无法载入。' });
-</script>
+<script src="assets/notice.js"></script>
+<script src="assets/sitenav.js" defer></script>
 </body>
 </html>

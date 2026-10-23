@@ -1,0 +1,45 @@
+/* 全站统一导览（10-24，校长清单 A2/A3/C1）：五大栏＋回首页。
+   内容由 scripts/build_nav.py 生成，别手改各页的 <!--sitenav--> 区块。
+   内页胶囊沿用原 .family-nav 的玻璃样式；首页只借用下拉面板。 */
+.sitenav { position:relative; z-index:30; display:flex; flex-wrap:wrap; gap:.5rem; padding:0 clamp(1.2rem,4vw,3rem) 1rem; font-size:.82rem; letter-spacing:.05em; }
+.sitenav > a, .sitenav > details > summary {
+  display:inline-flex; align-items:center; gap:.3rem; min-height:36px; padding:.35rem 1rem; border-radius:999px; cursor:pointer; list-style:none; white-space:nowrap;
+  color:#F4EBD6; background:rgba(14,22,16,.42); border:1px solid rgba(255,255,255,.35); text-shadow:0 1px 2px rgba(0,0,0,.45);
+  -webkit-backdrop-filter:blur(14px) saturate(1.4); backdrop-filter:blur(14px) saturate(1.4); box-shadow:inset 0 1px 0 rgba(255,255,255,.18);
+  transition:background .2s,border-color .2s; text-decoration:none; }
+.sitenav > details > summary::-webkit-details-marker { display:none; }
+.sitenav > details > summary::after { content:""; width:.38em; height:.38em; border-right:1.5px solid currentColor; border-bottom:1.5px solid currentColor; transform:translateY(-.12em) rotate(45deg); opacity:.8; }
+.sitenav > details[open] > summary::after { transform:translateY(.1em) rotate(-135deg); }
+.sitenav > a:hover, .sitenav > details > summary:hover { background:rgba(14,22,16,.6); border-color:rgba(255,255,255,.7); }
+.sitenav .on > summary, .sitenav > a.on { background:#F4EFE4; border-color:#F4EFE4; color:#17201B; text-shadow:none; font-weight:700; }
+.sitenav > a.home { padding-left:.8rem; }
+/* 浅底页（董事会／组织／师资／通告／下载／联系） */
+.sitenav.light > a, .sitenav.light > details > summary { color:#2B2A26; background:rgba(255,255,255,.55); border-color:rgba(184,146,61,.32); text-shadow:none; box-shadow:inset 0 1px 0 rgba(255,255,255,.8); }
+.sitenav.light > a:hover, .sitenav.light > details > summary:hover { background:#fff; border-color:rgba(184,146,61,.7); }
+.sitenav.light .on > summary, .sitenav.light > a.on { background:#1F3A2B; border-color:#1F3A2B; color:#F4EFE4; }
+/* 黑底页（九十周年） */
+.sitenav.night > a, .sitenav.night > details > summary { color:#F1ECE2; background:rgba(255,255,255,.06); border-color:rgba(224,187,92,.3); text-shadow:none; }
+
+/* 下拉面板：sitenav.js 会改成 position:fixed 定位，避开内页封面 overflow:hidden 的裁切 */
+.sn-panel { position:absolute; z-index:60; min-width:15rem; max-width:min(22rem,calc(100vw - 2rem)); margin-top:.45rem; padding:.5rem; border-radius:.7rem;
+  background:#F4EFE4; color:#17201B; border:1px solid rgba(184,146,61,.35); box-shadow:0 18px 40px -12px rgba(0,0,0,.45); text-shadow:none; letter-spacing:.03em; }
+.sn-panel a { display:block; padding:.55rem .75rem; border-radius:.45rem; color:#17201B; text-decoration:none; font-family:"Noto Serif SC","Source Han Serif SC",serif; font-weight:600; font-size:.98rem; line-height:1.35; }
+.sn-panel a small { display:block; margin-top:.15rem; font-family:"Noto Sans SC","Microsoft YaHei",system-ui,sans-serif; font-weight:400; font-size:.74rem; color:#6E685C; }
+.sn-panel a:hover, .sn-panel a:focus-visible { background:rgba(184,146,61,.14); outline:none; }
+.sn-panel a[aria-current="page"] { background:rgba(31,58,43,.08); }
+
+/* 首页顶栏：五栏用 summary 冒充原来的 .link 文字链接 */
+.mainnav details.dd { position:relative; }
+.mainnav details.dd > summary { list-style:none; cursor:pointer; padding:.4rem 0; opacity:.88; white-space:nowrap; }
+.mainnav details.dd > summary::-webkit-details-marker { display:none; }
+.mainnav details.dd > summary:hover, .mainnav details.dd[open] > summary { opacity:1; }
+.mainnav details.dd .sn-panel { left:50%; transform:translateX(-50%); }
+@media (max-width:1180px){ .mainnav details.dd { display:none; } }
+
+@media (max-width:760px){
+  .sitenav { gap:.4rem; font-size:.8rem; }
+  .sitenav > a, .sitenav > details > summary { padding:.3rem .8rem; }
+}
+@media (prefers-reduced-motion:reduce){ .sitenav * { transition:none !important; } }
+/* 首页 .mainnav a 的不换行与描字阴影别带进面板 */
+.sn-panel a { white-space:normal !important; text-shadow:none !important; }

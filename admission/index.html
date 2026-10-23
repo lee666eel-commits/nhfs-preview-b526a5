@@ -165,6 +165,7 @@ footer a { color:var(--gold-deep); }
   .family-nav a { flex:none; }
 }
 </style>
+<link rel="stylesheet" href="../assets/sitenav.css">
 </head>
 <body>
 
@@ -186,14 +187,16 @@ footer a { color:var(--gold-deep); }
     </nav>
   </div>
 
-  <nav class="family-nav" aria-label="认识南华系列">
-    <a href="../about/index.html">认识南华</a>
-    <a href="../academic/index.html">学术课程</a>
-    <a href="../cocurricular/index.html">联课活动</a>
-    <a href="../facilities/index.html">硬体设施</a>
-    <a href="index.html" class="active">招生专区</a>
-    <a href="../history/index.html">南华春秋</a>
-  </nav>
+  <!--sitenav:start-->
+<nav class="sitenav" aria-label="全站导览">
+  <a class="home" href="../index.html">← 首页</a>
+  <details><summary>学校介绍</summary><div class="sn-panel"><a href="../about/index.html">认识南华<small>校训 · 一训三风 · 校歌与校旗</small></a><a href="../about/index.html#policy">愿景与办学方针<small>学会读书 · 学会做人 · 学会领导</small></a><a href="../history/index.html">南华春秋<small>一九三六年创校至今</small></a><a href="../about/index.html#honors">被以殊荣<small>学校获颁的奖项</small></a><a href="../facilities/index.html">硬体设施<small>校园与学习空间</small></a><a href="../museum/index.html">南华数码馆<small>校史 · 新闻馆 · 校刊</small></a><a href="../90/index.html">九十周年校庆<small>1936 — 2026</small></a></div></details>
+  <details><summary>学校组织</summary><div class="sn-panel"><a href="../organization/index.html">组织架构<small>三机构 · 校长室 · 各处室</small></a><a href="../board/index.html">董事会<small>现任董事与历届董事长</small></a><a href="../faculty/index.html">师资团队<small>全体教师</small></a><a href="../organization/index.html#who">这件事该找谁<small>常见事项与对应处室</small></a></div></details>
+  <details><summary>学校资讯</summary><div class="sn-panel"><a href="../notices/index.html">最新通告<small>各处室发布的通告</small></a><a href="../notices/index.html#calendar">行事历<small>按月查看学校重要日程</small></a><a href="../news/index.html">校园新闻<small>按年份查阅校园纪事</small></a><a href="../downloads/index.html">下载区<small>行事历 · 表格 · 指南</small></a></div></details>
+  <details><summary>学生资讯</summary><div class="sn-panel"><a href="../academic/index.html">学术课程<small>五大素养领域 · 校本课程 · 选修课程</small></a><a href="../cocurricular/index.html">联课活动<small>31 个学会团体</small></a><a href="../admission/index.html#pathway">升学情报<small>升学途径 · 建教合作院校</small></a><a href="../facilities/index.html#dorm">宿舍生活<small>学生宿舍与舍务</small></a></div></details>
+  <details class="on"><summary>招生报名</summary><div class="sn-panel"><a href="../admission/index.html" aria-current="page">招生专区<small>对象 · 流程 · 重要日期</small></a><a href="../admission/index.html#aid">奖助学金<small>奖助学金与贷书计划</small></a><a href="https://nanhwa.eschool.edu.my/newreg/" target="_blank" rel="noopener">线上报名<small>eSchool 新生注册</small></a><a href="../contact/index.html">联系我们<small>电话 · WhatsApp · 邮箱 · 校址</small></a></div></details>
+</nav>
+<!--sitenav:end-->
 
   <div class="content">
     <p class="kicker">招生专区 · Admissions</p>
@@ -239,12 +242,12 @@ footer a { color:var(--gold-deep); }
 
 <div class="sec-head reveal">
   <p class="en">Pathways</p>
-  <h2>升学途径</h2>
+  <h2 id="pathway">升学途径</h2>
 </div>
 <p class="vision reveal">独中统考（UEC）文凭广受海内外大学承认，南华学生同时可报考政府 SPM 文凭，双轨并行，升学之路比想象中更宽。</p>
 <div class="panel reveal">
   <ul class="route">
-    <li><span class="stage">初一 · 初二</span><p>打好双语三文基础，五大领域校本课程认识自己</p></li>
+    <li><span class="stage">初一 · 初二</span><p>打好双语三文基础，五大素养领域校本课程认识自己</p></li>
     <li class="exam"><span class="stage">初三<em>初中统考</em></span><p>首个全国性统一评估，衔接高中选科</p></li>
     <li><span class="stage">高一<em>选修科系</em></span><p>依志趣分流：理科 / 文商科</p></li>
     <li class="exam"><span class="stage">高二<em>SPM</em></span><p>可加考马来西亚教育文凭，多一份国内升学保障</p></li>
@@ -267,7 +270,7 @@ footer a { color:var(--gold-deep); }
 
 <div class="sec-head reveal">
   <p class="en">Scholarships</p>
-  <h2>奖助学金与贷书计划</h2>
+  <h2 id="aid">奖助学金与贷书计划</h2>
 </div>
 <p class="vision reveal">为鼓励学生在品行、学业及联课活动中全面发展，本校特设多项奖助金及贷书优惠计划，并协助有需要的学生申请各类校外奖助学金与经济援助，让学生无后顾之忧，专注于学习与自我提升。</p>
 <div class="panel reveal">
@@ -323,5 +326,6 @@ if (!reducedMotion && 'IntersectionObserver' in window) {
 (function(){ var n=document.querySelector('.family-nav'), a=n&&n.querySelector('.active');
   if (a && n.scrollWidth > n.clientWidth) n.scrollLeft = a.offsetLeft - (n.clientWidth - a.offsetWidth)/2; })();
 </script>
+<script src="../assets/sitenav.js" defer></script>
 </body>
 </html>
