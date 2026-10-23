@@ -3,6 +3,7 @@
 <head>
 <meta name="robots" content="noindex,nofollow">
 <script src="preview-gate.js"></script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>南华独立中学 Nan Hwa High School · 霹雳曼绒</title>
@@ -308,10 +309,10 @@ dialog.menu::backdrop{background:rgba(0,0,0,.4)}
 .hall{display:flex;flex-direction:column;gap:.4rem;padding:1.6rem 1.3rem 1.8rem 0;text-decoration:none;color:inherit;border-right:1px solid rgba(237,228,208,.18);min-height:220px}
 .hall+.hall{padding-left:1.3rem}
 .hall:last-child{border-right:0}
-.hall i{font-style:normal;font-family:var(--serif);color:var(--gold);font-size:.85rem;letter-spacing:.08em}
+.hall i{font-style:normal;font-family:var(--serif);color:var(--gold);font-size:.85rem;letter-spacing:.3em}
 .hall b{font-family:var(--serif);font-weight:900;font-size:1.45rem;letter-spacing:.06em;margin-top:.4rem}
 .hall span{font-size:.86rem;color:#B9AC91;line-height:1.8}
-.hall em{margin-top:auto;font-style:normal;font-size:.82rem;font-weight:700;letter-spacing:.04em;color:var(--gold)}
+.hall em{margin-top:auto;font-style:normal;font-size:.82rem;font-weight:700;letter-spacing:.12em;color:var(--gold)}
 .hall.soon em{color:#8E846F}
 a.hall:hover b{color:var(--gold)}
 .museum .enter{margin-top:2.4rem}
@@ -411,7 +412,7 @@ body{font-size:16px}
 .diptych{gap:clamp(.75rem,1.4vw,1.25rem);padding:0 var(--gut)}
 .dip{border-radius:clamp(18px,2vw,28px)}
 .dip-culture{background:var(--paper-2)}
-.proof-sec,.museum,.welcome{margin:0 var(--gut);border-radius:clamp(18px,2vw,28px);overflow:hidden}
+.proof-sec,.welcome{margin:0 var(--gut);border-radius:clamp(18px,2vw,28px);overflow:hidden}
 .welcome{margin-bottom:var(--gut)}
 footer{border-radius:0}
 /* 字级：标题收到 38px 以内，正文 16px */
@@ -424,11 +425,41 @@ h2.big,.subject h2.big{font-size:clamp(1.55rem,2.5vw,2.35rem);line-height:1.3}
 .role .who b{font-size:clamp(1.2rem,1.8vw,1.6rem)}
 .stat b{font-size:clamp(2.2rem,4vw,3.4rem)}
 .voices blockquote{font-size:clamp(1.05rem,.95rem + .4vw,1.3rem)}
-.hall b{font-size:1.25rem}
+/* 柒·数码馆四展厅：他交代不准动，保持 main（5ef4c7d）原样，下面把上方全站字级／间距覆写还原 */
+.museum{font-size:17px;line-height:1.9}
+.museum.chapter{padding:clamp(5rem,12vw,9rem) 0}
+.museum .chap{flex-direction:row;align-items:flex-start;gap:.7rem}
+.museum .chap .v{letter-spacing:.42em}
+.museum .en{display:block;margin-bottom:.6rem;font-family:var(--latin);font-style:italic;font-weight:500;letter-spacing:.04em;font-size:1.05rem}
+.museum h2.big{font-size:clamp(2rem,5.4vw,4.4rem);line-height:1.22;letter-spacing:.01em}
+.museum .lede{font-size:clamp(1rem,.95rem + .3vw,1.12rem);max-width:34em;line-height:2}
 /* 校园卡：桌面改三栏网格，不再出现横向滚动条；手机保留左右滑但隐藏滚动条 */
 .campus .reel{scrollbar-width:none} .campus .reel::-webkit-scrollbar{display:none}
 /* 三栏网格时改横幅比例：直幅 4:5 在桌面上一张就占大半屏，还把人裁掉一半 */
 @media (min-width:861px){.campus .reel{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);grid-auto-columns:auto;overflow:visible;max-width:1240px;margin-left:auto;margin-right:auto} .campus .reel img{aspect-ratio:3/2}}
+
+/* 家长布告栏：数据来自 Google 表格「发布到网络」的 CSV，流程见 data/notice/README.md */
+.notice{background:var(--paper-3)}
+.notice .cols{margin-top:2.4rem;display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:clamp(2rem,4vw,3.6rem)}
+.notice h3{font-size:1.1rem;letter-spacing:.12em;padding-bottom:.7rem;border-bottom:1px solid var(--ink)}
+.notice .empty{padding:1.2rem 0;color:var(--muted);font-size:.95rem}
+.board details{border-bottom:1px solid var(--rule)}
+.board summary{list-style:none;cursor:pointer;padding:1rem 0;display:grid;grid-template-columns:6.4rem 1fr;gap:.2rem 1rem;align-items:baseline}
+.board summary::-webkit-details-marker{display:none}
+.board time,.cal time{font-family:var(--latin);font-style:italic;color:var(--gold-deep);white-space:nowrap}
+.board summary b{font-family:var(--serif);font-weight:600;font-size:1.05rem;line-height:1.6}
+.board summary:hover b{color:var(--zhu)}
+.board summary em{grid-column:2;font-style:normal;font-size:.8rem;color:var(--muted);letter-spacing:.06em}
+.board .body{padding:0 0 1.3rem;color:var(--ink-soft);font-size:.98rem;white-space:pre-line;overflow-wrap:anywhere}
+.board .pics{margin-top:1rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.6rem}
+.board .pics img{width:100%;height:auto;border-radius:4px;background:var(--paper-2)}
+.board .body a{color:var(--zhu);font-weight:700;margin-right:1.2rem}
+.cal ol{list-style:none}
+.cal li{display:grid;grid-template-columns:2.6rem 1fr;gap:1rem;padding:.75rem 0;border-bottom:1px solid var(--rule);font-size:.98rem}
+.cal time{font-size:1.35rem;line-height:1.3}
+.cal li.past{color:var(--muted)} .cal li.past time{color:var(--muted)}
+.cal li span small{display:block;color:var(--muted);font-size:.82rem}
+@media (max-width:860px){ .notice .cols{grid-template-columns:1fr} .board summary{grid-template-columns:5.6rem 1fr;gap:.2rem .6rem} }
 </style>
 </head>
 <body>
@@ -470,11 +501,12 @@ h2.big,.subject h2.big{font-size:clamp(1.55rem,2.5vw,2.35rem);line-height:1.3}
         <a href="faculty/index.html">师资团队<small>与孩子同行的引路人</small></a></div>
       <div><h4>Archive</h4>
         <a href="museum/index.html">南华数码馆<small>校史 · 九十周年 · 新闻馆 · 校刊</small></a>
-        <a href="news/index.html">每日南华<small>1,198 篇校园纪事，仍在继续</small></a>
+        <a href="news/index.html">每日南华<small>1,251 篇校园纪事，仍在继续</small></a>
         <a href="90/index.html">九十周年校庆<small>1936 — 2026</small></a></div>
       <div><h4>Admission</h4>
         <a href="admission/index.html">招生专区<small>对象 · 流程 · 日期 · 奖助学金</small></a>
         <a href="https://nanhwa.eschool.edu.my/newreg/" target="_blank" rel="noopener">线上报名<small>eSchool 新生注册</small></a>
+        <a href="#notice">家长布告栏<small>最新动态 · 本月行事历</small></a>
         <a href="#contact">联系我们<small>电话 · WhatsApp · 邮箱 · 校址</small></a></div>
     </div>
     <div class="menu-foot">
@@ -521,8 +553,8 @@ h2.big,.subject h2.big{font-size:clamp(1.55rem,2.5vw,2.35rem);line-height:1.3}
     </div>
     <div class="collage reveal" aria-label="南华学生的日常">
       <figure class="a"><img src="assets/img/home/lab-trio.webp" alt="三位南华学生在实验室里并肩微笑" width="1500" height="844" loading="lazy"></figure>
-      <figure class="b"><img src="assets/img/home/kite-girl.webp" alt="学生在校内端午节活动举起亲手彩绘的蝴蝶风筝" width="1000" height="1500" loading="lazy"></figure>
-      <figure class="c"><img src="assets/img/home/craft-smile.webp" alt="学生在校内成果展展示手作作品" width="1125" height="1500" loading="lazy"></figure>
+      <figure class="b"><img src="assets/img/home/drum-girl.webp" alt="廿四节令鼓队员在侨青故乡行交流演出中击鼓" width="1000" height="1500" loading="lazy"></figure>
+      <figure class="c"><img src="assets/img/home/coffee-class.webp" alt="校园开放日，咖啡与甜点艺术课学生向来宾示范手冲咖啡" width="1125" height="1500" loading="lazy"></figure>
       <figure class="d"><img src="assets/img/home/fire-demo.webp" alt="校园开放日科学示范，火焰在学生面前升起" width="1500" height="1000" loading="lazy"></figure>
       <figure class="e"><img src="assets/img/home/volley.webp" alt="排球场上学生跃起扣球" width="1500" height="998" loading="lazy"></figure>
     </div>
@@ -573,7 +605,7 @@ h2.big,.subject h2.big{font-size:clamp(1.55rem,2.5vw,2.35rem);line-height:1.3}
       <img src="assets/img/home/calligraphy.webp" alt="学生在书法课上临帖" loading="lazy">
       <div class="stack">
         <img src="assets/img/home/lion-lawn.webp" alt="龙狮团与鼓手在校园草坪前合影" loading="lazy">
-        <img src="assets/img/facilities/tea-room.jpg" alt="中国茶文化推广中心，师生演示茶艺冲泡" loading="lazy">
+        <img src="assets/img/home/tea-class.webp" alt="高中选修茶艺课，学生练习冲泡" loading="lazy">
       </div>
     </div>
     <a class="more" href="academic/index.html">中华艺术 · 文化传承课程 <span class="arrow">→</span></a>
@@ -625,7 +657,7 @@ h2.big,.subject h2.big{font-size:clamp(1.55rem,2.5vw,2.35rem);line-height:1.3}
         <article class="ring-step" data-i="1">
           <h3>个人领导力</h3>
           <p>领导别人之前，先认识自己。DISC 人格特质与霍兰德职业兴趣测评，帮助孩子看清自己的长处；《南华漫游》成长护照以七种「漫游」印记，记下每一次学习、服务与荣誉的足迹。学生自己经营《诚实商店》与《馨品银行》——即使无人看见，也知道什么是自己该做的事。</p>
-          <div class="proof"><img src="assets/img/home/tablets.webp" alt="学生专注使用平板进行学习" loading="lazy"></div>
+          <div class="proof"><img src="assets/img/home/honesty-shop.webp" alt="学生自主经营的《诚实商店》" loading="lazy"></div>
         </article>
         <article class="ring-step" data-i="2">
           <h3>团队领导力</h3>
@@ -640,7 +672,7 @@ h2.big,.subject h2.big{font-size:clamp(1.55rem,2.5vw,2.35rem);line-height:1.3}
         <article class="ring-step" data-i="4">
           <h3>社会与家国</h3>
           <p>跨语言、跨民族、跨文化的文艺大汇演，让多元的马来西亚在同一个舞台相遇；学生更代表马来西亚出征台湾 TIRT 国际赛，夺得亚军与团体总冠军。</p>
-          <div class="proof"><img src="assets/img/home/concert.webp" alt="文艺大汇演舞台灯光下的乐团演出" loading="lazy"></div>
+          <div class="proof"><img src="assets/img/home/gala-multicultural.webp" alt="文艺大汇演上的跨民族、跨文化表演" loading="lazy"></div>
         </article>
         <article class="ring-step" data-i="5">
           <h3>民族与文化</h3>
@@ -710,19 +742,34 @@ h2.big,.subject h2.big{font-size:clamp(1.55rem,2.5vw,2.35rem);line-height:1.3}
   <div class="bgimg" aria-hidden="true"></div>
   <div class="wrap">
     <div class="head reveal">
-      <div class="chap"><span class="kids" aria-hidden="true"><img src="assets/img/home/kid-boy.webp" alt="" width="64" height="200"></span><span class="no" style="color:var(--gold)">柒</span><span class="v">数码馆</span></div>
+      <div class="chap"><span class="no" style="color:var(--gold)">柒</span><span class="v">南华数码馆</span></div>
       <div>
+        <span class="en" style="color:var(--gold)">Nan Hwa Digital Museum</span>
         <h2 class="big" id="t7">九十年的光，<br>都收藏在这里。</h2>
-        <p class="lede">校史、九十周年、八年来上千篇校园纪事，还有历届校刊——南华数码馆，让孩子读得到自己学校走过的路。</p>
+        <p class="lede" style="margin-top:1.4rem">校史、九十周年、八年来上千篇校园纪事，还有历届校刊——南华数码馆，让孩子读得到自己学校走过的路。</p>
       </div>
     </div>
     <div class="halls reveal">
       <a class="hall" href="history/index.html"><i>第一厅</i><b>南华春秋</b><span>从 1936 年胶林里的四校合并，到今日新校园</span><em>入馆 →</em></a>
       <a class="hall" href="90/index.html"><i>第二厅</i><b>九十周年</b><span>1936 — 2026 · 九十年风雨兼程，育见百年</span><em>入馆 →</em></a>
-      <a class="hall" href="news/index.html"><i>第三厅</i><b>每日南华</b><span>2018 — 2026 · 1,198 篇校园纪事</span><em>入馆 →</em></a>
+      <a class="hall" href="news/index.html"><i>第三厅</i><b>每日南华</b><span>2018 — 2026 · 1,251 篇校园纪事</span><em>入馆 →</em></a>
       <div class="hall soon"><i>第四厅</i><b>校刊书架</b><span>1962 年起的历届校刊，数码化整理中</span><em>筹备中</em></div>
     </div>
     <div class="enter reveal"><a class="btn btn-gold" href="museum/index.html">步入南华数码馆 <span class="arrow">→</span></a></div>
+  </div>
+</section>
+
+<!-- 家长布告栏 -->
+<section class="chapter notice" id="notice" aria-labelledby="tn">
+  <div class="wrap">
+    <div class="reel-hint reveal">
+      <div><h2 class="big" id="tn" style="font-size:clamp(1.7rem,3.6vw,2.8rem)">家长布告栏</h2>
+        <p class="lede">学校通告、董总统考日程、独中教育动态，以及本月校历，都在这里。</p></div>
+    </div>
+    <div class="cols reveal">
+      <div class="board"><h3>最新动态</h3><div id="noticeList"><p class="empty">载入中……</p></div></div>
+      <div class="cal"><h3 id="calTitle">本月行事历</h3><div id="calList"><p class="empty">载入中……</p></div></div>
+    </div>
   </div>
 </section>
 
@@ -731,12 +778,12 @@ h2.big,.subject h2.big{font-size:clamp(1.55rem,2.5vw,2.35rem);line-height:1.3}
   <div class="wrap">
     <div class="reel-hint reveal">
       <div><h2 class="big" id="t8" style="font-size:clamp(1.7rem,3.6vw,2.8rem)">南华的每一天，<br>都被记录下来。</h2></div>
-      <a href="news/index.html" style="color:var(--zhu);font-weight:700;text-decoration:none">进入新闻馆 · 1,198 篇 <span class="arrow">→</span></a>
+      <a href="news/index.html" style="color:var(--zhu);font-weight:700;text-decoration:none">进入新闻馆 · 1,251 篇 <span class="arrow">→</span></a>
     </div>
     <div class="cards reveal">
-      <a class="card" href="news/2026/20260628-1.html"><div class="ph"><img src="news/2026/img/20260628-1-0.jpg" alt="" loading="lazy"></div><div><time datetime="2026-06-28">2026 · 06 · 28</time><b>课本之外的南洋史诗：南华师生吉隆坡寻根手记</b></div></a>
-      <a class="card" href="news/2026/20260627-1.html"><div class="ph"><img src="news/2026/img/20260627-1-0.jpg" alt="" loading="lazy"></div><div><time datetime="2026-06-27">2026 · 06 · 27</time><b>一盏清茶，一片匠心</b></div></a>
-      <a class="card" href="news/2026/20260626-1.html"><div class="ph"><img src="news/2026/img/20260626-1-0.jpg" alt="" loading="lazy"></div><div><time datetime="2026-06-26">2026 · 06 · 26</time><b>祝贺陳麗冰校长荣获 HRD Corp 认证讲师资格</b></div></a>
+      <a class="card" href="news/2026/20261009-1.html"><div class="ph"><img src="news/2026/img/20261009-1-0.jpg" alt="" loading="lazy"></div><div><time datetime="2026-10-09">2026 · 10 · 09</time><b>北大近在咫尺，未来由你定义</b></div></a>
+      <a class="card" href="news/2026/20261008-1.html"><div class="ph"><img src="news/2026/img/20261008-1-0.jpg" alt="" loading="lazy"></div><div><time datetime="2026-10-08">2026 · 10 · 08</time><b>战袍加身，鼓动风采</b></div></a>
+      <a class="card" href="news/2026/20261004-1.html"><div class="ph"><img src="news/2026/img/20261004-1-0.jpg" alt="" loading="lazy"></div><div><time datetime="2026-10-04">2026 · 10 · 04</time><b>风华落笔 · 行之有度 · 抬望湛蓝天空</b></div></a>
     </div>
   </div>
 </section>
@@ -878,6 +925,70 @@ const ringIO = new IntersectionObserver(es => es.forEach(x => {
   glow.setAttribute('r', R[i]);
 }), {rootMargin:'-45% 0px -45% 0px'});
 document.querySelectorAll('.ring-step').forEach(s => ringIO.observe(s));
+</script>
+<script>
+// 家长布告栏：两份 Google 表格「发布到网络」CSV 网址，建表后填进来（步骤见 data/notice/README.md）
+// 网址留空＝显示「暂无」；本机加 ?sample 看示例数据
+const SAMPLE = location.search.includes('sample');
+const NOTICE_CSV = SAMPLE ? 'data/notice/sample-notice.csv' : '';
+// ponytail: 行事历先读站内 assets/notice/calendar.csv（教务处 2026 行事历摘家长相关项），表格建好后换成「行事历」分页的 CSV 网址
+const CAL_CSV = SAMPLE ? 'data/notice/sample-calendar.csv' : 'assets/notice/calendar.csv';
+// ponytail: 只处理 RFC4180 引号/逗号/换行，够 Google 表格导出用
+function parseCSV(t){
+  const rows=[]; let row=[], f='', q=false;
+  for(let i=0;i<t.length;i++){
+    const c=t[i];
+    if(q){ if(c=='"'){ if(t[i+1]=='"'){f+='"';i++} else q=false } else f+=c }
+    else if(c=='"') q=true;
+    else if(c==','){ row.push(f); f='' }
+    else if(c=='\n'||c=='\r'){ if(c=='\r'&&t[i+1]=='\n') i++; row.push(f); rows.push(row); row=[]; f='' }
+    else f+=c;
+  }
+  if(f||row.length){ row.push(f); rows.push(row) }
+  return rows.filter(r=>r.some(x=>x.trim()));
+}
+// 第一栏日期统一成 yyyy-mm-dd（表格显示格式若是 2026/10/5 也照收）
+const normDate=d=>{ const m=(d||'').match(/(\d{4})\D(\d{1,2})\D(\d{1,2})/); return m?m[1]+'-'+m[2].padStart(2,'0')+'-'+m[3].padStart(2,'0'):'' };
+async function loadCSV(u){ if(!u) return []; const r=await fetch(u,{cache:'no-store'}); if(!r.ok) throw r.status; return parseCSV(await r.text()).slice(1).map(r=>(r[0]=normDate(r[0]),r)) }
+const el=(tag,cls,txt)=>{ const e=document.createElement(tag); if(cls) e.className=cls; if(txt!=null) e.textContent=txt; return e };
+const driveIds=s=>[...(s||'').matchAll(/(?:id=|\/d\/)([\w-]{20,})/g)].map(m=>m[1]);
+const fmtDate=d=>d.replace(/-/g,' · ');
+function link(href,txt){ if(!/^https:\/\//.test(href)) return null; const a=el('a',null,txt); a.href=href; a.target='_blank'; a.rel='noopener'; return a }
+// 布告栏列：日期 yyyy-mm-dd, 部门, 标题, 内容, 照片, 影片, 相关链接
+loadCSV(NOTICE_CSV).then(rows=>{
+  const box=document.getElementById('noticeList');
+  rows=rows.filter(r=>r[0]&&r[2]).sort((a,b)=>b[0].localeCompare(a[0])).slice(0,6);
+  if(!rows.length){ box.firstChild.textContent='暂无公告。'; return }
+  box.replaceChildren(...rows.map(([date,dept,title,body,pics,vids,url],n)=>{
+    const d=el('details'); if(n==0) d.open=true;
+    const s=el('summary'); const t=el('time',null,fmtDate(date)); t.dateTime=date;
+    s.append(t,el('b',null,title)); if(dept) s.append(el('em',null,dept)); d.append(s);
+    const b=el('div','body',body||'');
+    const ids=driveIds(pics);
+    if(ids.length){ const g=el('div','pics'); ids.forEach(id=>{ const im=el('img'); im.src='https://drive.google.com/thumbnail?id='+id+'&sz=w800'; im.alt=title; im.loading='lazy'; g.append(im) }); b.append(g) }
+    const p=el('p'); p.style.marginTop='.8rem';
+    driveIds(vids).forEach(id=>p.append(link('https://drive.google.com/file/d/'+id+'/view','观看影片 →')));
+    (url||'').split(/[\s,]+/).forEach(u=>{ const a=link(u,'相关链接 →'); if(a) p.append(a) });
+    if(p.childNodes.length) b.append(p);
+    d.append(b); return d;
+  }));
+}).catch(()=>{ document.getElementById('noticeList').firstChild.textContent='布告暂时无法载入，请稍后再看。' });
+// 行事历列：日期 yyyy-mm-dd, 活动, 备注；只显示本月
+loadCSV(CAL_CSV).then(rows=>{
+  const box=document.getElementById('calList'), now=new Date();
+  const ym=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0'), today=ym+'-'+String(now.getDate()).padStart(2,'0');
+  document.getElementById('calTitle').textContent=(now.getMonth()+1)+' 月行事历';
+  rows=rows.filter(r=>(r[0]||'').startsWith(ym)&&r[1]).sort((a,b)=>a[0].localeCompare(b[0]));
+  if(!rows.length){ box.firstChild.textContent='本月行事历整理中。'; return }
+  const ol=el('ol');
+  rows.forEach(([date,what,note])=>{
+    const m=(note||'').match(/至 (\d+) 月 (\d+) 日/), end=m?ym.slice(0,5)+m[1].padStart(2,'0')+'-'+m[2].padStart(2,'0'):date;
+    const li=el('li',end<today?'past':''); const t=el('time',null,String(Number(date.slice(8,10)))); t.dateTime=date;
+    const sp=el('span',null,what); if(note) sp.append(el('small',null,note));
+    li.append(t,sp); ol.append(li);
+  });
+  box.replaceChildren(ol);
+}).catch(()=>{ document.getElementById('calList').firstChild.textContent='行事历暂时无法载入。' });
 </script>
 </body>
 </html>

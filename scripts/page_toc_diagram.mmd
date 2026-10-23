@@ -1,0 +1,20 @@
+flowchart TB
+  H["首页 /"]
+  subgraph A["认识南华"]
+    direction TB
+    about["认识南华<br>/about/"] --- history["南华春秋（校史）<br>/history/"] --- org["学校组织<br>/organization/"] --- board["董事会<br>/board/"]
+  end
+  subgraph L["学习与生活"]
+    direction TB
+    academic["学术课程<br>/academic/"] --- cocur["联课活动<br>/cocurricular/"] --- fac["硬体设施<br>/facilities/"] --- faculty["师资团队<br>/faculty/"]
+  end
+  subgraph M["数码馆与校史"]
+    direction TB
+    museum["南华数码馆 /museum/<br>四厅：南华春秋、九十周年、<br>每日南华、校刊书架（站外）"] --- n90["九十周年校庆<br>/90/"] --- news["每日南华（新闻馆）<br>/news/"] --- years["2018–2026 各年目录<br>共 1,251 篇"]
+  end
+  subgraph R["招生"]
+    direction TB
+    adm["招生专区<br>/admission/"] --- esch["线上报名 eSchool<br>（站外）"]
+  end
+  H --> A & L & M & R
+  linkStyle 0,1,2,3,4,5,6,7,8,9 stroke:#ffffff,stroke-width:0
